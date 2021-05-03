@@ -1,0 +1,408 @@
+{
+  "contractName": "CDelegateInterface",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "implementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "_becomeImplementation",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "_resignImplementation",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"_becomeImplementation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"_resignImplementation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"_becomeImplementation(bytes)\":{\"details\":\"Should revert if any issues arise which make it unfit for delegation\",\"params\":{\"data\":\"The encoded bytes data for any initialization\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"_becomeImplementation(bytes)\":{\"notice\":\"Called by the delegator on a delegate to initialize it for duty\"},\"_resignImplementation()\":{\"notice\":\"Called by the delegator on a delegate to forfeit its responsibility\"},\"implementation()\":{\"notice\":\"Implementation address for this contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegateInterface.sol\":\"CDelegateInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegateInterface.sol\":{\"keccak256\":\"0x841f08f46263dcd2879d46b0243a8ad96bb2725946b7d478fc8a73f89ca2b45a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4f0abc6c6aa4d03c62d8db86c372740f43df7cc9fe8839ba9f3b0e855c5b0b31\",\"dweb:/ipfs/QmU2FcxVitGXBM9XFPaNs7TBubR3BiPYPEqW5e2sezsUJ1\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegationStorage.sol\":{\"keccak256\":\"0xe56575d3a1ed586270ddbb5e0fe16c02de255ebbdd71004c7963f04eafdb194e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fcf915042728f564b327a512a351bd7da10c50ed0d682df03a1e39ad0ae5b67f\",\"dweb:/ipfs/QmP6xWaiVKcNVM2VxsSU3YDsQB9AAARzpjGbn8znSwmqQP\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "\n// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"./CDelegationStorage.sol\";\n\n\nabstract contract CDelegateInterface is CDelegationStorage {\n    /**\n     * @notice Called by the delegator on a delegate to initialize it for duty\n     * @dev Should revert if any issues arise which make it unfit for delegation\n     * @param data The encoded bytes data for any initialization\n     */\n    function _becomeImplementation(bytes memory data) public virtual;\n\n    /**\n     * @notice Called by the delegator on a delegate to forfeit its responsibility\n     */\n    function _resignImplementation() public virtual;\n}",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegateInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegateInterface.sol",
+    "exportedSymbols": {
+      "CDelegateInterface": [
+        23922
+      ],
+      "CDelegationStorage": [
+        23928
+      ]
+    },
+    "id": 23923,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 23908,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:57"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegationStorage.sol",
+        "file": "./CDelegationStorage.sol",
+        "id": 23909,
+        "nodeType": "ImportDirective",
+        "scope": 23923,
+        "sourceUnit": 23929,
+        "src": "58:34:57",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 23910,
+              "name": "CDelegationStorage",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 23928,
+              "src": "135:18:57"
+            },
+            "id": 23911,
+            "nodeType": "InheritanceSpecifier",
+            "src": "135:18:57"
+          }
+        ],
+        "contractDependencies": [
+          23928
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 23922,
+        "linearizedBaseContracts": [
+          23922,
+          23928
+        ],
+        "name": "CDelegateInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 23912,
+              "nodeType": "StructuredDocumentation",
+              "src": "160:236:57",
+              "text": " @notice Called by the delegator on a delegate to initialize it for duty\n @dev Should revert if any issues arise which make it unfit for delegation\n @param data The encoded bytes data for any initialization"
+            },
+            "functionSelector": "56e67728",
+            "id": 23917,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_becomeImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23915,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23914,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23917,
+                  "src": "432:17:57",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 23913,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "432:5:57",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "431:19:57"
+            },
+            "returnParameters": {
+              "id": 23916,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "465:0:57"
+            },
+            "scope": 23922,
+            "src": "401:65:57",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "documentation": {
+              "id": 23918,
+              "nodeType": "StructuredDocumentation",
+              "src": "472:94:57",
+              "text": " @notice Called by the delegator on a delegate to forfeit its responsibility"
+            },
+            "functionSelector": "153ab505",
+            "id": 23921,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_resignImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23919,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "601:2:57"
+            },
+            "returnParameters": {
+              "id": 23920,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "618:0:57"
+            },
+            "scope": 23922,
+            "src": "571:48:57",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 23923,
+        "src": "95:526:57"
+      }
+    ],
+    "src": "33:588:57"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegateInterface.sol",
+    "exportedSymbols": {
+      "CDelegateInterface": [
+        23922
+      ],
+      "CDelegationStorage": [
+        23928
+      ]
+    },
+    "id": 23923,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 23908,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:57"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegationStorage.sol",
+        "file": "./CDelegationStorage.sol",
+        "id": 23909,
+        "nodeType": "ImportDirective",
+        "scope": 23923,
+        "sourceUnit": 23929,
+        "src": "58:34:57",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 23910,
+              "name": "CDelegationStorage",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 23928,
+              "src": "135:18:57"
+            },
+            "id": 23911,
+            "nodeType": "InheritanceSpecifier",
+            "src": "135:18:57"
+          }
+        ],
+        "contractDependencies": [
+          23928
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 23922,
+        "linearizedBaseContracts": [
+          23922,
+          23928
+        ],
+        "name": "CDelegateInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 23912,
+              "nodeType": "StructuredDocumentation",
+              "src": "160:236:57",
+              "text": " @notice Called by the delegator on a delegate to initialize it for duty\n @dev Should revert if any issues arise which make it unfit for delegation\n @param data The encoded bytes data for any initialization"
+            },
+            "functionSelector": "56e67728",
+            "id": 23917,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_becomeImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23915,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23914,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23917,
+                  "src": "432:17:57",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 23913,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "432:5:57",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "431:19:57"
+            },
+            "returnParameters": {
+              "id": 23916,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "465:0:57"
+            },
+            "scope": 23922,
+            "src": "401:65:57",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "documentation": {
+              "id": 23918,
+              "nodeType": "StructuredDocumentation",
+              "src": "472:94:57",
+              "text": " @notice Called by the delegator on a delegate to forfeit its responsibility"
+            },
+            "functionSelector": "153ab505",
+            "id": 23921,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_resignImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23919,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "601:2:57"
+            },
+            "returnParameters": {
+              "id": 23920,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "618:0:57"
+            },
+            "scope": 23922,
+            "src": "571:48:57",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 23923,
+        "src": "95:526:57"
+      }
+    ],
+    "src": "33:588:57"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-31T20:20:04.384Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "_becomeImplementation(bytes)": {
+        "details": "Should revert if any issues arise which make it unfit for delegation",
+        "params": {
+          "data": "The encoded bytes data for any initialization"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "_becomeImplementation(bytes)": {
+        "notice": "Called by the delegator on a delegate to initialize it for duty"
+      },
+      "_resignImplementation()": {
+        "notice": "Called by the delegator on a delegate to forfeit its responsibility"
+      },
+      "implementation()": {
+        "notice": "Implementation address for this contract"
+      }
+    },
+    "version": 1
+  }
+}

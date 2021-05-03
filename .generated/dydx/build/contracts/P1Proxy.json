@@ -1,0 +1,1275 @@
+{
+  "contractName": "P1Proxy",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "perpetual",
+          "type": "address"
+        }
+      ],
+      "name": "approveMaximumOnPerpetual",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"perpetual\",\"type\":\"address\"}],\"name\":\"approveMaximumOnPerpetual\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX\",\"methods\":{\"approveMaximumOnPerpetual(address)\":{\"details\":\"Cannot be run in the constructor due to technical restrictions in Solidity.\"}},\"title\":\"P1Proxy\"},\"userdoc\":{\"methods\":{\"approveMaximumOnPerpetual(address)\":{\"notice\":\"Sets the maximum allowance on the Perpetual contract. Must be called at least once on a given Perpetual before deposits can be made.\"}},\"notice\":\"Base contract for proxy contracts, which can be used to provide additional functionality or restrictions when making calls to a Perpetual contract on behalf of a user.\"}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/proxies/P1Proxy.sol\":\"P1Proxy\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_PerpetualV1.sol\":{\"keccak256\":\"0xb3fbbe9dca3b13964cba5a0d6ae66190d82c41a745d5ec2553c8d1fcbf6fcab7\",\"urls\":[\"bzz-raw://df475ed099628dd46d148d4d418ee3f8640618a800f2077e17e50608053bad43\",\"dweb:/ipfs/QmfF3TfG12v849nNGrkNMVv5RayyLwihEqqzNH3fRdxnjV\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol\":{\"keccak256\":\"0x4c06a8f9779e4a2975ceb5e05583c10309d1979814c7d408ee9045b5c896f8d2\",\"urls\":[\"bzz-raw://2231570e2572d884876eb5c443e4ae59cf8168d8f0e33cc38ebf88497ae65def\",\"dweb:/ipfs/QmWWpyL1P7nUVnpXEULTqCTTvsKSNwnRRvB4kFCuJeMGGo\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/proxies/P1Proxy.sol\":{\"keccak256\":\"0x57dce6b802b56959a9af40631255e1b0e7ee0086a0acbbd6c5b9e9b648a66729\",\"urls\":[\"bzz-raw://fc11177843b1c870a59e6d93488275180d0b7c16e39ac08e065ceb174bc76602\",\"dweb:/ipfs/QmYUEp3hksRTqSyu6sUgWoEd1kjzfRZqBvvcH5og59pK7L\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076\",\"urls\":[\"bzz-raw://31113152e1ddb78fe7a4197f247591ca894e93f916867beb708d8e747b6cc74f\",\"dweb:/ipfs/QmbZaJyXdpsYGykVhHH9qpVGQg9DGCxE2QufbCUy3daTgq\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xe5bb0f57cff3e299f360052ba50f1ea0fff046df2be070b6943e0e3c3fdad8a9\",\"urls\":[\"bzz-raw://59fd025151435da35faa8093a5c7a17de02de9d08ad27275c5cdf05050820d91\",\"dweb:/ipfs/QmQMvwEcPhoRXzbXyrdoeRtvLoifUW9Qh7Luho7bmUPRkc\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0x6f2c9955d65c522b80f4b8792f076512d2df947d2112cbc4d98a4781ed42ede2\",\"urls\":[\"bzz-raw://7d8ec81683520c06baeef3f7e06cd82bd6fd5fa611f26857f475f6c829540aff\",\"dweb:/ipfs/QmTDkFzKnrpiV1UKnSoiZAHPuguWzokrr4pFbSPvyaSo56\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x1a8e5072509c5ea7365eb1d48030b9be865140c8fb779968da0a459a0e174a11\",\"urls\":[\"bzz-raw://03335b7b07c7c8c8d613cfdd8ec39a0b5ec133ee510bf2fe6cc5a496767bef4b\",\"dweb:/ipfs/Qmebp4nzPja645c9yXSdJkGq96oU3am3LUnG2K3R7XxyKf\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506107f8806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063fe0f885814610030575b600080fd5b61004361003e3660046104aa565b610045565b005b60008173ffffffffffffffffffffffffffffffffffffffff166328b7bede6040518163ffffffff1660e01b815260040160206040518083038186803b15801561008d57600080fd5b505afa1580156100a1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506100c591908101906104c8565b90506100ef73ffffffffffffffffffffffffffffffffffffffff821683600063ffffffff61013a16565b61013673ffffffffffffffffffffffffffffffffffffffff8216837fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff63ffffffff61013a16565b5050565b8015806101e857506040517fdd62ed3e00000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff84169063dd62ed3e9061019690309086906004016106ac565b60206040518083038186803b1580156101ae57600080fd5b505afa1580156101c2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506101e69190810190610504565b155b610227576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e90610702565b60405180910390fd5b6040516102e49084907f095ea7b3000000000000000000000000000000000000000000000000000000009061026290869086906024016106c7565b604080517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe08184030181529190526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167fffffffff00000000000000000000000000000000000000000000000000000000909316929092179091526102e9565b505050565b6103088273ffffffffffffffffffffffffffffffffffffffff1661043c565b61033e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e90610712565b600060608373ffffffffffffffffffffffffffffffffffffffff16836040516103679190610699565b6000604051808303816000865af19150503d80600081146103a4576040519150601f19603f3d011682016040523d82523d6000602084013e6103a9565b606091505b5091509150816103e5576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e906106e2565b805115610436578080602001905161040091908101906104e6565b610436576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e906106f2565b50505050565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a47081811480159061047057508115155b949350505050565b80356104838161078c565b92915050565b80516104838161078c565b8051610483816107a3565b8051610483816107ac565b6000602082840312156104bc57600080fd5b60006104708484610478565b6000602082840312156104da57600080fd5b60006104708484610489565b6000602082840312156104f857600080fd5b60006104708484610494565b60006020828403121561051657600080fd5b6000610470848461049f565b61052b81610734565b82525050565b600061053c82610722565b6105468185610726565b9350610556818560208601610760565b9290920192915050565b600061056d60208361072b565b7f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815260200192915050565b60006105a6602a8361072b565b7f5361666545524332303a204552433230206f7065726174696f6e20646964206e81527f6f74207375636365656400000000000000000000000000000000000000000000602082015260400192915050565b600061060560368361072b565b7f5361666545524332303a20617070726f76652066726f6d206e6f6e2d7a65726f81527f20746f206e6f6e2d7a65726f20616c6c6f77616e636500000000000000000000602082015260400192915050565b6000610664601f8361072b565b7f5361666545524332303a2063616c6c20746f206e6f6e2d636f6e747261637400815260200192915050565b61052b8161075d565b60006106a58284610531565b9392505050565b604081016106ba8285610522565b6106a56020830184610522565b604081016106d58285610522565b6106a56020830184610690565b6020808252810161048381610560565b6020808252810161048381610599565b60208082528101610483816105f8565b6020808252810161048381610657565b5190565b919050565b90815260200190565b600061048382610744565b151590565b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b60005b8381101561077b578181015183820152602001610763565b838111156104365750506000910152565b61079581610734565b81146107a057600080fd5b50565b6107958161073f565b6107958161075d56fea365627a7a723158203910f690928611db8ce713685d4d11ce7314edd2a1d1629515c0608821eab5e66c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063fe0f885814610030575b600080fd5b61004361003e3660046104aa565b610045565b005b60008173ffffffffffffffffffffffffffffffffffffffff166328b7bede6040518163ffffffff1660e01b815260040160206040518083038186803b15801561008d57600080fd5b505afa1580156100a1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506100c591908101906104c8565b90506100ef73ffffffffffffffffffffffffffffffffffffffff821683600063ffffffff61013a16565b61013673ffffffffffffffffffffffffffffffffffffffff8216837fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff63ffffffff61013a16565b5050565b8015806101e857506040517fdd62ed3e00000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff84169063dd62ed3e9061019690309086906004016106ac565b60206040518083038186803b1580156101ae57600080fd5b505afa1580156101c2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506101e69190810190610504565b155b610227576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e90610702565b60405180910390fd5b6040516102e49084907f095ea7b3000000000000000000000000000000000000000000000000000000009061026290869086906024016106c7565b604080517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe08184030181529190526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167fffffffff00000000000000000000000000000000000000000000000000000000909316929092179091526102e9565b505050565b6103088273ffffffffffffffffffffffffffffffffffffffff1661043c565b61033e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e90610712565b600060608373ffffffffffffffffffffffffffffffffffffffff16836040516103679190610699565b6000604051808303816000865af19150503d80600081146103a4576040519150601f19603f3d011682016040523d82523d6000602084013e6103a9565b606091505b5091509150816103e5576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e906106e2565b805115610436578080602001905161040091908101906104e6565b610436576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161021e906106f2565b50505050565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a47081811480159061047057508115155b949350505050565b80356104838161078c565b92915050565b80516104838161078c565b8051610483816107a3565b8051610483816107ac565b6000602082840312156104bc57600080fd5b60006104708484610478565b6000602082840312156104da57600080fd5b60006104708484610489565b6000602082840312156104f857600080fd5b60006104708484610494565b60006020828403121561051657600080fd5b6000610470848461049f565b61052b81610734565b82525050565b600061053c82610722565b6105468185610726565b9350610556818560208601610760565b9290920192915050565b600061056d60208361072b565b7f5361666545524332303a206c6f772d6c6576656c2063616c6c206661696c6564815260200192915050565b60006105a6602a8361072b565b7f5361666545524332303a204552433230206f7065726174696f6e20646964206e81527f6f74207375636365656400000000000000000000000000000000000000000000602082015260400192915050565b600061060560368361072b565b7f5361666545524332303a20617070726f76652066726f6d206e6f6e2d7a65726f81527f20746f206e6f6e2d7a65726f20616c6c6f77616e636500000000000000000000602082015260400192915050565b6000610664601f8361072b565b7f5361666545524332303a2063616c6c20746f206e6f6e2d636f6e747261637400815260200192915050565b61052b8161075d565b60006106a58284610531565b9392505050565b604081016106ba8285610522565b6106a56020830184610522565b604081016106d58285610522565b6106a56020830184610690565b6020808252810161048381610560565b6020808252810161048381610599565b60208082528101610483816105f8565b6020808252810161048381610657565b5190565b919050565b90815260200190565b600061048382610744565b151590565b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b60005b8381101561077b578181015183820152602001610763565b838111156104365750506000910152565b61079581610734565b81146107a057600080fd5b50565b6107958161073f565b6107958161075d56fea365627a7a723158203910f690928611db8ce713685d4d11ce7314edd2a1d1629515c0608821eab5e66c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "1103:731:40:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1103:731:40;;;;;;;",
+  "deployedSourceMap": "1103:731:40:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1103:731:40;;;;;;;;;;;;;;;;;;;1419:413;;;;;;;;;:::i;:::-;;;1518:20;1562:9;1548:41;;;:43;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1548:43:40;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1548:43:40;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1548:43:40;;;;;;;;;1518:74;-1:-1:-1;1666:39:40;:25;;;1692:9;1703:1;1666:39;:25;:39;:::i;:::-;1776:49;:25;;;1802:9;1821:2;1776:49;:25;:49;:::i;:::-;1419:413;;:::o;1050:612:65:-;1415:10;;;1414:62;;-1:-1:-1;1431:39:65;;;;;:15;;;;;;:39;;1455:4;;1462:7;;1431:39;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1431:39:65;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1431:39:65;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1431:39:65;;;;;;;;;:44;1414:62;1406:150;;;;;;;;;;;;;;;;;;;;;;1592:62;;1566:89;;1585:5;;1615:22;;1592:62;;1639:7;;1648:5;;1592:62;;;;;;;;22:32:-1;26:21;;;22:32;6:49;;1592:62:65;;;49:4:-1;25:18;;61:17;;1592:62:65;182:15:-1;1592:62:65;;;;179:29:-1;;;;160:49;;;1566:18:65;:89::i;:::-;1050:612;;;:::o;2666:1095::-;3261:27;3269:5;3261:25;;;:27::i;:::-;3253:71;;;;;;;;;;;;;;3395:12;3409:23;3444:5;3436:19;;3456:4;3436:25;;;;;;;;;;;;;;;;;;;;;;;14:1:-1;21;16:31;;;;75:4;69:11;64:16;;144:4;140:9;133:4;115:16;111:27;107:43;104:1;100:51;94:4;87:65;169:16;166:1;159:27;225:16;222:1;215:4;212:1;208:12;193:49;7:242;;16:31;36:4;31:9;;7:242;;3394:67:65;;;;3479:7;3471:52;;;;;;;;;;;;;;3538:17;;:21;3534:221;;3678:10;3667:30;;;;;;;;;;;;;;3659:85;;;;;;;;;;;;;;2666:1095;;;;:::o;686:610:66:-;746:4;1207:20;;1052:66;1246:23;;;;;;:42;;-1:-1:-1;1273:15:66;;;1246:42;1238:51;686:610;-1:-1:-1;;;;686:610:66:o;5:130:-1:-;72:20;;97:33;72:20;97:33;;;57:78;;;;;142:134;220:13;;238:33;220:13;238:33;;283:128;358:13;;376:30;358:13;376:30;;418:134;496:13;;514:33;496:13;514:33;;559:241;;663:2;651:9;642:7;638:23;634:32;631:2;;;679:1;676;669:12;631:2;714:1;731:53;776:7;756:9;731:53;;807:263;;922:2;910:9;901:7;897:23;893:32;890:2;;;938:1;935;928:12;890:2;973:1;990:64;1046:7;1026:9;990:64;;1077:257;;1189:2;1177:9;1168:7;1164:23;1160:32;1157:2;;;1205:1;1202;1195:12;1157:2;1240:1;1257:61;1310:7;1290:9;1257:61;;1341:263;;1456:2;1444:9;1435:7;1431:23;1427:32;1424:2;;;1472:1;1469;1462:12;1424:2;1507:1;1524:64;1580:7;1560:9;1524:64;;1611:113;1694:24;1712:5;1694:24;;;1689:3;1682:37;1676:48;;;1731:356;;1859:38;1891:5;1859:38;;;1909:88;1990:6;1985:3;1909:88;;;1902:95;;2002:52;2047:6;2042:3;2035:4;2028:5;2024:16;2002:52;;;2066:16;;;;;1839:248;-1:-1;;1839:248;2095:332;;2255:67;2319:2;2314:3;2255:67;;;2355:34;2335:55;;2418:2;2409:12;;2241:186;-1:-1;;2241:186;2436:379;;2596:67;2660:2;2655:3;2596:67;;;2696:34;2676:55;;2765:12;2760:2;2751:12;;2744:34;2806:2;2797:12;;2582:233;-1:-1;;2582:233;2824:391;;2984:67;3048:2;3043:3;2984:67;;;3084:34;3064:55;;3153:24;3148:2;3139:12;;3132:46;3206:2;3197:12;;2970:245;-1:-1;;2970:245;3224:331;;3384:67;3448:2;3443:3;3384:67;;;3484:33;3464:54;;3546:2;3537:12;;3370:185;-1:-1;;3370:185;3563:113;3646:24;3664:5;3646:24;;3683:262;;3827:93;3916:3;3907:6;3827:93;;;3820:100;3808:137;-1:-1;;;3808:137;3952:324;4098:2;4083:18;;4112:71;4087:9;4156:6;4112:71;;;4194:72;4262:2;4251:9;4247:18;4238:6;4194:72;;4283:324;4429:2;4414:18;;4443:71;4418:9;4487:6;4443:71;;;4525:72;4593:2;4582:9;4578:18;4569:6;4525:72;;4614:407;4805:2;4819:47;;;4790:18;;4880:131;4790:18;4880:131;;5028:407;5219:2;5233:47;;;5204:18;;5294:131;5204:18;5294:131;;5442:407;5633:2;5647:47;;;5618:18;;5708:131;5618:18;5708:131;;5856:407;6047:2;6061:47;;;6032:18;;6122:131;6032:18;6122:131;;6270:121;6357:12;;6328:63;6399:144;6534:3;6512:31;-1:-1;6512:31;6552:163;6655:19;;;6704:4;6695:14;;6648:67;6723:91;;6785:24;6803:5;6785:24;;6821:85;6887:13;6880:21;;6863:43;6913:121;6986:42;6975:54;;6958:76;7041:72;7103:5;7086:27;7121:268;7186:1;7193:101;7207:6;7204:1;7201:13;7193:101;;;7274:11;;;7268:18;7255:11;;;7248:39;7229:2;7222:10;7193:101;;;7309:6;7306:1;7303:13;7300:2;;;-1:-1;;7374:1;7356:16;;7349:27;7170:219;7397:117;7466:24;7484:5;7466:24;;;7459:5;7456:35;7446:2;;7505:1;7502;7495:12;7446:2;7440:74;;7521:111;7587:21;7602:5;7587:21;;7639:117;7708:24;7726:5;7708:24;",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\nimport { IERC20 } from \"@openzeppelin/contracts/token/ERC20/IERC20.sol\";\nimport { SafeERC20 } from \"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\";\nimport { I_PerpetualV1 } from \"../intf/I_PerpetualV1.sol\";\n\n\n/**\n * @title P1Proxy\n * @author dYdX\n *\n * @notice Base contract for proxy contracts, which can be used to provide additional functionality\n *  or restrictions when making calls to a Perpetual contract on behalf of a user.\n */\ncontract P1Proxy {\n    using SafeERC20 for IERC20;\n\n    /**\n     * @notice Sets the maximum allowance on the Perpetual contract. Must be called at least once\n     *  on a given Perpetual before deposits can be made.\n     * @dev Cannot be run in the constructor due to technical restrictions in Solidity.\n     */\n    function approveMaximumOnPerpetual(\n        address perpetual\n    )\n        external\n    {\n        IERC20 tokenContract = IERC20(I_PerpetualV1(perpetual).getTokenContract());\n\n        // safeApprove requires unsetting the allowance first.\n        tokenContract.safeApprove(perpetual, 0);\n\n        // Set the allowance to the highest possible value.\n        tokenContract.safeApprove(perpetual, uint256(-1));\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/proxies/P1Proxy.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/proxies/P1Proxy.sol",
+    "exportedSymbols": {
+      "P1Proxy": [
+        6190
+      ]
+    },
+    "id": 6191,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6146,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:40"
+      },
+      {
+        "id": 6147,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:40"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "id": 6149,
+        "nodeType": "ImportDirective",
+        "scope": 6191,
+        "sourceUnit": 12063,
+        "src": "662:72:40",
+        "symbolAliases": [
+          {
+            "foreign": 6148,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/token/ERC20/SafeERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/SafeERC20.sol",
+        "id": 6151,
+        "nodeType": "ImportDirective",
+        "scope": 6191,
+        "sourceUnit": 12283,
+        "src": "735:78:40",
+        "symbolAliases": [
+          {
+            "foreign": 6150,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_PerpetualV1.sol",
+        "file": "../intf/I_PerpetualV1.sol",
+        "id": 6153,
+        "nodeType": "ImportDirective",
+        "scope": 6191,
+        "sourceUnit": 3224,
+        "src": "814:58:40",
+        "symbolAliases": [
+          {
+            "foreign": 6152,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title P1Proxy\n@author dYdX\n * @notice Base contract for proxy contracts, which can be used to provide additional functionality\n or restrictions when making calls to a Perpetual contract on behalf of a user.",
+        "fullyImplemented": true,
+        "id": 6190,
+        "linearizedBaseContracts": [
+          6190
+        ],
+        "name": "P1Proxy",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 6156,
+            "libraryName": {
+              "contractScope": null,
+              "id": 6154,
+              "name": "SafeERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12282,
+              "src": "1132:9:40",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeERC20_$12282",
+                "typeString": "library SafeERC20"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "1126:27:40",
+            "typeName": {
+              "contractScope": null,
+              "id": 6155,
+              "name": "IERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12062,
+              "src": "1146:6:40",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IERC20_$12062",
+                "typeString": "contract IERC20"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 6188,
+              "nodeType": "Block",
+              "src": "1508:324:40",
+              "statements": [
+                {
+                  "assignments": [
+                    6162
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 6162,
+                      "name": "tokenContract",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 6188,
+                      "src": "1518:20:40",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$12062",
+                        "typeString": "contract IERC20"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 6161,
+                        "name": "IERC20",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 12062,
+                        "src": "1518:6:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$12062",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 6170,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 6165,
+                                "name": "perpetual",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 6158,
+                                "src": "1562:9:40",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "id": 6164,
+                              "name": "I_PerpetualV1",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3223,
+                              "src": "1548:13:40",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_I_PerpetualV1_$3223_$",
+                                "typeString": "type(contract I_PerpetualV1)"
+                              }
+                            },
+                            "id": 6166,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1548:24:40",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_I_PerpetualV1_$3223",
+                              "typeString": "contract I_PerpetualV1"
+                            }
+                          },
+                          "id": 6167,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "getTokenContract",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 3183,
+                          "src": "1548:41:40",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                            "typeString": "function () view external returns (address)"
+                          }
+                        },
+                        "id": 6168,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1548:43:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6163,
+                      "name": "IERC20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12062,
+                      "src": "1541:6:40",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IERC20_$12062_$",
+                        "typeString": "type(contract IERC20)"
+                      }
+                    },
+                    "id": 6169,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1541:51:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$12062",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1518:74:40"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6174,
+                        "name": "perpetual",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6158,
+                        "src": "1692:9:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "30",
+                        "id": 6175,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1703:1:40",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 6171,
+                        "name": "tokenContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6162,
+                        "src": "1666:13:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$12062",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "id": 6173,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "safeApprove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 12161,
+                      "src": "1666:25:40",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_contract$_IERC20_$12062_$_t_address_$_t_uint256_$returns$__$bound_to$_t_contract$_IERC20_$12062_$",
+                        "typeString": "function (contract IERC20,address,uint256)"
+                      }
+                    },
+                    "id": 6176,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1666:39:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6177,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1666:39:40"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6181,
+                        "name": "perpetual",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6158,
+                        "src": "1802:9:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 6184,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "UnaryOperation",
+                            "operator": "-",
+                            "prefix": true,
+                            "src": "1821:2:40",
+                            "subExpression": {
+                              "argumentTypes": null,
+                              "hexValue": "31",
+                              "id": 6183,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1822:1:40",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_1_by_1",
+                                "typeString": "int_const 1"
+                              },
+                              "value": "1"
+                            },
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_minus_1_by_1",
+                              "typeString": "int_const -1"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_rational_minus_1_by_1",
+                              "typeString": "int_const -1"
+                            }
+                          ],
+                          "id": 6182,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "1813:7:40",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_uint256_$",
+                            "typeString": "type(uint256)"
+                          },
+                          "typeName": "uint256"
+                        },
+                        "id": 6185,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1813:11:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 6178,
+                        "name": "tokenContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6162,
+                        "src": "1776:13:40",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$12062",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "id": 6180,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "safeApprove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 12161,
+                      "src": "1776:25:40",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_contract$_IERC20_$12062_$_t_address_$_t_uint256_$returns$__$bound_to$_t_contract$_IERC20_$12062_$",
+                        "typeString": "function (contract IERC20,address,uint256)"
+                      }
+                    },
+                    "id": 6186,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1776:49:40",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6187,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1776:49:40"
+                }
+              ]
+            },
+            "documentation": "@notice Sets the maximum allowance on the Perpetual contract. Must be called at least once\n on a given Perpetual before deposits can be made.\n@dev Cannot be run in the constructor due to technical restrictions in Solidity.",
+            "id": 6189,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "approveMaximumOnPerpetual",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6159,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6158,
+                  "name": "perpetual",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6189,
+                  "src": "1463:17:40",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6157,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1463:7:40",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1453:33:40"
+            },
+            "returnParameters": {
+              "id": 6160,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1508:0:40"
+            },
+            "scope": 6190,
+            "src": "1419:413:40",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6191,
+        "src": "1103:731:40"
+      }
+    ],
+    "src": "603:1232:40"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/proxies/P1Proxy.sol",
+      "exportedSymbols": {
+        "P1Proxy": [
+          6190
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 6146,
+        "name": "PragmaDirective",
+        "src": "603:23:40"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 6147,
+        "name": "PragmaDirective",
+        "src": "627:33:40"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 12063,
+          "absolutePath": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+          "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+          "scope": 6191,
+          "symbolAliases": [
+            {
+              "foreign": 6148,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 6149,
+        "name": "ImportDirective",
+        "src": "662:72:40"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 12283,
+          "absolutePath": "@openzeppelin/contracts/token/ERC20/SafeERC20.sol",
+          "file": "@openzeppelin/contracts/token/ERC20/SafeERC20.sol",
+          "scope": 6191,
+          "symbolAliases": [
+            {
+              "foreign": 6150,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 6151,
+        "name": "ImportDirective",
+        "src": "735:78:40"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3224,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_PerpetualV1.sol",
+          "file": "../intf/I_PerpetualV1.sol",
+          "scope": 6191,
+          "symbolAliases": [
+            {
+              "foreign": 6152,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 6153,
+        "name": "ImportDirective",
+        "src": "814:58:40"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title P1Proxy\n@author dYdX\n * @notice Base contract for proxy contracts, which can be used to provide additional functionality\n or restrictions when making calls to a Perpetual contract on behalf of a user.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            6190
+          ],
+          "name": "P1Proxy",
+          "scope": 6191
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "SafeERC20",
+                  "referencedDeclaration": 12282,
+                  "type": "library SafeERC20"
+                },
+                "id": 6154,
+                "name": "UserDefinedTypeName",
+                "src": "1132:9:40"
+              },
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IERC20",
+                  "referencedDeclaration": 12062,
+                  "type": "contract IERC20"
+                },
+                "id": 6155,
+                "name": "UserDefinedTypeName",
+                "src": "1146:6:40"
+              }
+            ],
+            "id": 6156,
+            "name": "UsingForDirective",
+            "src": "1126:27:40"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Sets the maximum allowance on the Perpetual contract. Must be called at least once\n on a given Perpetual before deposits can be made.\n@dev Cannot be run in the constructor due to technical restrictions in Solidity.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "approveMaximumOnPerpetual",
+              "scope": 6190,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "perpetual",
+                      "scope": 6189,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 6157,
+                        "name": "ElementaryTypeName",
+                        "src": "1463:7:40"
+                      }
+                    ],
+                    "id": 6158,
+                    "name": "VariableDeclaration",
+                    "src": "1463:17:40"
+                  }
+                ],
+                "id": 6159,
+                "name": "ParameterList",
+                "src": "1453:33:40"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6160,
+                "name": "ParameterList",
+                "src": "1508:0:40"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        6162
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "tokenContract",
+                          "scope": 6188,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "contract IERC20",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "IERC20",
+                              "referencedDeclaration": 12062,
+                              "type": "contract IERC20"
+                            },
+                            "id": 6161,
+                            "name": "UserDefinedTypeName",
+                            "src": "1518:6:40"
+                          }
+                        ],
+                        "id": 6162,
+                        "name": "VariableDeclaration",
+                        "src": "1518:20:40"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "contract IERC20",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 12062,
+                              "type": "type(contract IERC20)",
+                              "value": "IERC20"
+                            },
+                            "id": 6163,
+                            "name": "Identifier",
+                            "src": "1541:6:40"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "address",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "getTokenContract",
+                                  "referencedDeclaration": 3183,
+                                  "type": "function () view external returns (address)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "type": "contract I_PerpetualV1",
+                                      "type_conversion": true
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          ],
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 3223,
+                                          "type": "type(contract I_PerpetualV1)",
+                                          "value": "I_PerpetualV1"
+                                        },
+                                        "id": 6164,
+                                        "name": "Identifier",
+                                        "src": "1548:13:40"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 6158,
+                                          "type": "address",
+                                          "value": "perpetual"
+                                        },
+                                        "id": 6165,
+                                        "name": "Identifier",
+                                        "src": "1562:9:40"
+                                      }
+                                    ],
+                                    "id": 6166,
+                                    "name": "FunctionCall",
+                                    "src": "1548:24:40"
+                                  }
+                                ],
+                                "id": 6167,
+                                "name": "MemberAccess",
+                                "src": "1548:41:40"
+                              }
+                            ],
+                            "id": 6168,
+                            "name": "FunctionCall",
+                            "src": "1548:43:40"
+                          }
+                        ],
+                        "id": 6169,
+                        "name": "FunctionCall",
+                        "src": "1541:51:40"
+                      }
+                    ],
+                    "id": 6170,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1518:74:40"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "safeApprove",
+                              "referencedDeclaration": 12161,
+                              "type": "function (contract IERC20,address,uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6162,
+                                  "type": "contract IERC20",
+                                  "value": "tokenContract"
+                                },
+                                "id": 6171,
+                                "name": "Identifier",
+                                "src": "1666:13:40"
+                              }
+                            ],
+                            "id": 6173,
+                            "name": "MemberAccess",
+                            "src": "1666:25:40"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6158,
+                              "type": "address",
+                              "value": "perpetual"
+                            },
+                            "id": 6174,
+                            "name": "Identifier",
+                            "src": "1692:9:40"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 6175,
+                            "name": "Literal",
+                            "src": "1703:1:40"
+                          }
+                        ],
+                        "id": 6176,
+                        "name": "FunctionCall",
+                        "src": "1666:39:40"
+                      }
+                    ],
+                    "id": 6177,
+                    "name": "ExpressionStatement",
+                    "src": "1666:39:40"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "safeApprove",
+                              "referencedDeclaration": 12161,
+                              "type": "function (contract IERC20,address,uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6162,
+                                  "type": "contract IERC20",
+                                  "value": "tokenContract"
+                                },
+                                "id": 6178,
+                                "name": "Identifier",
+                                "src": "1776:13:40"
+                              }
+                            ],
+                            "id": 6180,
+                            "name": "MemberAccess",
+                            "src": "1776:25:40"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6158,
+                              "type": "address",
+                              "value": "perpetual"
+                            },
+                            "id": 6181,
+                            "name": "Identifier",
+                            "src": "1802:9:40"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "uint256",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_rational_minus_1_by_1",
+                                      "typeString": "int_const -1"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "type": "type(uint256)",
+                                  "value": "uint256"
+                                },
+                                "id": 6182,
+                                "name": "ElementaryTypeNameExpression",
+                                "src": "1813:7:40"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "operator": "-",
+                                  "prefix": true,
+                                  "type": "int_const -1"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "31",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "number",
+                                      "type": "int_const 1",
+                                      "value": "1"
+                                    },
+                                    "id": 6183,
+                                    "name": "Literal",
+                                    "src": "1822:1:40"
+                                  }
+                                ],
+                                "id": 6184,
+                                "name": "UnaryOperation",
+                                "src": "1821:2:40"
+                              }
+                            ],
+                            "id": 6185,
+                            "name": "FunctionCall",
+                            "src": "1813:11:40"
+                          }
+                        ],
+                        "id": 6186,
+                        "name": "FunctionCall",
+                        "src": "1776:49:40"
+                      }
+                    ],
+                    "id": 6187,
+                    "name": "ExpressionStatement",
+                    "src": "1776:49:40"
+                  }
+                ],
+                "id": 6188,
+                "name": "Block",
+                "src": "1508:324:40"
+              }
+            ],
+            "id": 6189,
+            "name": "FunctionDefinition",
+            "src": "1419:413:40"
+          }
+        ],
+        "id": 6190,
+        "name": "ContractDefinition",
+        "src": "1103:731:40"
+      }
+    ],
+    "id": 6191,
+    "name": "SourceUnit",
+    "src": "603:1232:40"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.435Z",
+  "devdoc": {
+    "author": "dYdX",
+    "methods": {
+      "approveMaximumOnPerpetual(address)": {
+        "details": "Cannot be run in the constructor due to technical restrictions in Solidity."
+      }
+    },
+    "title": "P1Proxy"
+  },
+  "userdoc": {
+    "methods": {
+      "approveMaximumOnPerpetual(address)": {
+        "notice": "Sets the maximum allowance on the Perpetual contract. Must be called at least once on a given Perpetual before deposits can be made."
+      }
+    },
+    "notice": "Base contract for proxy contracts, which can be used to provide additional functionality or restrictions when making calls to a Perpetual contract on behalf of a user."
+  }
+}

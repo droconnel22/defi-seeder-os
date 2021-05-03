@@ -1,0 +1,746 @@
+{
+  "contractName": "TestTime",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "currentTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_currentTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"currentTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_currentTime\",\"type\":\"uint256\"}],\"name\":\"setTime\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTime.sol\":\"TestTime\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTime.sol\":{\"keccak256\":\"0x2bfd30678424a214e921fb8c994a08fde7d8720477a6f085487c6bc3409fda9f\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://5122c04665cf8c86eb7273a7a85ca0cf54cb674728a7019f8bfa1d6a186a7dce\",\"dweb:/ipfs/QmcjQrvoF1LhqAHqUYc3pUJQiSrqGRL11ERc4xw9iYDgEK\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/Time.sol\":{\"keccak256\":\"0x9728e5cbb8b4fb1d5cbb103dbf9b6b8377c2d6cf798fe8c48ec7218249511e39\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://09d2427c29967c48e3d412afece7fbed14782a3d6ea06e7294239e4220f8c3fb\",\"dweb:/ipfs/QmU4UmDUgt1Yw2L3HW9a6RpXkW4mBf3fzEgnejGNwWmDk1\"]}},\"version\":1}",
+  "bytecode": "0x6080604052600160005534801561001557600080fd5b5060ac806100246000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80633beb26c4146037578063d18e81b3146053575b600080fd5b605160048036036020811015604b57600080fd5b5035606b565b005b60596070565b60408051918252519081900360200190f35b600055565b6000548156fea264697066735822122057948ee70efeac0ee9106958315fcba4533b2d8b6f1f6f0b2103a3fabe3ead4764736f6c634300060c0033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80633beb26c4146037578063d18e81b3146053575b600080fd5b605160048036036020811015604b57600080fd5b5035606b565b005b60596070565b60408051918252519081900360200190f35b600055565b6000548156fea264697066735822122057948ee70efeac0ee9106958315fcba4533b2d8b6f1f6f0b2103a3fabe3ead4764736f6c634300060c0033",
+  "immutableReferences": {},
+  "sourceMap": "107:266:48:-:0;;;168:1;139:30;;107:266;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "107:266:48:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;282:89;;;;;;;;;;;;;;;;-1:-1:-1;282:89:48;;:::i;:::-;;139:30;;;:::i;:::-;;;;;;;;;;;;;;;;282:89;338:11;:26;282:89::o;139:30::-;;;;:::o",
+  "source": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity 0.6.12;\n\nimport \"../utility/Time.sol\";\n\ncontract TestTime is Time {\n    uint256 public currentTime = 1;\n\n    function time() internal view virtual override returns (uint256) {\n        return currentTime;\n    }\n\n    function setTime(uint256 _currentTime) public {\n        currentTime = _currentTime;\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTime.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTime.sol",
+    "exportedSymbols": {
+      "TestTime": [
+        21769
+      ]
+    },
+    "id": 21770,
+    "license": "SEE LICENSE IN LICENSE",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 21743,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "51:23:48"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/Time.sol",
+        "file": "../utility/Time.sol",
+        "id": 21744,
+        "nodeType": "ImportDirective",
+        "scope": 21770,
+        "sourceUnit": 30690,
+        "src": "76:29:48",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 21745,
+              "name": "Time",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 30689,
+              "src": "128:4:48",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Time_$30689",
+                "typeString": "contract Time"
+              }
+            },
+            "id": 21746,
+            "nodeType": "InheritanceSpecifier",
+            "src": "128:4:48"
+          }
+        ],
+        "contractDependencies": [
+          30689
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 21769,
+        "linearizedBaseContracts": [
+          21769,
+          30689
+        ],
+        "name": "TestTime",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "d18e81b3",
+            "id": 21749,
+            "mutability": "mutable",
+            "name": "currentTime",
+            "nodeType": "VariableDeclaration",
+            "overrides": null,
+            "scope": 21769,
+            "src": "139:30:48",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 21747,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "139:7:48",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "31",
+              "id": 21748,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "168:1:48",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1_by_1",
+                "typeString": "int_const 1"
+              },
+              "value": "1"
+            },
+            "visibility": "public"
+          },
+          {
+            "baseFunctions": [
+              30688
+            ],
+            "body": {
+              "id": 21757,
+              "nodeType": "Block",
+              "src": "241:35:48",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 21755,
+                    "name": "currentTime",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 21749,
+                    "src": "258:11:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 21754,
+                  "id": 21756,
+                  "nodeType": "Return",
+                  "src": "251:18:48"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 21758,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "time",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 21751,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "214:8:48"
+            },
+            "parameters": {
+              "id": 21750,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "189:2:48"
+            },
+            "returnParameters": {
+              "id": 21754,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21753,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 21758,
+                  "src": "232:7:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21752,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "232:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "231:9:48"
+            },
+            "scope": 21769,
+            "src": "176:100:48",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 21767,
+              "nodeType": "Block",
+              "src": "328:43:48",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 21765,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 21763,
+                      "name": "currentTime",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 21749,
+                      "src": "338:11:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 21764,
+                      "name": "_currentTime",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 21760,
+                      "src": "352:12:48",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "338:26:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 21766,
+                  "nodeType": "ExpressionStatement",
+                  "src": "338:26:48"
+                }
+              ]
+            },
+            "documentation": null,
+            "functionSelector": "3beb26c4",
+            "id": 21768,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTime",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 21761,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21760,
+                  "mutability": "mutable",
+                  "name": "_currentTime",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 21768,
+                  "src": "299:20:48",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21759,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:7:48",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:22:48"
+            },
+            "returnParameters": {
+              "id": 21762,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "328:0:48"
+            },
+            "scope": 21769,
+            "src": "282:89:48",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 21770,
+        "src": "107:266:48"
+      }
+    ],
+    "src": "51:323:48"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTime.sol",
+      "exportedSymbols": {
+        "TestTime": [
+          21769
+        ]
+      },
+      "license": "SEE LICENSE IN LICENSE"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 21743,
+        "name": "PragmaDirective",
+        "src": "51:23:48"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 30690,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/Time.sol",
+          "file": "../utility/Time.sol",
+          "scope": 21770,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 21744,
+        "name": "ImportDirective",
+        "src": "76:29:48"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            30689
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            21769,
+            30689
+          ],
+          "name": "TestTime",
+          "scope": 21770
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Time",
+                  "referencedDeclaration": 30689,
+                  "type": "contract Time"
+                },
+                "id": 21745,
+                "name": "UserDefinedTypeName",
+                "src": "128:4:48"
+              }
+            ],
+            "id": 21746,
+            "name": "InheritanceSpecifier",
+            "src": "128:4:48"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "functionSelector": "d18e81b3",
+              "mutability": "mutable",
+              "name": "currentTime",
+              "overrides": null,
+              "scope": 21769,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 21747,
+                "name": "ElementaryTypeName",
+                "src": "139:7:48"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "31",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 1",
+                  "value": "1"
+                },
+                "id": 21748,
+                "name": "Literal",
+                "src": "168:1:48"
+              }
+            ],
+            "id": 21749,
+            "name": "VariableDeclaration",
+            "src": "139:30:48"
+          },
+          {
+            "attributes": {
+              "baseFunctions": [
+                30688
+              ],
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "time",
+              "scope": 21769,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "overrides": [
+                    null
+                  ]
+                },
+                "id": 21751,
+                "name": "OverrideSpecifier",
+                "src": "214:8:48"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 21750,
+                "name": "ParameterList",
+                "src": "189:2:48"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 21758,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 21752,
+                        "name": "ElementaryTypeName",
+                        "src": "232:7:48"
+                      }
+                    ],
+                    "id": 21753,
+                    "name": "VariableDeclaration",
+                    "src": "232:7:48"
+                  }
+                ],
+                "id": 21754,
+                "name": "ParameterList",
+                "src": "231:9:48"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 21754
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 21749,
+                          "type": "uint256",
+                          "value": "currentTime"
+                        },
+                        "id": 21755,
+                        "name": "Identifier",
+                        "src": "258:11:48"
+                      }
+                    ],
+                    "id": 21756,
+                    "name": "Return",
+                    "src": "251:18:48"
+                  }
+                ],
+                "id": 21757,
+                "name": "Block",
+                "src": "241:35:48"
+              }
+            ],
+            "id": 21758,
+            "name": "FunctionDefinition",
+            "src": "176:100:48"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "functionSelector": "3beb26c4",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setTime",
+              "overrides": null,
+              "scope": 21769,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_currentTime",
+                      "overrides": null,
+                      "scope": 21768,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 21759,
+                        "name": "ElementaryTypeName",
+                        "src": "299:7:48"
+                      }
+                    ],
+                    "id": 21760,
+                    "name": "VariableDeclaration",
+                    "src": "299:20:48"
+                  }
+                ],
+                "id": 21761,
+                "name": "ParameterList",
+                "src": "298:22:48"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 21762,
+                "name": "ParameterList",
+                "src": "328:0:48"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 21749,
+                              "type": "uint256",
+                              "value": "currentTime"
+                            },
+                            "id": 21763,
+                            "name": "Identifier",
+                            "src": "338:11:48"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 21760,
+                              "type": "uint256",
+                              "value": "_currentTime"
+                            },
+                            "id": 21764,
+                            "name": "Identifier",
+                            "src": "352:12:48"
+                          }
+                        ],
+                        "id": 21765,
+                        "name": "Assignment",
+                        "src": "338:26:48"
+                      }
+                    ],
+                    "id": 21766,
+                    "name": "ExpressionStatement",
+                    "src": "338:26:48"
+                  }
+                ],
+                "id": 21767,
+                "name": "Block",
+                "src": "328:43:48"
+              }
+            ],
+            "id": 21768,
+            "name": "FunctionDefinition",
+            "src": "282:89:48"
+          }
+        ],
+        "id": 21769,
+        "name": "ContractDefinition",
+        "src": "107:266:48"
+      }
+    ],
+    "id": 21770,
+    "name": "SourceUnit",
+    "src": "51:323:48"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-04-01T18:17:52.069Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

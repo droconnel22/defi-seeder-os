@@ -1,0 +1,746 @@
+{
+  "contractName": "Test_ChainlinkAggregator",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "_ANSWER_",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "newAnswer",
+          "type": "int256"
+        }
+      ],
+      "name": "setAnswer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "latestAnswer",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"_ANSWER_\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"latestAnswer\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"int256\",\"name\":\"newAnswer\",\"type\":\"int256\"}],\"name\":\"setAnswer\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX * Chainlink Aggregator for testing\",\"methods\":{},\"title\":\"Test_ChainlinkAggregator\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/test/external/Test_ChainlinkAggregator.sol\":\"Test_ChainlinkAggregator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/external/chainlink/I_Aggregator.sol\":{\"keccak256\":\"0x5fa6efb3e45094690188e819494e8543f8c1d1280e3be643e51ca3d4d1d25b2f\",\"urls\":[\"bzz-raw://c0b643b602071d16ce601ed337b8ae276bfcfffe52ffadc7862dab040f78d6be\",\"dweb:/ipfs/QmR8UM7XYSQVrc7CvLFh4LKBPtwjtvPNCwPTuHxF4fSGBD\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/test/external/Test_ChainlinkAggregator.sol\":{\"keccak256\":\"0x8b84fb3a48157680468d54f0d3e49af6a01ae530d38cd97c91c332ca383fa2c8\",\"urls\":[\"bzz-raw://11b5fa7bf837dd2533f9b5fbbb407c26de33778b3a109021fd4b7f32df230d9f\",\"dweb:/ipfs/QmY2f3DQMm3gVV7DbaLMvHymFkkMDgHfwrACUBdFit3uBu\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b50610128806100246000396000f3fe6080604052348015600f57600080fd5b5060043610603c5760003560e01c80633ad12a2214604157806350d25bcd14605b57806399213cd8146061575b600080fd5b60476072565b6040516052919060c2565b60405180910390f35b60476078565b6070606c3660046092565b607e565b005b60005481565b60005490565b600055565b8035608c8160d1565b92915050565b60006020828403121560a357600080fd5b600060ad84846083565b949350505050565b60bc8160ce565b82525050565b60208101608c828460b5565b90565b60d88160ce565b811460e257600080fd5b5056fea365627a7a723158205d3646068f650e000aef87a3860995c1d072adce89112251c289dff8d1c4b3866c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b5060043610603c5760003560e01c80633ad12a2214604157806350d25bcd14605b57806399213cd8146061575b600080fd5b60476072565b6040516052919060c2565b60405180910390f35b60476078565b6070606c3660046092565b607e565b005b60005481565b60005490565b600055565b8035608c8160d1565b92915050565b60006020828403121560a357600080fd5b600060ad84846083565b949350505050565b60bc8160ce565b82525050565b60208101608c828460b5565b90565b60d88160ce565b811460e257600080fd5b5056fea365627a7a723158205d3646068f650e000aef87a3860995c1d072adce89112251c289dff8d1c4b3866c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "877:437:51:-;;;962:1;937:26;;877:437;8:9:-1;5:2;;;30:1;27;20:12;5:2;877:437:51;;;;;;;",
+  "deployedSourceMap": "877:437:51:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;877:437:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;937:26;;;:::i;:::-;;;;;;;;;;;;;;;;1197:115;;;:::i;1031:109::-;;;;;;;;;:::i;:::-;;937:26;;;;:::o;1197:115::-;1268:6;1297:8;1197:115;:::o;1031:109::-;1113:8;:20;1031:109::o;5:128:-1:-;71:20;;96:32;71:20;96:32;;;56:77;;;;;140:239;;243:2;231:9;222:7;218:23;214:32;211:2;;;259:1;256;249:12;211:2;294:1;311:52;355:7;335:9;311:52;;;301:62;205:174;-1:-1;;;;205:174;386:110;467:23;484:5;467:23;;;462:3;455:36;449:47;;;503:209;619:2;604:18;;633:69;608:9;675:6;633:69;;719:71;780:5;763:27;797:115;865:23;882:5;865:23;;;858:5;855:34;845:2;;903:1;900;893:12;845:2;839:73;",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\nimport { I_Aggregator } from \"../../external/chainlink/I_Aggregator.sol\";\n\n\n/**\n * @title Test_ChainlinkAggregator\n * @author dYdX\n *\n * Chainlink Aggregator for testing\n */\n/* solium-disable-next-line camelcase */\ncontract Test_ChainlinkAggregator is\n    I_Aggregator\n{\n    int256 public _ANSWER_ = 0;\n\n    // ============ Test Data Setter Functions ============\n\n    function setAnswer(\n        int256 newAnswer\n    )\n        external\n    {\n        _ANSWER_ = newAnswer;\n    }\n\n    // ============ Getter Functions ============\n\n    function latestAnswer()\n        external\n        view\n        returns (int256)\n    {\n        return _ANSWER_;\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/test/external/Test_ChainlinkAggregator.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/test/external/Test_ChainlinkAggregator.sol",
+    "exportedSymbols": {
+      "Test_ChainlinkAggregator": [
+        10309
+      ]
+    },
+    "id": 10310,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10282,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:51"
+      },
+      {
+        "id": 10283,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:51"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/external/chainlink/I_Aggregator.sol",
+        "file": "../../external/chainlink/I_Aggregator.sol",
+        "id": 10285,
+        "nodeType": "ImportDirective",
+        "scope": 10310,
+        "sourceUnit": 102,
+        "src": "662:73:51",
+        "symbolAliases": [
+          {
+            "foreign": 10284,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 10286,
+              "name": "I_Aggregator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 101,
+              "src": "918:12:51",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_I_Aggregator_$101",
+                "typeString": "contract I_Aggregator"
+              }
+            },
+            "id": 10287,
+            "nodeType": "InheritanceSpecifier",
+            "src": "918:12:51"
+          }
+        ],
+        "contractDependencies": [
+          101
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Test_ChainlinkAggregator\n@author dYdX\n * Chainlink Aggregator for testing",
+        "fullyImplemented": true,
+        "id": 10309,
+        "linearizedBaseContracts": [
+          10309,
+          101
+        ],
+        "name": "Test_ChainlinkAggregator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 10290,
+            "name": "_ANSWER_",
+            "nodeType": "VariableDeclaration",
+            "scope": 10309,
+            "src": "937:26:51",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_int256",
+              "typeString": "int256"
+            },
+            "typeName": {
+              "id": 10288,
+              "name": "int256",
+              "nodeType": "ElementaryTypeName",
+              "src": "937:6:51",
+              "typeDescriptions": {
+                "typeIdentifier": "t_int256",
+                "typeString": "int256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 10289,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "962:1:51",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 10299,
+              "nodeType": "Block",
+              "src": "1103:37:51",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10297,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 10295,
+                      "name": "_ANSWER_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10290,
+                      "src": "1113:8:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 10296,
+                      "name": "newAnswer",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10292,
+                      "src": "1124:9:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      }
+                    },
+                    "src": "1113:20:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "id": 10298,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1113:20:51"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10300,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setAnswer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10293,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10292,
+                  "name": "newAnswer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10300,
+                  "src": "1059:16:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 10291,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1059:6:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1049:32:51"
+            },
+            "returnParameters": {
+              "id": 10294,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1103:0:51"
+            },
+            "scope": 10309,
+            "src": "1031:109:51",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 10307,
+              "nodeType": "Block",
+              "src": "1280:32:51",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10305,
+                    "name": "_ANSWER_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 10290,
+                    "src": "1297:8:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "functionReturnParameters": 10304,
+                  "id": 10306,
+                  "nodeType": "Return",
+                  "src": "1290:15:51"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10308,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestAnswer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10301,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1218:2:51"
+            },
+            "returnParameters": {
+              "id": 10304,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10303,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10308,
+                  "src": "1268:6:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 10302,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1268:6:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1267:8:51"
+            },
+            "scope": 10309,
+            "src": "1197:115:51",
+            "stateMutability": "view",
+            "superFunction": 100,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10310,
+        "src": "877:437:51"
+      }
+    ],
+    "src": "603:712:51"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/test/external/Test_ChainlinkAggregator.sol",
+      "exportedSymbols": {
+        "Test_ChainlinkAggregator": [
+          10309
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 10282,
+        "name": "PragmaDirective",
+        "src": "603:23:51"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 10283,
+        "name": "PragmaDirective",
+        "src": "627:33:51"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 102,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/external/chainlink/I_Aggregator.sol",
+          "file": "../../external/chainlink/I_Aggregator.sol",
+          "scope": 10310,
+          "symbolAliases": [
+            {
+              "foreign": 10284,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 10285,
+        "name": "ImportDirective",
+        "src": "662:73:51"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            101
+          ],
+          "contractKind": "contract",
+          "documentation": "@title Test_ChainlinkAggregator\n@author dYdX\n * Chainlink Aggregator for testing",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            10309,
+            101
+          ],
+          "name": "Test_ChainlinkAggregator",
+          "scope": 10310
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "I_Aggregator",
+                  "referencedDeclaration": 101,
+                  "type": "contract I_Aggregator"
+                },
+                "id": 10286,
+                "name": "UserDefinedTypeName",
+                "src": "918:12:51"
+              }
+            ],
+            "id": 10287,
+            "name": "InheritanceSpecifier",
+            "src": "918:12:51"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "_ANSWER_",
+              "scope": 10309,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "int256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "int256",
+                  "type": "int256"
+                },
+                "id": 10288,
+                "name": "ElementaryTypeName",
+                "src": "937:6:51"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 0",
+                  "value": "0"
+                },
+                "id": 10289,
+                "name": "Literal",
+                "src": "962:1:51"
+              }
+            ],
+            "id": 10290,
+            "name": "VariableDeclaration",
+            "src": "937:26:51"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setAnswer",
+              "scope": 10309,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newAnswer",
+                      "scope": 10300,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 10291,
+                        "name": "ElementaryTypeName",
+                        "src": "1059:6:51"
+                      }
+                    ],
+                    "id": 10292,
+                    "name": "VariableDeclaration",
+                    "src": "1059:16:51"
+                  }
+                ],
+                "id": 10293,
+                "name": "ParameterList",
+                "src": "1049:32:51"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10294,
+                "name": "ParameterList",
+                "src": "1103:0:51"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "int256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10290,
+                              "type": "int256",
+                              "value": "_ANSWER_"
+                            },
+                            "id": 10295,
+                            "name": "Identifier",
+                            "src": "1113:8:51"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10292,
+                              "type": "int256",
+                              "value": "newAnswer"
+                            },
+                            "id": 10296,
+                            "name": "Identifier",
+                            "src": "1124:9:51"
+                          }
+                        ],
+                        "id": 10297,
+                        "name": "Assignment",
+                        "src": "1113:20:51"
+                      }
+                    ],
+                    "id": 10298,
+                    "name": "ExpressionStatement",
+                    "src": "1113:20:51"
+                  }
+                ],
+                "id": 10299,
+                "name": "Block",
+                "src": "1103:37:51"
+              }
+            ],
+            "id": 10300,
+            "name": "FunctionDefinition",
+            "src": "1031:109:51"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "latestAnswer",
+              "scope": 10309,
+              "stateMutability": "view",
+              "superFunction": 100,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10301,
+                "name": "ParameterList",
+                "src": "1218:2:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10308,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 10302,
+                        "name": "ElementaryTypeName",
+                        "src": "1268:6:51"
+                      }
+                    ],
+                    "id": 10303,
+                    "name": "VariableDeclaration",
+                    "src": "1268:6:51"
+                  }
+                ],
+                "id": 10304,
+                "name": "ParameterList",
+                "src": "1267:8:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 10304
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 10290,
+                          "type": "int256",
+                          "value": "_ANSWER_"
+                        },
+                        "id": 10305,
+                        "name": "Identifier",
+                        "src": "1297:8:51"
+                      }
+                    ],
+                    "id": 10306,
+                    "name": "Return",
+                    "src": "1290:15:51"
+                  }
+                ],
+                "id": 10307,
+                "name": "Block",
+                "src": "1280:32:51"
+              }
+            ],
+            "id": 10308,
+            "name": "FunctionDefinition",
+            "src": "1197:115:51"
+          }
+        ],
+        "id": 10309,
+        "name": "ContractDefinition",
+        "src": "877:437:51"
+      }
+    ],
+    "id": 10310,
+    "name": "SourceUnit",
+    "src": "603:712:51"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.484Z",
+  "devdoc": {
+    "author": "dYdX * Chainlink Aggregator for testing",
+    "methods": {},
+    "title": "Test_ChainlinkAggregator"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

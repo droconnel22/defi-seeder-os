@@ -1,0 +1,800 @@
+{
+  "contractName": "TestTokenGovernance",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IMintableToken",
+          "name": "mintableToken",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ROLE_GOVERNOR",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ROLE_MINTER",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ROLE_SUPERVISOR",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "acceptTokenOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRoleMember",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleMemberCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract IMintableToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IMintableToken\",\"name\":\"mintableToken\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ROLE_GOVERNOR\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ROLE_MINTER\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ROLE_SUPERVISOR\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptTokenOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getRoleMember\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleMemberCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract IMintableToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"acceptTokenOwnership()\":{\"details\":\"Accepts the ownership of the token. Only allowed by the SUPERVISOR role.\"},\"burn(uint256)\":{\"details\":\"Burns tokens from the caller.\",\"params\":{\"amount\":\"Amount to decrease the supply by.\"}},\"getRoleAdmin(bytes32)\":{\"details\":\"Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.\"},\"getRoleMember(bytes32,uint256)\":{\"details\":\"Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.\"},\"getRoleMemberCount(bytes32)\":{\"details\":\"Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.\"},\"grantRole(bytes32,address)\":{\"details\":\"Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.\"},\"hasRole(bytes32,address)\":{\"details\":\"Returns `true` if `account` has been granted `role`.\"},\"mint(address,uint256)\":{\"details\":\"Mints new tokens. Only allowed by the MINTER role.\",\"params\":{\"amount\":\"Amount to increase the supply by.\",\"to\":\"Account to receive the new amount.\"}},\"renounceRole(bytes32,address)\":{\"details\":\"Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.\"},\"revokeRole(bytes32,address)\":{\"details\":\"Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTokenGovernance.sol\":\"TestTokenGovernance\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTokenGovernance.sol\":{\"keccak256\":\"0x70e6918d421ce19f60dbff376f817a6daabc94bbc62a1dd0a00c6efa0b8412f5\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://853c4a7d29e20027632365b77abe6f2f5ec6ba363373c5142219ca16a06fe5e8\",\"dweb:/ipfs/QmNeVj1A3tEuRMHuRfj1TV6VDi2SCD3snWbdpCKNHb2f7B\"]},\"@bancor/token-governance/contracts/IClaimable.sol\":{\"keccak256\":\"0x17620afd14ae6f799589f76369ab27e95110f8ce47cf26979394aba6fd3f07a2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ba8a42b6f6d645d40a90c655a4b2de34cefa609891443d60746969a2c731b113\",\"dweb:/ipfs/QmNdYvF3NcfchDtA8wzDXpt93u9tUMUnBVKjeXnUdhajJ6\"]},\"@bancor/token-governance/contracts/IMintableToken.sol\":{\"keccak256\":\"0x143d85ba15d10c0c6229f86d42f2ff603f87517026fc7924dc438fca180640e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ae886e54a525ca6c17dd008482c637e68b136cec366f78c6483f75b6e2ce3e1c\",\"dweb:/ipfs/QmSN1pBNmtU3RwKp43UmrsR94Ud6XxF5zsCHuHj1D2pHqD\"]},\"@bancor/token-governance/contracts/ITokenGovernance.sol\":{\"keccak256\":\"0x557afb8adfc5c47781d178062fa3db30b18718ea5d8446e8077e8f8252f19e1d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e8119d8fcdb47f5397b0386dd0628393fe36d182177e26020199048a3f722400\",\"dweb:/ipfs/QmanqurG1Z65pA63JKyaxS4mpSwpyhroVVe9RZa2WSySNh\"]},\"@bancor/token-governance/contracts/TokenGovernance.sol\":{\"keccak256\":\"0xddc8c7066c42502951fa23eaa28c74f56b85b11a62cf596ed963d10db70a7ea1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c154a5aded74aa71261c7623a8df4662653191719489d5a771feb82d3c666adf\",\"dweb:/ipfs/QmVnG6TaeXxUcs4JshqYHDaHJyLewWMzBuwpB5Ht6cvDNV\"]},\"@openzeppelin/contracts/access/AccessControl.sol\":{\"keccak256\":\"0x4fc155a2f7837603d69a13cfa481eb5e7f5e02cb77e2ec9edbac30986db37988\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0855147e38b5e36288a8df73b8da49132f14ec7abb19041b0c98872263643aaa\",\"dweb:/ipfs/QmSrSysyFUYQq7hbJaJXG7EyZW6ezDBzEJx3SABp6eiJSS\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x28911e614500ae7c607a432a709d35da25f3bc5ddc8bd12b278b66358070c0ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://256c8c8af5eb072bc473226ab2b2187149b8fc04f5f4a4820db22527f5ce8e3c\",\"dweb:/ipfs/QmRvi5BhnL7Rxf85KrJhwM6RRhukm4tzoctRdgQEheNyiN\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0x1562cd9922fbf739edfb979f506809e2743789cbde3177515542161c3d04b164\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4580d57781513d98870d9738c7d39094336e0a70cdb90d68dad549c6ced466ec\",\"dweb:/ipfs/Qmf9YZzzRFuvMnav9dgmeRUpdYMMECiZX8w25sHWVbA18V\"]}},\"version\":1}",
+  "bytecode": "0x60a06040523480156200001157600080fd5b5060405162000e3238038062000e32833981810160405260208110156200003757600080fd5b5051806001600160a01b03811662000096576040805162461bcd60e51b815260206004820152601360248201527f4552525f494e56414c49445f4144445245535300000000000000000000000000604482015290519081900360640190fd5b6001600160601b0319606082901b16608052620000c360008051602062000e128339815191528062000176565b620000fe7ff7c047210237bf53c8285c7817cb2a0024d34daf6d0b9599c37e3e9df2af8f6660008051602062000e1283398151915262000176565b6200014a7faeaef46186eb59f884e36929b6d682a6ae35e1e43d8f05f058dcefb92b6014617ff7c047210237bf53c8285c7817cb2a0024d34daf6d0b9599c37e3e9df2af8f6662000176565b6200016e60008051602062000e1283398151915262000168620001c8565b620001cc565b5050620002dc565b600082815260208190526040808220600201549051839285917fbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff9190a460009182526020829052604090912060020155565b3390565b620001d88282620001dc565b5050565b600082815260208181526040909120620002019183906200076762000255821b17901c565b15620001d85762000211620001c8565b6001600160a01b0316816001600160a01b0316837f2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d60405160405180910390a45050565b60006200026c836001600160a01b03841662000275565b90505b92915050565b6000620002838383620002c4565b620002bb575081546001818101845560008481526020808220909301849055845484825282860190935260409020919091556200026f565b5060006200026f565b60009081526001919091016020526040902054151590565b60805160601c610b096200030960003980610461528061054752806105da52806107455250610b096000f3fe608060405234801561001057600080fd5b50600436106100f55760003560e01c806342966c6811610097578063a217fddf11610066578063a217fddf1461026b578063ca15c87314610273578063d547741f14610290578063fc0c546a146102bc576100f5565b806342966c68146101c75780639010d07c146101e457806391d148541461022357806392afc33a14610263576100f5565b80632f2ff15d116100d35780632f2ff15d1461013957806336568abe1461016757806338a5e0161461019357806340c10f191461019b576100f5565b80630d80af9b146100fa5780632358f35514610114578063248a9ca31461011c575b600080fd5b6101026102c4565b60408051918252519081900360200190f35b6101026102e8565b6101026004803603602081101561013257600080fd5b503561030c565b6101656004803603604081101561014f57600080fd5b50803590602001356001600160a01b0316610321565b005b6101656004803603604081101561017d57600080fd5b50803590602001356001600160a01b031661038d565b6101656103ee565b610165600480360360408110156101b157600080fd5b506001600160a01b0381351690602001356104d4565b610165600480360360208110156101dd57600080fd5b50356105d8565b610207600480360360408110156101fa57600080fd5b5080359060200135610671565b604080516001600160a01b039092168252519081900360200190f35b61024f6004803603604081101561023957600080fd5b50803590602001356001600160a01b0316610692565b604080519115158252519081900360200190f35b6101026106aa565b6101026106ce565b6101026004803603602081101561028957600080fd5b50356106d3565b610165600480360360408110156102a657600080fd5b50803590602001356001600160a01b03166106ea565b610207610743565b7f0c7ade2c7c08453ea605b4a8f3fb0e03e3ffcffbfa41ca8ee543d0fd74cada3881565b7ff7c047210237bf53c8285c7817cb2a0024d34daf6d0b9599c37e3e9df2af8f6681565b60009081526020819052604090206002015490565b6000828152602081905260409020600201546103449061033f61077c565b610692565b61037f5760405162461bcd60e51b815260040180806020018281038252602f815260200180610a46602f913960400191505060405180910390fd5b6103898282610780565b5050565b61039561077c565b6001600160a01b0316816001600160a01b0316146103e45760405162461bcd60e51b815260040180806020018281038252602f815260200180610aa5602f913960400191505060405180910390fd5b61038982826107e9565b61041a7f0c7ade2c7c08453ea605b4a8f3fb0e03e3ffcffbfa41ca8ee543d0fd74cada3861033f61077c565b61045f576040805162461bcd60e51b815260206004820152601160248201527011549497d050d0d154d4d7d11153925151607a1b604482015290519081900360640190fd5b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03166379ba50976040518163ffffffff1660e01b8152600401600060405180830381600087803b1580156104ba57600080fd5b505af11580156104ce573d6000803e3d6000fd5b50505050565b6105007faeaef46186eb59f884e36929b6d682a6ae35e1e43d8f05f058dcefb92b60146161033f61077c565b610545576040805162461bcd60e51b815260206004820152601160248201527011549497d050d0d154d4d7d11153925151607a1b604482015290519081900360640190fd5b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663867904b483836040518363ffffffff1660e01b815260040180836001600160a01b0316815260200182815260200192505050600060405180830381600087803b1580156105bc57600080fd5b505af11580156105d0573d6000803e3d6000fd5b505050505050565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663a24835d161060f61077c565b836040518363ffffffff1660e01b815260040180836001600160a01b0316815260200182815260200192505050600060405180830381600087803b15801561065657600080fd5b505af115801561066a573d6000803e3d6000fd5b5050505050565b60008281526020819052604081206106899083610852565b90505b92915050565b6000828152602081905260408120610689908361085e565b7faeaef46186eb59f884e36929b6d682a6ae35e1e43d8f05f058dcefb92b60146181565b600081565b600081815260208190526040812061068c90610873565b6000828152602081905260409020600201546107089061033f61077c565b6103e45760405162461bcd60e51b8152600401808060200182810382526030815260200180610a756030913960400191505060405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000081565b6000610689836001600160a01b03841661087e565b3390565b60008281526020819052604090206107989082610767565b15610389576107a561077c565b6001600160a01b0316816001600160a01b0316837f2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d60405160405180910390a45050565b600082815260208190526040902061080190826108c8565b156103895761080e61077c565b6001600160a01b0316816001600160a01b0316837ff6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b60405160405180910390a45050565b600061068983836108dd565b6000610689836001600160a01b038416610941565b600061068c82610959565b600061088a8383610941565b6108c05750815460018181018455600084815260208082209093018490558454848252828601909352604090209190915561068c565b50600061068c565b6000610689836001600160a01b03841661095d565b8154600090821061091f5760405162461bcd60e51b8152600401808060200182810382526022815260200180610a246022913960400191505060405180910390fd5b82600001828154811061092e57fe5b9060005260206000200154905092915050565b60009081526001919091016020526040902054151590565b5490565b60008181526001830160205260408120548015610a19578354600019808301919081019060009087908390811061099057fe5b90600052602060002001549050808760000184815481106109ad57fe5b6000918252602080832090910192909255828152600189810190925260409020908401905586548790806109dd57fe5b6001900381819060005260206000200160009055905586600101600087815260200190815260200160002060009055600194505050505061068c565b600091505061068c56fe456e756d657261626c655365743a20696e646578206f7574206f6620626f756e6473416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f206772616e74416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f207265766f6b65416363657373436f6e74726f6c3a2063616e206f6e6c792072656e6f756e636520726f6c657320666f722073656c66a2646970667358221220356b5b13c7d9ce060e19521e60df7cb6d5be938d4c1074da65c3e11c0a3dd7af64736f6c634300060c00330c7ade2c7c08453ea605b4a8f3fb0e03e3ffcffbfa41ca8ee543d0fd74cada38",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100f55760003560e01c806342966c6811610097578063a217fddf11610066578063a217fddf1461026b578063ca15c87314610273578063d547741f14610290578063fc0c546a146102bc576100f5565b806342966c68146101c75780639010d07c146101e457806391d148541461022357806392afc33a14610263576100f5565b80632f2ff15d116100d35780632f2ff15d1461013957806336568abe1461016757806338a5e0161461019357806340c10f191461019b576100f5565b80630d80af9b146100fa5780632358f35514610114578063248a9ca31461011c575b600080fd5b6101026102c4565b60408051918252519081900360200190f35b6101026102e8565b6101026004803603602081101561013257600080fd5b503561030c565b6101656004803603604081101561014f57600080fd5b50803590602001356001600160a01b0316610321565b005b6101656004803603604081101561017d57600080fd5b50803590602001356001600160a01b031661038d565b6101656103ee565b610165600480360360408110156101b157600080fd5b506001600160a01b0381351690602001356104d4565b610165600480360360208110156101dd57600080fd5b50356105d8565b610207600480360360408110156101fa57600080fd5b5080359060200135610671565b604080516001600160a01b039092168252519081900360200190f35b61024f6004803603604081101561023957600080fd5b50803590602001356001600160a01b0316610692565b604080519115158252519081900360200190f35b6101026106aa565b6101026106ce565b6101026004803603602081101561028957600080fd5b50356106d3565b610165600480360360408110156102a657600080fd5b50803590602001356001600160a01b03166106ea565b610207610743565b7f0c7ade2c7c08453ea605b4a8f3fb0e03e3ffcffbfa41ca8ee543d0fd74cada3881565b7ff7c047210237bf53c8285c7817cb2a0024d34daf6d0b9599c37e3e9df2af8f6681565b60009081526020819052604090206002015490565b6000828152602081905260409020600201546103449061033f61077c565b610692565b61037f5760405162461bcd60e51b815260040180806020018281038252602f815260200180610a46602f913960400191505060405180910390fd5b6103898282610780565b5050565b61039561077c565b6001600160a01b0316816001600160a01b0316146103e45760405162461bcd60e51b815260040180806020018281038252602f815260200180610aa5602f913960400191505060405180910390fd5b61038982826107e9565b61041a7f0c7ade2c7c08453ea605b4a8f3fb0e03e3ffcffbfa41ca8ee543d0fd74cada3861033f61077c565b61045f576040805162461bcd60e51b815260206004820152601160248201527011549497d050d0d154d4d7d11153925151607a1b604482015290519081900360640190fd5b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03166379ba50976040518163ffffffff1660e01b8152600401600060405180830381600087803b1580156104ba57600080fd5b505af11580156104ce573d6000803e3d6000fd5b50505050565b6105007faeaef46186eb59f884e36929b6d682a6ae35e1e43d8f05f058dcefb92b60146161033f61077c565b610545576040805162461bcd60e51b815260206004820152601160248201527011549497d050d0d154d4d7d11153925151607a1b604482015290519081900360640190fd5b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663867904b483836040518363ffffffff1660e01b815260040180836001600160a01b0316815260200182815260200192505050600060405180830381600087803b1580156105bc57600080fd5b505af11580156105d0573d6000803e3d6000fd5b505050505050565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663a24835d161060f61077c565b836040518363ffffffff1660e01b815260040180836001600160a01b0316815260200182815260200192505050600060405180830381600087803b15801561065657600080fd5b505af115801561066a573d6000803e3d6000fd5b5050505050565b60008281526020819052604081206106899083610852565b90505b92915050565b6000828152602081905260408120610689908361085e565b7faeaef46186eb59f884e36929b6d682a6ae35e1e43d8f05f058dcefb92b60146181565b600081565b600081815260208190526040812061068c90610873565b6000828152602081905260409020600201546107089061033f61077c565b6103e45760405162461bcd60e51b8152600401808060200182810382526030815260200180610a756030913960400191505060405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000081565b6000610689836001600160a01b03841661087e565b3390565b60008281526020819052604090206107989082610767565b15610389576107a561077c565b6001600160a01b0316816001600160a01b0316837f2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d60405160405180910390a45050565b600082815260208190526040902061080190826108c8565b156103895761080e61077c565b6001600160a01b0316816001600160a01b0316837ff6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b60405160405180910390a45050565b600061068983836108dd565b6000610689836001600160a01b038416610941565b600061068c82610959565b600061088a8383610941565b6108c05750815460018181018455600084815260208082209093018490558454848252828601909352604090209190915561068c565b50600061068c565b6000610689836001600160a01b03841661095d565b8154600090821061091f5760405162461bcd60e51b8152600401808060200182810382526022815260200180610a246022913960400191505060405180910390fd5b82600001828154811061092e57fe5b9060005260206000200154905092915050565b60009081526001919091016020526040902054151590565b5490565b60008181526001830160205260408120548015610a19578354600019808301919081019060009087908390811061099057fe5b90600052602060002001549050808760000184815481106109ad57fe5b6000918252602080832090910192909255828152600189810190925260409020908401905586548790806109dd57fe5b6001900381819060005260206000200160009055905586600101600087815260200190815260200160002060009055600194505050505061068c565b600091505061068c56fe456e756d657261626c655365743a20696e646578206f7574206f6620626f756e6473416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f206772616e74416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f207265766f6b65416363657373436f6e74726f6c3a2063616e206f6e6c792072656e6f756e636520726f6c657320666f722073656c66a2646970667358221220356b5b13c7d9ce060e19521e60df7cb6d5be938d4c1074da65c3e11c0a3dd7af64736f6c634300060c0033",
+  "immutableReferences": {
+    "31188": [
+      {
+        "length": 32,
+        "start": 1121
+      },
+      {
+        "length": 32,
+        "start": 1351
+      },
+      {
+        "length": 32,
+        "start": 1498
+      },
+      {
+        "length": 32,
+        "start": 1861
+      }
+    ]
+  },
+  "sourceMap": "142:138:49:-:0;;;196:82;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;196:82:49;;-1:-1:-1;;;;;1135:36:90;;1127:68;;;;;-1:-1:-1;;;1127:68:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;1206:21:90;;;;;;;1278:47;-1:-1:-1;;;;;;;;;;;503:28:90;1278:13;:47::i;:::-;1335:45;638:26;-1:-1:-1;;;;;;;;;;;1335:13:90;:45::i;:::-;1390:41;819:24;638:26;1390:13;:41::i;:::-;1506;-1:-1:-1;;;;;;;;;;;1534:12:90;:10;:12::i;:::-;1506:10;:41::i;:::-;1068:486;196:82:49;142:138;;6823:196:91;6934:6;:12;;;;;;;;;;;:22;;;6911:57;;6958:9;;6941:4;;6911:57;;6934:6;6911:57;6978:6;:12;;;;;;;;;;;:22;;:34;6823:196::o;598:104:97:-;685:10;598:104;:::o;6588:110:91:-;6666:25;6677:4;6683:7;6666:10;:25::i;:::-;6588:110;;:::o;7025:184::-;7098:6;:12;;;;;;;;;;;:33;;7123:7;;7098:24;;;;;:33;;:::i;:::-;7094:109;;;7179:12;:10;:12::i;:::-;-1:-1:-1;;;;;7152:40:91;7170:7;-1:-1:-1;;;;;7152:40:91;7164:4;7152:40;;;;;;;;;;7025:184;;:::o;6429:150:98:-;6499:4;6522:50;6527:3;-1:-1:-1;;;;;6547:23:98;;6522:4;:50::i;:::-;6515:57;;6429:150;;;;;:::o;1640:404::-;1703:4;1724:21;1734:3;1739:5;1724:9;:21::i;:::-;1719:319;;-1:-1:-1;1761:23:98;;;;;;;;:11;:23;;;;;;;;;;;;;1941:18;;1919:19;;;:12;;;:19;;;;;;:40;;;;1973:11;;1719:319;-1:-1:-1;2022:5:98;2015:12;;3805:127;3878:4;3901:19;;;:12;;;;;:19;;;;;;:24;;;3805:127::o;142:138:49:-;;;;;;;;;;;;",
+  "deployedSourceMap": "142:138:49:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;461:70:90;;;:::i;:::-;;;;;;;;;;;;;;;;598:66;;;:::i;4282:112:91:-;;;;;;;;;;;;;;;;-1:-1:-1;4282:112:91;;:::i;4644:223::-;;;;;;;;;;;;;;;;-1:-1:-1;4644:223:91;;;;;;-1:-1:-1;;;;;4644:223:91;;:::i;:::-;;5818:205;;;;;;;;;;;;;;;;-1:-1:-1;5818:205:91;;;;;;-1:-1:-1;;;;;5818:205:91;;:::i;1646:160:90:-;;;:::i;2001:175::-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;2001:175:90;;;;;;;;:::i;2297:100::-;;;;;;;;;;;;;;;;-1:-1:-1;2297:100:90;;:::i;3965:136:91:-;;;;;;;;;;;;;;;;-1:-1:-1;3965:136:91;;;;;;;:::i;:::-;;;;-1:-1:-1;;;;;3965:136:91;;;;;;;;;;;;;;2950:137;;;;;;;;;;;;;;;;-1:-1:-1;2950:137:91;;;;;;-1:-1:-1;;;;;2950:137:91;;:::i;:::-;;;;;;;;;;;;;;;;;;781:62:90;;;:::i;1727:49:91:-;;;:::i;3255:125::-;;;;;;;;;;;;;;;;-1:-1:-1;3255:125:91;;:::i;5101:226::-;;;;;;;;;;;;;;;;-1:-1:-1;5101:226:91;;;;;;-1:-1:-1;;;;;5101:226:91;;:::i;898:46:90:-;;;:::i;461:70::-;503:28;461:70;:::o;598:66::-;638:26;598:66;:::o;4282:112:91:-;4339:7;4365:12;;;;;;;;;;:22;;;;4282:112::o;4644:223::-;4735:6;:12;;;;;;;;;;:22;;;4727:45;;4759:12;:10;:12::i;:::-;4727:7;:45::i;:::-;4719:105;;;;-1:-1:-1;;;4719:105:91;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4835:25;4846:4;4852:7;4835:10;:25::i;:::-;4644:223;;:::o;5818:205::-;5915:12;:10;:12::i;:::-;-1:-1:-1;;;;;5904:23:91;:7;-1:-1:-1;;;;;5904:23:91;;5896:83;;;;-1:-1:-1;;;5896:83:91;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5990:26;6002:4;6008:7;5990:11;:26::i;1646:160:90:-;1705:38;503:28;1730:12;:10;:12::i;1705:38::-;1697:68;;;;;-1:-1:-1;;;1697:68:90;;;;;;;;;;;;-1:-1:-1;;;1697:68:90;;;;;;;;;;;;;;;1776:5;-1:-1:-1;;;;;1776:21:90;;:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1646:160::o;2001:175::-;2079:34;819:24;2100:12;:10;:12::i;2079:34::-;2071:64;;;;;-1:-1:-1;;;2071:64:90;;;;;;;;;;;;-1:-1:-1;;;2071:64:90;;;;;;;;;;;;;;;2146:5;-1:-1:-1;;;;;2146:11:90;;2158:2;2162:6;2146:23;;;;;;;;;;;;;-1:-1:-1;;;;;2146:23:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2001:175;;:::o;2297:100::-;2355:5;-1:-1:-1;;;;;2355:13:90;;2369:12;:10;:12::i;:::-;2383:6;2355:35;;;;;;;;;;;;;-1:-1:-1;;;;;2355:35:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2297:100;:::o;3965:136:91:-;4038:7;4064:12;;;;;;;;;;:30;;4088:5;4064:23;:30::i;:::-;4057:37;;3965:136;;;;;:::o;2950:137::-;3019:4;3042:12;;;;;;;;;;:38;;3072:7;3042:29;:38::i;781:62:90:-;819:24;781:62;:::o;1727:49:91:-;1772:4;1727:49;:::o;3255:125::-;3318:7;3344:12;;;;;;;;;;:29;;:27;:29::i;5101:226::-;5193:6;:12;;;;;;;;;;:22;;;5185:45;;5217:12;:10;:12::i;5185:45::-;5177:106;;;;-1:-1:-1;;;5177:106:91;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;898:46:90;;;:::o;6429:150:98:-;6499:4;6522:50;6527:3;-1:-1:-1;;;;;6547:23:98;;6522:4;:50::i;598:104:97:-;685:10;598:104;:::o;7025:184:91:-;7098:6;:12;;;;;;;;;;:33;;7123:7;7098:24;:33::i;:::-;7094:109;;;7179:12;:10;:12::i;:::-;-1:-1:-1;;;;;7152:40:91;7170:7;-1:-1:-1;;;;;7152:40:91;7164:4;7152:40;;;;;;;;;;7025:184;;:::o;7215:188::-;7289:6;:12;;;;;;;;;;:36;;7317:7;7289:27;:36::i;:::-;7285:112;;;7373:12;:10;:12::i;:::-;-1:-1:-1;;;;;7346:40:91;7364:7;-1:-1:-1;;;;;7346:40:91;7358:4;7346:40;;;;;;;;;;7215:188;;:::o;7677:156:98:-;7751:7;7801:22;7805:3;7817:5;7801:3;:22::i;6984:165::-;7064:4;7087:55;7097:3;-1:-1:-1;;;;;7117:23:98;;7087:9;:55::i;7230:115::-;7293:7;7319:19;7327:3;7319:7;:19::i;1640:404::-;1703:4;1724:21;1734:3;1739:5;1724:9;:21::i;:::-;1719:319;;-1:-1:-1;1761:23:98;;;;;;;;:11;:23;;;;;;;;;;;;;1941:18;;1919:19;;;:12;;;:19;;;;;;:40;;;;1973:11;;1719:319;-1:-1:-1;2022:5:98;2015:12;;6747:156;6820:4;6843:53;6851:3;-1:-1:-1;;;;;6871:23:98;;6843:7;:53::i;4452:201::-;4546:18;;4519:7;;4546:26;-1:-1:-1;4538:73:98;;;;-1:-1:-1;;;4538:73:98;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4628:3;:11;;4640:5;4628:18;;;;;;;;;;;;;;;;4621:25;;4452:201;;;;:::o;3805:127::-;3878:4;3901:19;;;:12;;;;;:19;;;;;;:24;;;3805:127::o;4013:107::-;4095:18;;4013:107::o;2212:1512::-;2278:4;2415:19;;;:12;;;:19;;;;;;2449:15;;2445:1273;;2878:18;;-1:-1:-1;;2830:14:98;;;;2878:22;;;;2806:21;;2878:3;;:22;;3160;;;;;;;;;;;;;;3140:42;;3303:9;3274:3;:11;;3286:13;3274:26;;;;;;;;;;;;;;;;;;;:38;;;;3378:23;;;3420:1;3378:12;;;:23;;;;;;3404:17;;;3378:43;;3527:17;;3378:3;;3527:17;;;;;;;;;;;;;;;;;;;;;;3619:3;:12;;:19;3632:5;3619:19;;;;;;;;;;;3612:26;;;3660:4;3653:11;;;;;;;;2445:1273;3702:5;3695:12;;;;",
+  "source": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity 0.6.12;\n\nimport \"@bancor/token-governance/contracts/TokenGovernance.sol\";\n\ncontract TestTokenGovernance is TokenGovernance {\n    constructor(IMintableToken mintableToken) public TokenGovernance(mintableToken) {}\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTokenGovernance.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTokenGovernance.sol",
+    "exportedSymbols": {
+      "TestTokenGovernance": [
+        21784
+      ]
+    },
+    "id": 21785,
+    "license": "SEE LICENSE IN LICENSE",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 21771,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "51:23:49"
+      },
+      {
+        "absolutePath": "@bancor/token-governance/contracts/TokenGovernance.sol",
+        "file": "@bancor/token-governance/contracts/TokenGovernance.sol",
+        "id": 21772,
+        "nodeType": "ImportDirective",
+        "scope": 21785,
+        "sourceUnit": 31296,
+        "src": "76:64:49",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 21773,
+              "name": "TokenGovernance",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 31295,
+              "src": "174:15:49",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_TokenGovernance_$31295",
+                "typeString": "contract TokenGovernance"
+              }
+            },
+            "id": 21774,
+            "nodeType": "InheritanceSpecifier",
+            "src": "174:15:49"
+          }
+        ],
+        "contractDependencies": [
+          31161,
+          31295,
+          31578,
+          33046
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 21784,
+        "linearizedBaseContracts": [
+          21784,
+          31295,
+          31578,
+          33046,
+          31161
+        ],
+        "name": "TestTokenGovernance",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 21782,
+              "nodeType": "Block",
+              "src": "276:2:49",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 21783,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 21779,
+                    "name": "mintableToken",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 21776,
+                    "src": "261:13:49",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IMintableToken_$31137",
+                      "typeString": "contract IMintableToken"
+                    }
+                  }
+                ],
+                "id": 21780,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 21778,
+                  "name": "TokenGovernance",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 31295,
+                  "src": "245:15:49",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_TokenGovernance_$31295_$",
+                    "typeString": "type(contract TokenGovernance)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "245:30:49"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 21777,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21776,
+                  "mutability": "mutable",
+                  "name": "mintableToken",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 21783,
+                  "src": "208:28:49",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IMintableToken_$31137",
+                    "typeString": "contract IMintableToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 21775,
+                    "name": "IMintableToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 31137,
+                    "src": "208:14:49",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IMintableToken_$31137",
+                      "typeString": "contract IMintableToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "207:30:49"
+            },
+            "returnParameters": {
+              "id": 21781,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "276:0:49"
+            },
+            "scope": 21784,
+            "src": "196:82:49",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 21785,
+        "src": "142:138:49"
+      }
+    ],
+    "src": "51:230:49"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/helpers/TestTokenGovernance.sol",
+      "exportedSymbols": {
+        "TestTokenGovernance": [
+          21784
+        ]
+      },
+      "license": "SEE LICENSE IN LICENSE"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 21771,
+        "name": "PragmaDirective",
+        "src": "51:23:49"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 31296,
+          "absolutePath": "@bancor/token-governance/contracts/TokenGovernance.sol",
+          "file": "@bancor/token-governance/contracts/TokenGovernance.sol",
+          "scope": 21785,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 21772,
+        "name": "ImportDirective",
+        "src": "76:64:49"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            31161,
+            31295,
+            31578,
+            33046
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            21784,
+            31295,
+            31578,
+            33046,
+            31161
+          ],
+          "name": "TestTokenGovernance",
+          "scope": 21785
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "TokenGovernance",
+                  "referencedDeclaration": 31295,
+                  "type": "contract TokenGovernance"
+                },
+                "id": 21773,
+                "name": "UserDefinedTypeName",
+                "src": "174:15:49"
+              }
+            ],
+            "id": 21774,
+            "name": "InheritanceSpecifier",
+            "src": "174:15:49"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "name": "",
+              "overrides": null,
+              "scope": 21784,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "mintableToken",
+                      "overrides": null,
+                      "scope": 21783,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IMintableToken",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IMintableToken",
+                          "referencedDeclaration": 31137,
+                          "type": "contract IMintableToken"
+                        },
+                        "id": 21775,
+                        "name": "UserDefinedTypeName",
+                        "src": "208:14:49"
+                      }
+                    ],
+                    "id": 21776,
+                    "name": "VariableDeclaration",
+                    "src": "208:28:49"
+                  }
+                ],
+                "id": 21777,
+                "name": "ParameterList",
+                "src": "207:30:49"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 21781,
+                "name": "ParameterList",
+                "src": "276:0:49"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 31295,
+                      "type": "type(contract TokenGovernance)",
+                      "value": "TokenGovernance"
+                    },
+                    "id": 21778,
+                    "name": "Identifier",
+                    "src": "245:15:49"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 21776,
+                      "type": "contract IMintableToken",
+                      "value": "mintableToken"
+                    },
+                    "id": 21779,
+                    "name": "Identifier",
+                    "src": "261:13:49"
+                  }
+                ],
+                "id": 21780,
+                "name": "ModifierInvocation",
+                "src": "245:30:49"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 21782,
+                "name": "Block",
+                "src": "276:2:49"
+              }
+            ],
+            "id": 21783,
+            "name": "FunctionDefinition",
+            "src": "196:82:49"
+          }
+        ],
+        "id": 21784,
+        "name": "ContractDefinition",
+        "src": "142:138:49"
+      }
+    ],
+    "id": 21785,
+    "name": "SourceUnit",
+    "src": "51:230:49"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-04-01T18:17:52.070Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "acceptTokenOwnership()": {
+        "details": "Accepts the ownership of the token. Only allowed by the SUPERVISOR role."
+      },
+      "burn(uint256)": {
+        "details": "Burns tokens from the caller.",
+        "params": {
+          "amount": "Amount to decrease the supply by."
+        }
+      },
+      "getRoleAdmin(bytes32)": {
+        "details": "Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}."
+      },
+      "getRoleMember(bytes32,uint256)": {
+        "details": "Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information."
+      },
+      "getRoleMemberCount(bytes32)": {
+        "details": "Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role."
+      },
+      "grantRole(bytes32,address)": {
+        "details": "Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role."
+      },
+      "hasRole(bytes32,address)": {
+        "details": "Returns `true` if `account` has been granted `role`."
+      },
+      "mint(address,uint256)": {
+        "details": "Mints new tokens. Only allowed by the MINTER role.",
+        "params": {
+          "amount": "Amount to increase the supply by.",
+          "to": "Account to receive the new amount."
+        }
+      },
+      "renounceRole(bytes32,address)": {
+        "details": "Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`."
+      },
+      "revokeRole(bytes32,address)": {
+        "details": "Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

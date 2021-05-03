@@ -1,0 +1,4637 @@
+{
+  "contractName": "ILendingPoolConfigurator",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proxy",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "ATokenUpgraded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "BorrowingDisabledOnReserve",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "stableRateEnabled",
+          "type": "bool"
+        }
+      ],
+      "name": "BorrowingEnabledOnReserve",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "ltv",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "liquidationThreshold",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "liquidationBonus",
+          "type": "uint256"
+        }
+      ],
+      "name": "CollateralConfigurationChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "ReserveActivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "ReserveDeactivated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "decimals",
+          "type": "uint256"
+        }
+      ],
+      "name": "ReserveDecimalsChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "factor",
+          "type": "uint256"
+        }
+      ],
+      "name": "ReserveFactorChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "ReserveFrozen",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "aToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "stableDebtToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "variableDebtToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "interestRateStrategyAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ReserveInitialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "strategy",
+          "type": "address"
+        }
+      ],
+      "name": "ReserveInterestRateStrategyChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "ReserveUnfrozen",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proxy",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "StableDebtTokenUpgraded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "StableRateDisabledOnReserve",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        }
+      ],
+      "name": "StableRateEnabledOnReserve",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proxy",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "VariableDebtTokenUpgraded",
+      "type": "event"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"ATokenUpgraded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"BorrowingDisabledOnReserve\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"stableRateEnabled\",\"type\":\"bool\"}],\"name\":\"BorrowingEnabledOnReserve\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"ltv\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"liquidationThreshold\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"liquidationBonus\",\"type\":\"uint256\"}],\"name\":\"CollateralConfigurationChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"ReserveActivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"ReserveDeactivated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"decimals\",\"type\":\"uint256\"}],\"name\":\"ReserveDecimalsChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"factor\",\"type\":\"uint256\"}],\"name\":\"ReserveFactorChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"ReserveFrozen\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"aToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"stableDebtToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"variableDebtToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"interestRateStrategyAddress\",\"type\":\"address\"}],\"name\":\"ReserveInitialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"strategy\",\"type\":\"address\"}],\"name\":\"ReserveInterestRateStrategyChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"ReserveUnfrozen\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"StableDebtTokenUpgraded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"StableRateDisabledOnReserve\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"}],\"name\":\"StableRateEnabledOnReserve\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"VariableDebtTokenUpgraded\",\"type\":\"event\"}],\"devdoc\":{\"events\":{\"ATokenUpgraded(address,address,address)\":{\"details\":\"Emitted when an aToken implementation is upgraded\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"implementation\":\"The new aToken implementation*\",\"proxy\":\"The aToken proxy address\"}},\"BorrowingDisabledOnReserve(address)\":{\"details\":\"Emitted when borrowing is disabled on a reserve\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"BorrowingEnabledOnReserve(address,bool)\":{\"details\":\"Emitted when borrowing is enabled on a reserve\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"stableRateEnabled\":\"True if stable rate borrowing is enabled, false otherwise*\"}},\"CollateralConfigurationChanged(address,uint256,uint256,uint256)\":{\"details\":\"Emitted when the collateralization risk parameters for the specified asset are updated.\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"liquidationBonus\":\"The bonus liquidators receive to liquidate this asset*\",\"liquidationThreshold\":\"The threshold at which loans using this asset as collateral will be considered undercollateralized\",\"ltv\":\"The loan to value of the asset when used as collateral\"}},\"ReserveActivated(address)\":{\"details\":\"Emitted when a reserve is activated\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"ReserveDeactivated(address)\":{\"details\":\"Emitted when a reserve is deactivated\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"ReserveDecimalsChanged(address,uint256)\":{\"details\":\"Emitted when the reserve decimals are updated\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"decimals\":\"The new decimals*\"}},\"ReserveFactorChanged(address,uint256)\":{\"details\":\"Emitted when a reserve factor is updated\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"factor\":\"The new reserve factor*\"}},\"ReserveFrozen(address)\":{\"details\":\"Emitted when a reserve is frozen\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"ReserveInitialized(address,address,address,address,address)\":{\"details\":\"Emitted when a reserve is initialized.\",\"params\":{\"aToken\":\"The address of the associated aToken contract\",\"asset\":\"The address of the underlying asset of the reserve\",\"interestRateStrategyAddress\":\"The address of the interest rate strategy for the reserve*\",\"stableDebtToken\":\"The address of the associated stable rate debt token\",\"variableDebtToken\":\"The address of the associated variable rate debt token\"}},\"ReserveInterestRateStrategyChanged(address,address)\":{\"details\":\"Emitted when a reserve interest strategy contract is updated\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"strategy\":\"The new address of the interest strategy contract*\"}},\"ReserveUnfrozen(address)\":{\"details\":\"Emitted when a reserve is unfrozen\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"StableDebtTokenUpgraded(address,address,address)\":{\"details\":\"Emitted when the implementation of a stable debt token is upgraded\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"implementation\":\"The new aToken implementation*\",\"proxy\":\"The stable debt token proxy address\"}},\"StableRateDisabledOnReserve(address)\":{\"details\":\"Emitted when stable rate borrowing is disabled on a reserve\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"StableRateEnabledOnReserve(address)\":{\"details\":\"Emitted when stable rate borrowing is enabled on a reserve\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve*\"}},\"VariableDebtTokenUpgraded(address,address,address)\":{\"details\":\"Emitted when the implementation of a variable debt token is upgraded\",\"params\":{\"asset\":\"The address of the underlying asset of the reserve\",\"implementation\":\"The new aToken implementation*\",\"proxy\":\"The variable debt token proxy address\"}}},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPoolConfigurator.sol\":\"ILendingPoolConfigurator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPoolConfigurator.sol\":{\"keccak256\":\"0x414d000e97dea0e4aa9ee9cf20a9472328549ca644c65cf9c10d10218fa63c8c\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://c9f1264e370870db4da2f42095ebd212962de44351aba55e33b3bb6f1daf3ffd\",\"dweb:/ipfs/Qmdee6Kj7HrVQXBuLNYGr13oJCAUnjBXmpgm4WsfaNnrQs\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: agpl-3.0\npragma solidity ^0.8.0;\npragma experimental ABIEncoderV2;\n\ninterface ILendingPoolConfigurator {\n  struct InitReserveInput {\n    address aTokenImpl;\n    address stableDebtTokenImpl;\n    address variableDebtTokenImpl;\n    uint8 underlyingAssetDecimals;\n    address interestRateStrategyAddress;\n    address underlyingAsset;\n    address treasury;\n    address incentivesController;\n    string underlyingAssetName;\n    string aTokenName;\n    string aTokenSymbol;\n    string variableDebtTokenName;\n    string variableDebtTokenSymbol;\n    string stableDebtTokenName;\n    string stableDebtTokenSymbol;\n    bytes params;\n  }\n\n  struct UpdateATokenInput {\n    address asset;\n    address treasury;\n    address incentivesController;\n    string name;\n    string symbol;\n    address implementation;\n    bytes params;\n  }\n\n  struct UpdateDebtTokenInput {\n    address asset;\n    address incentivesController;\n    string name;\n    string symbol;\n    address implementation;\n    bytes params;\n  }\n\n  /**\n   * @dev Emitted when a reserve is initialized.\n   * @param asset The address of the underlying asset of the reserve\n   * @param aToken The address of the associated aToken contract\n   * @param stableDebtToken The address of the associated stable rate debt token\n   * @param variableDebtToken The address of the associated variable rate debt token\n   * @param interestRateStrategyAddress The address of the interest rate strategy for the reserve\n   **/\n  event ReserveInitialized(\n    address indexed asset,\n    address indexed aToken,\n    address stableDebtToken,\n    address variableDebtToken,\n    address interestRateStrategyAddress\n  );\n\n  /**\n   * @dev Emitted when borrowing is enabled on a reserve\n   * @param asset The address of the underlying asset of the reserve\n   * @param stableRateEnabled True if stable rate borrowing is enabled, false otherwise\n   **/\n  event BorrowingEnabledOnReserve(address indexed asset, bool stableRateEnabled);\n\n  /**\n   * @dev Emitted when borrowing is disabled on a reserve\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event BorrowingDisabledOnReserve(address indexed asset);\n\n  /**\n   * @dev Emitted when the collateralization risk parameters for the specified asset are updated.\n   * @param asset The address of the underlying asset of the reserve\n   * @param ltv The loan to value of the asset when used as collateral\n   * @param liquidationThreshold The threshold at which loans using this asset as collateral will be considered undercollateralized\n   * @param liquidationBonus The bonus liquidators receive to liquidate this asset\n   **/\n  event CollateralConfigurationChanged(\n    address indexed asset,\n    uint256 ltv,\n    uint256 liquidationThreshold,\n    uint256 liquidationBonus\n  );\n\n  /**\n   * @dev Emitted when stable rate borrowing is enabled on a reserve\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event StableRateEnabledOnReserve(address indexed asset);\n\n  /**\n   * @dev Emitted when stable rate borrowing is disabled on a reserve\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event StableRateDisabledOnReserve(address indexed asset);\n\n  /**\n   * @dev Emitted when a reserve is activated\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event ReserveActivated(address indexed asset);\n\n  /**\n   * @dev Emitted when a reserve is deactivated\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event ReserveDeactivated(address indexed asset);\n\n  /**\n   * @dev Emitted when a reserve is frozen\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event ReserveFrozen(address indexed asset);\n\n  /**\n   * @dev Emitted when a reserve is unfrozen\n   * @param asset The address of the underlying asset of the reserve\n   **/\n  event ReserveUnfrozen(address indexed asset);\n\n  /**\n   * @dev Emitted when a reserve factor is updated\n   * @param asset The address of the underlying asset of the reserve\n   * @param factor The new reserve factor\n   **/\n  event ReserveFactorChanged(address indexed asset, uint256 factor);\n\n  /**\n   * @dev Emitted when the reserve decimals are updated\n   * @param asset The address of the underlying asset of the reserve\n   * @param decimals The new decimals\n   **/\n  event ReserveDecimalsChanged(address indexed asset, uint256 decimals);\n\n  /**\n   * @dev Emitted when a reserve interest strategy contract is updated\n   * @param asset The address of the underlying asset of the reserve\n   * @param strategy The new address of the interest strategy contract\n   **/\n  event ReserveInterestRateStrategyChanged(address indexed asset, address strategy);\n\n  /**\n   * @dev Emitted when an aToken implementation is upgraded\n   * @param asset The address of the underlying asset of the reserve\n   * @param proxy The aToken proxy address\n   * @param implementation The new aToken implementation\n   **/\n  event ATokenUpgraded(\n    address indexed asset,\n    address indexed proxy,\n    address indexed implementation\n  );\n\n  /**\n   * @dev Emitted when the implementation of a stable debt token is upgraded\n   * @param asset The address of the underlying asset of the reserve\n   * @param proxy The stable debt token proxy address\n   * @param implementation The new aToken implementation\n   **/\n  event StableDebtTokenUpgraded(\n    address indexed asset,\n    address indexed proxy,\n    address indexed implementation\n  );\n\n  /**\n   * @dev Emitted when the implementation of a variable debt token is upgraded\n   * @param asset The address of the underlying asset of the reserve\n   * @param proxy The variable debt token proxy address\n   * @param implementation The new aToken implementation\n   **/\n  event VariableDebtTokenUpgraded(\n    address indexed asset,\n    address indexed proxy,\n    address indexed implementation\n  );\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPoolConfigurator.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPoolConfigurator.sol",
+    "exportedSymbols": {
+      "ILendingPoolConfigurator": [
+        1698
+      ]
+    },
+    "id": 1699,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1521,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:16"
+      },
+      {
+        "id": 1522,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "61:33:16"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": true,
+        "id": 1698,
+        "linearizedBaseContracts": [
+          1698
+        ],
+        "name": "ILendingPoolConfigurator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ILendingPoolConfigurator.InitReserveInput",
+            "id": 1555,
+            "members": [
+              {
+                "constant": false,
+                "id": 1524,
+                "mutability": "mutable",
+                "name": "aTokenImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "165:18:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1523,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "165:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1526,
+                "mutability": "mutable",
+                "name": "stableDebtTokenImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "189:27:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1525,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "189:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1528,
+                "mutability": "mutable",
+                "name": "variableDebtTokenImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "222:29:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1527,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "222:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1530,
+                "mutability": "mutable",
+                "name": "underlyingAssetDecimals",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "257:29:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 1529,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "257:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1532,
+                "mutability": "mutable",
+                "name": "interestRateStrategyAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "292:35:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1531,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "292:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1534,
+                "mutability": "mutable",
+                "name": "underlyingAsset",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "333:23:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1533,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "333:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1536,
+                "mutability": "mutable",
+                "name": "treasury",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "362:16:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1535,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "362:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1538,
+                "mutability": "mutable",
+                "name": "incentivesController",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "384:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1537,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "384:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1540,
+                "mutability": "mutable",
+                "name": "underlyingAssetName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "418:26:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1539,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "418:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1542,
+                "mutability": "mutable",
+                "name": "aTokenName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "450:17:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1541,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "450:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1544,
+                "mutability": "mutable",
+                "name": "aTokenSymbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "473:19:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1543,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "473:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1546,
+                "mutability": "mutable",
+                "name": "variableDebtTokenName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "498:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1545,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "498:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1548,
+                "mutability": "mutable",
+                "name": "variableDebtTokenSymbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "532:30:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1547,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "532:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1550,
+                "mutability": "mutable",
+                "name": "stableDebtTokenName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "568:26:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1549,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "568:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1552,
+                "mutability": "mutable",
+                "name": "stableDebtTokenSymbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "600:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1551,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "600:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1554,
+                "mutability": "mutable",
+                "name": "params",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "634:12:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1553,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "634:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "InitReserveInput",
+            "nodeType": "StructDefinition",
+            "scope": 1698,
+            "src": "135:516:16",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ILendingPoolConfigurator.UpdateATokenInput",
+            "id": 1570,
+            "members": [
+              {
+                "constant": false,
+                "id": 1557,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "686:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1556,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "686:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1559,
+                "mutability": "mutable",
+                "name": "treasury",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "705:16:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1558,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "705:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1561,
+                "mutability": "mutable",
+                "name": "incentivesController",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "727:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1560,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "727:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1563,
+                "mutability": "mutable",
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "761:11:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1562,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "761:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1565,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "778:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1564,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "778:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1567,
+                "mutability": "mutable",
+                "name": "implementation",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "797:22:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1566,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "797:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1569,
+                "mutability": "mutable",
+                "name": "params",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "825:12:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1568,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "825:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "UpdateATokenInput",
+            "nodeType": "StructDefinition",
+            "scope": 1698,
+            "src": "655:187:16",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ILendingPoolConfigurator.UpdateDebtTokenInput",
+            "id": 1583,
+            "members": [
+              {
+                "constant": false,
+                "id": 1572,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "880:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1571,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "880:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1574,
+                "mutability": "mutable",
+                "name": "incentivesController",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "899:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1573,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "899:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1576,
+                "mutability": "mutable",
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "933:11:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1575,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "933:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1578,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "950:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1577,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "950:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1580,
+                "mutability": "mutable",
+                "name": "implementation",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "969:22:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1579,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "969:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1582,
+                "mutability": "mutable",
+                "name": "params",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "997:12:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1581,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "997:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "UpdateDebtTokenInput",
+            "nodeType": "StructDefinition",
+            "scope": 1698,
+            "src": "846:168:16",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1584,
+              "nodeType": "StructuredDocumentation",
+              "src": "1018:457:16",
+              "text": " @dev Emitted when a reserve is initialized.\n @param asset The address of the underlying asset of the reserve\n @param aToken The address of the associated aToken contract\n @param stableDebtToken The address of the associated stable rate debt token\n @param variableDebtToken The address of the associated variable rate debt token\n @param interestRateStrategyAddress The address of the interest rate strategy for the reserve*"
+            },
+            "id": 1596,
+            "name": "ReserveInitialized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1595,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1586,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1508:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1585,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1508:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1588,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "aToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1535:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1587,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1535:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1590,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "stableDebtToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1563:23:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1589,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1563:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1592,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "variableDebtToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1592:25:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1591,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1592:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1594,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "interestRateStrategyAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1623:35:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1593,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1623:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1502:160:16"
+            },
+            "src": "1478:185:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1597,
+              "nodeType": "StructuredDocumentation",
+              "src": "1667:224:16",
+              "text": " @dev Emitted when borrowing is enabled on a reserve\n @param asset The address of the underlying asset of the reserve\n @param stableRateEnabled True if stable rate borrowing is enabled, false otherwise*"
+            },
+            "id": 1603,
+            "name": "BorrowingEnabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1602,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1599,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1603,
+                  "src": "1926:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1598,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1926:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1601,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "stableRateEnabled",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1603,
+                  "src": "1949:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1600,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1949:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1925:47:16"
+            },
+            "src": "1894:79:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1604,
+              "nodeType": "StructuredDocumentation",
+              "src": "1977:137:16",
+              "text": " @dev Emitted when borrowing is disabled on a reserve\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1608,
+            "name": "BorrowingDisabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1607,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1606,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1608,
+                  "src": "2150:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1605,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2150:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2149:23:16"
+            },
+            "src": "2117:56:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1609,
+              "nodeType": "StructuredDocumentation",
+              "src": "2177:463:16",
+              "text": " @dev Emitted when the collateralization risk parameters for the specified asset are updated.\n @param asset The address of the underlying asset of the reserve\n @param ltv The loan to value of the asset when used as collateral\n @param liquidationThreshold The threshold at which loans using this asset as collateral will be considered undercollateralized\n @param liquidationBonus The bonus liquidators receive to liquidate this asset*"
+            },
+            "id": 1619,
+            "name": "CollateralConfigurationChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1618,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1611,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2685:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1610,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2685:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1613,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "ltv",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2712:11:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1612,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2712:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1615,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "liquidationThreshold",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2729:28:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1614,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2729:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1617,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "liquidationBonus",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2763:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1616,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2763:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2679:112:16"
+            },
+            "src": "2643:149:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1620,
+              "nodeType": "StructuredDocumentation",
+              "src": "2796:148:16",
+              "text": " @dev Emitted when stable rate borrowing is enabled on a reserve\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1624,
+            "name": "StableRateEnabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1623,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1622,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1624,
+                  "src": "2980:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1621,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2980:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2979:23:16"
+            },
+            "src": "2947:56:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1625,
+              "nodeType": "StructuredDocumentation",
+              "src": "3007:149:16",
+              "text": " @dev Emitted when stable rate borrowing is disabled on a reserve\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1629,
+            "name": "StableRateDisabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1628,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1627,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1629,
+                  "src": "3193:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1626,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3193:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3192:23:16"
+            },
+            "src": "3159:57:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1630,
+              "nodeType": "StructuredDocumentation",
+              "src": "3220:125:16",
+              "text": " @dev Emitted when a reserve is activated\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1634,
+            "name": "ReserveActivated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1633,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1632,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1634,
+                  "src": "3371:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1631,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3371:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3370:23:16"
+            },
+            "src": "3348:46:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1635,
+              "nodeType": "StructuredDocumentation",
+              "src": "3398:127:16",
+              "text": " @dev Emitted when a reserve is deactivated\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1639,
+            "name": "ReserveDeactivated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1638,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1637,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1639,
+                  "src": "3553:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1636,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3553:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3552:23:16"
+            },
+            "src": "3528:48:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1640,
+              "nodeType": "StructuredDocumentation",
+              "src": "3580:122:16",
+              "text": " @dev Emitted when a reserve is frozen\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1644,
+            "name": "ReserveFrozen",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1643,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1642,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1644,
+                  "src": "3725:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1641,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3725:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3724:23:16"
+            },
+            "src": "3705:43:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1645,
+              "nodeType": "StructuredDocumentation",
+              "src": "3752:124:16",
+              "text": " @dev Emitted when a reserve is unfrozen\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1649,
+            "name": "ReserveUnfrozen",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1648,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1647,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1649,
+                  "src": "3901:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1646,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3901:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3900:23:16"
+            },
+            "src": "3879:45:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1650,
+              "nodeType": "StructuredDocumentation",
+              "src": "3928:172:16",
+              "text": " @dev Emitted when a reserve factor is updated\n @param asset The address of the underlying asset of the reserve\n @param factor The new reserve factor*"
+            },
+            "id": 1656,
+            "name": "ReserveFactorChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1655,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1652,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1656,
+                  "src": "4130:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1651,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4130:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1654,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "factor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1656,
+                  "src": "4153:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1653,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4153:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4129:39:16"
+            },
+            "src": "4103:66:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1657,
+              "nodeType": "StructuredDocumentation",
+              "src": "4173:173:16",
+              "text": " @dev Emitted when the reserve decimals are updated\n @param asset The address of the underlying asset of the reserve\n @param decimals The new decimals*"
+            },
+            "id": 1663,
+            "name": "ReserveDecimalsChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1662,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1659,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1663,
+                  "src": "4378:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1658,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4378:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1661,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "decimals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1663,
+                  "src": "4401:16:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1660,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4401:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4377:41:16"
+            },
+            "src": "4349:70:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1664,
+              "nodeType": "StructuredDocumentation",
+              "src": "4423:221:16",
+              "text": " @dev Emitted when a reserve interest strategy contract is updated\n @param asset The address of the underlying asset of the reserve\n @param strategy The new address of the interest strategy contract*"
+            },
+            "id": 1670,
+            "name": "ReserveInterestRateStrategyChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1669,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1666,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1670,
+                  "src": "4688:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1665,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4688:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1668,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "strategy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1670,
+                  "src": "4711:16:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1667,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4711:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4687:41:16"
+            },
+            "src": "4647:82:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1671,
+              "nodeType": "StructuredDocumentation",
+              "src": "4733:239:16",
+              "text": " @dev Emitted when an aToken implementation is upgraded\n @param asset The address of the underlying asset of the reserve\n @param proxy The aToken proxy address\n @param implementation The new aToken implementation*"
+            },
+            "id": 1679,
+            "name": "ATokenUpgraded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1678,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1673,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1679,
+                  "src": "5001:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1672,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5001:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1675,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "proxy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1679,
+                  "src": "5028:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1674,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5028:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1677,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "implementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1679,
+                  "src": "5055:30:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1676,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5055:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4995:94:16"
+            },
+            "src": "4975:115:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1680,
+              "nodeType": "StructuredDocumentation",
+              "src": "5094:267:16",
+              "text": " @dev Emitted when the implementation of a stable debt token is upgraded\n @param asset The address of the underlying asset of the reserve\n @param proxy The stable debt token proxy address\n @param implementation The new aToken implementation*"
+            },
+            "id": 1688,
+            "name": "StableDebtTokenUpgraded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1687,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1682,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1688,
+                  "src": "5399:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1681,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5399:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1684,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "proxy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1688,
+                  "src": "5426:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1683,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5426:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1686,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "implementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1688,
+                  "src": "5453:30:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1685,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5453:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5393:94:16"
+            },
+            "src": "5364:124:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1689,
+              "nodeType": "StructuredDocumentation",
+              "src": "5492:271:16",
+              "text": " @dev Emitted when the implementation of a variable debt token is upgraded\n @param asset The address of the underlying asset of the reserve\n @param proxy The variable debt token proxy address\n @param implementation The new aToken implementation*"
+            },
+            "id": 1697,
+            "name": "VariableDebtTokenUpgraded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1696,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1691,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "5803:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1690,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5803:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1693,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "proxy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "5830:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1692,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5830:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1695,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "implementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "5857:30:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1694,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5857:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5797:94:16"
+            },
+            "src": "5766:126:16"
+          }
+        ],
+        "scope": 1699,
+        "src": "96:5798:16"
+      }
+    ],
+    "src": "37:5858:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPoolConfigurator.sol",
+    "exportedSymbols": {
+      "ILendingPoolConfigurator": [
+        1698
+      ]
+    },
+    "id": 1699,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1521,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:16"
+      },
+      {
+        "id": 1522,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "61:33:16"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": true,
+        "id": 1698,
+        "linearizedBaseContracts": [
+          1698
+        ],
+        "name": "ILendingPoolConfigurator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ILendingPoolConfigurator.InitReserveInput",
+            "id": 1555,
+            "members": [
+              {
+                "constant": false,
+                "id": 1524,
+                "mutability": "mutable",
+                "name": "aTokenImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "165:18:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1523,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "165:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1526,
+                "mutability": "mutable",
+                "name": "stableDebtTokenImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "189:27:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1525,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "189:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1528,
+                "mutability": "mutable",
+                "name": "variableDebtTokenImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "222:29:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1527,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "222:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1530,
+                "mutability": "mutable",
+                "name": "underlyingAssetDecimals",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "257:29:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 1529,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "257:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1532,
+                "mutability": "mutable",
+                "name": "interestRateStrategyAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "292:35:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1531,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "292:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1534,
+                "mutability": "mutable",
+                "name": "underlyingAsset",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "333:23:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1533,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "333:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1536,
+                "mutability": "mutable",
+                "name": "treasury",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "362:16:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1535,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "362:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1538,
+                "mutability": "mutable",
+                "name": "incentivesController",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "384:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1537,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "384:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1540,
+                "mutability": "mutable",
+                "name": "underlyingAssetName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "418:26:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1539,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "418:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1542,
+                "mutability": "mutable",
+                "name": "aTokenName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "450:17:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1541,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "450:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1544,
+                "mutability": "mutable",
+                "name": "aTokenSymbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "473:19:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1543,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "473:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1546,
+                "mutability": "mutable",
+                "name": "variableDebtTokenName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "498:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1545,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "498:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1548,
+                "mutability": "mutable",
+                "name": "variableDebtTokenSymbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "532:30:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1547,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "532:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1550,
+                "mutability": "mutable",
+                "name": "stableDebtTokenName",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "568:26:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1549,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "568:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1552,
+                "mutability": "mutable",
+                "name": "stableDebtTokenSymbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "600:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1551,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "600:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1554,
+                "mutability": "mutable",
+                "name": "params",
+                "nodeType": "VariableDeclaration",
+                "scope": 1555,
+                "src": "634:12:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1553,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "634:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "InitReserveInput",
+            "nodeType": "StructDefinition",
+            "scope": 1698,
+            "src": "135:516:16",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ILendingPoolConfigurator.UpdateATokenInput",
+            "id": 1570,
+            "members": [
+              {
+                "constant": false,
+                "id": 1557,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "686:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1556,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "686:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1559,
+                "mutability": "mutable",
+                "name": "treasury",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "705:16:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1558,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "705:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1561,
+                "mutability": "mutable",
+                "name": "incentivesController",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "727:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1560,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "727:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1563,
+                "mutability": "mutable",
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "761:11:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1562,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "761:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1565,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "778:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1564,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "778:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1567,
+                "mutability": "mutable",
+                "name": "implementation",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "797:22:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1566,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "797:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1569,
+                "mutability": "mutable",
+                "name": "params",
+                "nodeType": "VariableDeclaration",
+                "scope": 1570,
+                "src": "825:12:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1568,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "825:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "UpdateATokenInput",
+            "nodeType": "StructDefinition",
+            "scope": 1698,
+            "src": "655:187:16",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ILendingPoolConfigurator.UpdateDebtTokenInput",
+            "id": 1583,
+            "members": [
+              {
+                "constant": false,
+                "id": 1572,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "880:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1571,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "880:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1574,
+                "mutability": "mutable",
+                "name": "incentivesController",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "899:28:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1573,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "899:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1576,
+                "mutability": "mutable",
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "933:11:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1575,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "933:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1578,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "950:13:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1577,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "950:6:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1580,
+                "mutability": "mutable",
+                "name": "implementation",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "969:22:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1579,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "969:7:16",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1582,
+                "mutability": "mutable",
+                "name": "params",
+                "nodeType": "VariableDeclaration",
+                "scope": 1583,
+                "src": "997:12:16",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1581,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "997:5:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "UpdateDebtTokenInput",
+            "nodeType": "StructDefinition",
+            "scope": 1698,
+            "src": "846:168:16",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1584,
+              "nodeType": "StructuredDocumentation",
+              "src": "1018:457:16",
+              "text": " @dev Emitted when a reserve is initialized.\n @param asset The address of the underlying asset of the reserve\n @param aToken The address of the associated aToken contract\n @param stableDebtToken The address of the associated stable rate debt token\n @param variableDebtToken The address of the associated variable rate debt token\n @param interestRateStrategyAddress The address of the interest rate strategy for the reserve*"
+            },
+            "id": 1596,
+            "name": "ReserveInitialized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1595,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1586,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1508:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1585,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1508:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1588,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "aToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1535:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1587,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1535:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1590,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "stableDebtToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1563:23:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1589,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1563:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1592,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "variableDebtToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1592:25:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1591,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1592:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1594,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "interestRateStrategyAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1596,
+                  "src": "1623:35:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1593,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1623:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1502:160:16"
+            },
+            "src": "1478:185:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1597,
+              "nodeType": "StructuredDocumentation",
+              "src": "1667:224:16",
+              "text": " @dev Emitted when borrowing is enabled on a reserve\n @param asset The address of the underlying asset of the reserve\n @param stableRateEnabled True if stable rate borrowing is enabled, false otherwise*"
+            },
+            "id": 1603,
+            "name": "BorrowingEnabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1602,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1599,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1603,
+                  "src": "1926:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1598,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1926:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1601,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "stableRateEnabled",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1603,
+                  "src": "1949:22:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1600,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1949:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1925:47:16"
+            },
+            "src": "1894:79:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1604,
+              "nodeType": "StructuredDocumentation",
+              "src": "1977:137:16",
+              "text": " @dev Emitted when borrowing is disabled on a reserve\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1608,
+            "name": "BorrowingDisabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1607,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1606,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1608,
+                  "src": "2150:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1605,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2150:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2149:23:16"
+            },
+            "src": "2117:56:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1609,
+              "nodeType": "StructuredDocumentation",
+              "src": "2177:463:16",
+              "text": " @dev Emitted when the collateralization risk parameters for the specified asset are updated.\n @param asset The address of the underlying asset of the reserve\n @param ltv The loan to value of the asset when used as collateral\n @param liquidationThreshold The threshold at which loans using this asset as collateral will be considered undercollateralized\n @param liquidationBonus The bonus liquidators receive to liquidate this asset*"
+            },
+            "id": 1619,
+            "name": "CollateralConfigurationChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1618,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1611,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2685:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1610,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2685:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1613,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "ltv",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2712:11:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1612,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2712:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1615,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "liquidationThreshold",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2729:28:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1614,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2729:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1617,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "liquidationBonus",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1619,
+                  "src": "2763:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1616,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2763:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2679:112:16"
+            },
+            "src": "2643:149:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1620,
+              "nodeType": "StructuredDocumentation",
+              "src": "2796:148:16",
+              "text": " @dev Emitted when stable rate borrowing is enabled on a reserve\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1624,
+            "name": "StableRateEnabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1623,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1622,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1624,
+                  "src": "2980:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1621,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2980:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2979:23:16"
+            },
+            "src": "2947:56:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1625,
+              "nodeType": "StructuredDocumentation",
+              "src": "3007:149:16",
+              "text": " @dev Emitted when stable rate borrowing is disabled on a reserve\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1629,
+            "name": "StableRateDisabledOnReserve",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1628,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1627,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1629,
+                  "src": "3193:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1626,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3193:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3192:23:16"
+            },
+            "src": "3159:57:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1630,
+              "nodeType": "StructuredDocumentation",
+              "src": "3220:125:16",
+              "text": " @dev Emitted when a reserve is activated\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1634,
+            "name": "ReserveActivated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1633,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1632,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1634,
+                  "src": "3371:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1631,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3371:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3370:23:16"
+            },
+            "src": "3348:46:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1635,
+              "nodeType": "StructuredDocumentation",
+              "src": "3398:127:16",
+              "text": " @dev Emitted when a reserve is deactivated\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1639,
+            "name": "ReserveDeactivated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1638,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1637,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1639,
+                  "src": "3553:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1636,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3553:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3552:23:16"
+            },
+            "src": "3528:48:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1640,
+              "nodeType": "StructuredDocumentation",
+              "src": "3580:122:16",
+              "text": " @dev Emitted when a reserve is frozen\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1644,
+            "name": "ReserveFrozen",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1643,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1642,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1644,
+                  "src": "3725:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1641,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3725:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3724:23:16"
+            },
+            "src": "3705:43:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1645,
+              "nodeType": "StructuredDocumentation",
+              "src": "3752:124:16",
+              "text": " @dev Emitted when a reserve is unfrozen\n @param asset The address of the underlying asset of the reserve*"
+            },
+            "id": 1649,
+            "name": "ReserveUnfrozen",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1648,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1647,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1649,
+                  "src": "3901:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1646,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3901:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3900:23:16"
+            },
+            "src": "3879:45:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1650,
+              "nodeType": "StructuredDocumentation",
+              "src": "3928:172:16",
+              "text": " @dev Emitted when a reserve factor is updated\n @param asset The address of the underlying asset of the reserve\n @param factor The new reserve factor*"
+            },
+            "id": 1656,
+            "name": "ReserveFactorChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1655,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1652,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1656,
+                  "src": "4130:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1651,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4130:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1654,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "factor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1656,
+                  "src": "4153:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1653,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4153:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4129:39:16"
+            },
+            "src": "4103:66:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1657,
+              "nodeType": "StructuredDocumentation",
+              "src": "4173:173:16",
+              "text": " @dev Emitted when the reserve decimals are updated\n @param asset The address of the underlying asset of the reserve\n @param decimals The new decimals*"
+            },
+            "id": 1663,
+            "name": "ReserveDecimalsChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1662,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1659,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1663,
+                  "src": "4378:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1658,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4378:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1661,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "decimals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1663,
+                  "src": "4401:16:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1660,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4401:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4377:41:16"
+            },
+            "src": "4349:70:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1664,
+              "nodeType": "StructuredDocumentation",
+              "src": "4423:221:16",
+              "text": " @dev Emitted when a reserve interest strategy contract is updated\n @param asset The address of the underlying asset of the reserve\n @param strategy The new address of the interest strategy contract*"
+            },
+            "id": 1670,
+            "name": "ReserveInterestRateStrategyChanged",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1669,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1666,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1670,
+                  "src": "4688:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1665,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4688:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1668,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "strategy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1670,
+                  "src": "4711:16:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1667,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4711:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4687:41:16"
+            },
+            "src": "4647:82:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1671,
+              "nodeType": "StructuredDocumentation",
+              "src": "4733:239:16",
+              "text": " @dev Emitted when an aToken implementation is upgraded\n @param asset The address of the underlying asset of the reserve\n @param proxy The aToken proxy address\n @param implementation The new aToken implementation*"
+            },
+            "id": 1679,
+            "name": "ATokenUpgraded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1678,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1673,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1679,
+                  "src": "5001:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1672,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5001:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1675,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "proxy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1679,
+                  "src": "5028:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1674,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5028:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1677,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "implementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1679,
+                  "src": "5055:30:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1676,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5055:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4995:94:16"
+            },
+            "src": "4975:115:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1680,
+              "nodeType": "StructuredDocumentation",
+              "src": "5094:267:16",
+              "text": " @dev Emitted when the implementation of a stable debt token is upgraded\n @param asset The address of the underlying asset of the reserve\n @param proxy The stable debt token proxy address\n @param implementation The new aToken implementation*"
+            },
+            "id": 1688,
+            "name": "StableDebtTokenUpgraded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1687,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1682,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1688,
+                  "src": "5399:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1681,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5399:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1684,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "proxy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1688,
+                  "src": "5426:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1683,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5426:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1686,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "implementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1688,
+                  "src": "5453:30:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1685,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5453:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5393:94:16"
+            },
+            "src": "5364:124:16"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 1689,
+              "nodeType": "StructuredDocumentation",
+              "src": "5492:271:16",
+              "text": " @dev Emitted when the implementation of a variable debt token is upgraded\n @param asset The address of the underlying asset of the reserve\n @param proxy The variable debt token proxy address\n @param implementation The new aToken implementation*"
+            },
+            "id": 1697,
+            "name": "VariableDebtTokenUpgraded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1696,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1691,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "5803:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1690,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5803:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1693,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "proxy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "5830:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1692,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5830:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1695,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "implementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1697,
+                  "src": "5857:30:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1694,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5857:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5797:94:16"
+            },
+            "src": "5766:126:16"
+          }
+        ],
+        "scope": 1699,
+        "src": "96:5798:16"
+      }
+    ],
+    "src": "37:5858:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-31T20:20:03.602Z",
+  "devdoc": {
+    "events": {
+      "ATokenUpgraded(address,address,address)": {
+        "details": "Emitted when an aToken implementation is upgraded",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "implementation": "The new aToken implementation*",
+          "proxy": "The aToken proxy address"
+        }
+      },
+      "BorrowingDisabledOnReserve(address)": {
+        "details": "Emitted when borrowing is disabled on a reserve",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "BorrowingEnabledOnReserve(address,bool)": {
+        "details": "Emitted when borrowing is enabled on a reserve",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "stableRateEnabled": "True if stable rate borrowing is enabled, false otherwise*"
+        }
+      },
+      "CollateralConfigurationChanged(address,uint256,uint256,uint256)": {
+        "details": "Emitted when the collateralization risk parameters for the specified asset are updated.",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "liquidationBonus": "The bonus liquidators receive to liquidate this asset*",
+          "liquidationThreshold": "The threshold at which loans using this asset as collateral will be considered undercollateralized",
+          "ltv": "The loan to value of the asset when used as collateral"
+        }
+      },
+      "ReserveActivated(address)": {
+        "details": "Emitted when a reserve is activated",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "ReserveDeactivated(address)": {
+        "details": "Emitted when a reserve is deactivated",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "ReserveDecimalsChanged(address,uint256)": {
+        "details": "Emitted when the reserve decimals are updated",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "decimals": "The new decimals*"
+        }
+      },
+      "ReserveFactorChanged(address,uint256)": {
+        "details": "Emitted when a reserve factor is updated",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "factor": "The new reserve factor*"
+        }
+      },
+      "ReserveFrozen(address)": {
+        "details": "Emitted when a reserve is frozen",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "ReserveInitialized(address,address,address,address,address)": {
+        "details": "Emitted when a reserve is initialized.",
+        "params": {
+          "aToken": "The address of the associated aToken contract",
+          "asset": "The address of the underlying asset of the reserve",
+          "interestRateStrategyAddress": "The address of the interest rate strategy for the reserve*",
+          "stableDebtToken": "The address of the associated stable rate debt token",
+          "variableDebtToken": "The address of the associated variable rate debt token"
+        }
+      },
+      "ReserveInterestRateStrategyChanged(address,address)": {
+        "details": "Emitted when a reserve interest strategy contract is updated",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "strategy": "The new address of the interest strategy contract*"
+        }
+      },
+      "ReserveUnfrozen(address)": {
+        "details": "Emitted when a reserve is unfrozen",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "StableDebtTokenUpgraded(address,address,address)": {
+        "details": "Emitted when the implementation of a stable debt token is upgraded",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "implementation": "The new aToken implementation*",
+          "proxy": "The stable debt token proxy address"
+        }
+      },
+      "StableRateDisabledOnReserve(address)": {
+        "details": "Emitted when stable rate borrowing is disabled on a reserve",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "StableRateEnabledOnReserve(address)": {
+        "details": "Emitted when stable rate borrowing is enabled on a reserve",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve*"
+        }
+      },
+      "VariableDebtTokenUpgraded(address,address,address)": {
+        "details": "Emitted when the implementation of a variable debt token is upgraded",
+        "params": {
+          "asset": "The address of the underlying asset of the reserve",
+          "implementation": "The new aToken implementation*",
+          "proxy": "The variable debt token proxy address"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

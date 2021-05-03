@@ -1,0 +1,4202 @@
+{
+  "contractName": "P1Getters",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getAccountBalance",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "marginIsPositive",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "positionIsPositive",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint120",
+              "name": "margin",
+              "type": "uint120"
+            },
+            {
+              "internalType": "uint120",
+              "name": "position",
+              "type": "uint120"
+            }
+          ],
+          "internalType": "struct P1Types.Balance",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "getAccountIndex",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "timestamp",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bool",
+              "name": "isPositive",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint128",
+              "name": "value",
+              "type": "uint128"
+            }
+          ],
+          "internalType": "struct P1Types.Index",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "getIsLocalOperator",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "getIsGlobalOperator",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getTokenContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getOracleContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getFunderContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getGlobalIndex",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "timestamp",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bool",
+              "name": "isPositive",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint128",
+              "name": "value",
+              "type": "uint128"
+            }
+          ],
+          "internalType": "struct P1Types.Index",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getMinCollateral",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getFinalSettlementEnabled",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getOraclePrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "hasAccountPermissions",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getAccountBalance\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"marginIsPositive\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"positionIsPositive\",\"type\":\"bool\"},{\"internalType\":\"uint120\",\"name\":\"margin\",\"type\":\"uint120\"},{\"internalType\":\"uint120\",\"name\":\"position\",\"type\":\"uint120\"}],\"internalType\":\"struct P1Types.Balance\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getAccountIndex\",\"outputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"timestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"isPositive\",\"type\":\"bool\"},{\"internalType\":\"uint128\",\"name\":\"value\",\"type\":\"uint128\"}],\"internalType\":\"struct P1Types.Index\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFinalSettlementEnabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFunderContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getGlobalIndex\",\"outputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"timestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"isPositive\",\"type\":\"bool\"},{\"internalType\":\"uint128\",\"name\":\"value\",\"type\":\"uint128\"}],\"internalType\":\"struct P1Types.Index\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"getIsGlobalOperator\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"getIsLocalOperator\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getMinCollateral\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getOracleContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getOraclePrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getTokenContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"hasAccountPermissions\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX\",\"methods\":{\"getAccountBalance(address)\":{\"params\":{\"account\":\"The address of the account to query the balances of.\"},\"return\":\"The balances of the account.\"},\"getAccountIndex(address)\":{\"params\":{\"account\":\"The address of the account to query the index of.\"},\"return\":\"The index of the account.\"},\"getAdmin()\":{\"return\":\"The EIP-1967 proxy admin\"},\"getFinalSettlementEnabled()\":{\"return\":\"True if final-settlement was enabled, false otherwise.\"},\"getFunderContract()\":{\"return\":\"The address of the funder contract.\"},\"getGlobalIndex()\":{\"return\":\"The most recently cached global index.\"},\"getIsGlobalOperator(address)\":{\"params\":{\"operator\":\"The address of the operator to query the status of.\"},\"return\":\"True if the address is a global operator, false otherwise.\"},\"getIsLocalOperator(address,address)\":{\"params\":{\"account\":\"The account to query the operator for.\",\"operator\":\"The address of the operator to query the status of.\"},\"return\":\"True if the operator is a local operator of the account, false otherwise.\"},\"getMinCollateral()\":{\"return\":\"The minimum-acceptable collateralization ratio, returned as a fixed-point number with 18 decimals of precision.\"},\"getOracleContract()\":{\"return\":\"The address of the price oracle contract.\"},\"getOraclePrice()\":{\"details\":\"Only able to be called by global operators.\",\"return\":\"The price returned by the current price oracle.\"},\"getTokenContract()\":{\"return\":\"The address of the ERC20 token.\"},\"hasAccountPermissions(address,address)\":{\"params\":{\"account\":\"The account to query.\",\"operator\":\"The address to query.\"},\"return\":\"True if the operator has permission to operate the account,                  and false otherwise.\"}},\"title\":\"P1Getters\"},\"userdoc\":{\"methods\":{\"getAccountBalance(address)\":{\"notice\":\"Get the balance of an account, without accounting for changes in the index.\"},\"getAccountIndex(address)\":{\"notice\":\"Gets the most recently cached index of an account.\"},\"getFinalSettlementEnabled()\":{\"notice\":\"Gets the status of whether final-settlement was initiated by the Admin.\"},\"getFunderContract()\":{\"notice\":\"Gets the current address of the funder contract.\"},\"getGlobalIndex()\":{\"notice\":\"Gets the most recently cached global index.\"},\"getIsGlobalOperator(address)\":{\"notice\":\"Gets the global operator status of an address.\"},\"getIsLocalOperator(address,address)\":{\"notice\":\"Gets the local operator status of an operator for a particular account.\"},\"getMinCollateral()\":{\"notice\":\"Gets minimum collateralization ratio of the protocol.\"},\"getOracleContract()\":{\"notice\":\"Gets the current address of the price oracle contract.\"},\"getOraclePrice()\":{\"notice\":\"Gets the price returned by the oracle.\"},\"getTokenContract()\":{\"notice\":\"Gets the address of the ERC20 margin contract used for margin deposits.\"},\"hasAccountPermissions(address,address)\":{\"notice\":\"Gets whether an address has permissions to operate an account.\"}},\"notice\":\"Contract for read-only getters.\"}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Getters.sol\":\"P1Getters\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Adminable.sol\":{\"keccak256\":\"0xd01402a59229d55ed0d9dc5e8f6cc95c5aec4487b45a367dd807c251c76ff88c\",\"urls\":[\"bzz-raw://b4e82b61ad679811ace788ae22a1bf0ef31796d4ac9da8b0112002b9d00ecdfd\",\"dweb:/ipfs/QmRyPd93agcFZNQwENCeTqQuhbbRdnZVrTs351iYDJ8Fkv\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/ReentrancyGuard.sol\":{\"keccak256\":\"0x42f6d0888b09ea305dc37e30c8c86e68ef57d2fc948a5d7bb95f2f9c829aa73c\",\"urls\":[\"bzz-raw://12c1df80cb49afd129925e944fee7d729ec0dba97de0102d29180c38081ee923\",\"dweb:/ipfs/QmT3pCqPNExPrS6dDs2TSXQBSDNGm4HhCfNtpwWm5yKhRg\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol\":{\"keccak256\":\"0xc590571da7105cdc49ce6ee12928ecc0ca4f2a9ee4496fddbd525e3eaca92ea1\",\"urls\":[\"bzz-raw://21f2dee7536262eb7562a14b945f40aa2da36e5b9012ee6027c1aa5c0a5f7a77\",\"dweb:/ipfs/QmWBynJXHDZTgLyWyTjpxm9u4nmNAnvHY2vg2DigzfWSX4\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Getters.sol\":{\"keccak256\":\"0x8a2209d11b25e6f522c70f1bdc34e2e84c3ae5f01bc3b5a9ca49b0c78bb71934\",\"urls\":[\"bzz-raw://44e798c0d36823522e001923c3b4de41be094a447d9686dff3a0ff2b53f80b84\",\"dweb:/ipfs/QmcivJk7AdRWwXniT1trWGN1ua8iTTJYBZiRjbK8kcc9Mg\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Storage.sol\":{\"keccak256\":\"0xf9e8e9334b5554db4c1700b98e589d960e319f7727e44e479fd95f552e627e83\",\"urls\":[\"bzz-raw://99b047f661cdf71524b453af97a28260a11ec2cf519f7efd4082da0821977c48\",\"dweb:/ipfs/QmVcZaKknZpky314FpmVrk8xXDDnGoQKDUp1uGM7e1pKsr\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Oracle.sol\":{\"keccak256\":\"0xae11b90feaf832f8c0ab6e4ccb4fd20353fc866886c0bfeb5e1d919e150c7752\",\"urls\":[\"bzz-raw://392ab0388dfa24821b9a54c4d5c7581284005637991dd715240f6db3a4c57318\",\"dweb:/ipfs/QmVAAiM5o64UqQeL3n25aaPodsDUd7xHosRL31ccHnyYoE\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol\":{\"keccak256\":\"0x4c06a8f9779e4a2975ceb5e05583c10309d1979814c7d408ee9045b5c896f8d2\",\"urls\":[\"bzz-raw://2231570e2572d884876eb5c443e4ae59cf8168d8f0e33cc38ebf88497ae65def\",\"dweb:/ipfs/QmWWpyL1P7nUVnpXEULTqCTTvsKSNwnRRvB4kFCuJeMGGo\"]}},\"version\":1}",
+  "bytecode": "0x608060405260016000556108e7806100186000396000f3fe608060405234801561001057600080fd5b50600436106100df5760003560e01c806380d636811161008c5780639ba63e9e116100665780639ba63e9e146101a2578063dc4f3a0e146101b5578063e3bbb565146101bd578063e830b690146101c5576100df565b806380d636811461015a57806384ea28621461016f57806393423e9c14610182576100df565b80636e9960c3116100bd5780636e9960c3146101355780637099366b1461013d578063796da7af14610145576100df565b8063052f72d7146100e457806328b7bede1461010d5780633a031bf014610122575b600080fd5b6100f76100f2366004610627565b6101cd565b60405161010491906107d5565b60405180910390f35b6101156101f8565b60405161010491906107c7565b6100f761013036600461064d565b610214565b610115610251565b6100f7610281565b61014d61028a565b604051610104919061080f565b61016261037c565b6040516101049190610801565b6100f761017d36600461064d565b6103d2565b610195610190366004610627565b610477565b60405161010491906107f3565b6101626101b0366004610627565b61050a565b610115610588565b6101156105a4565b61014d6105c0565b73ffffffffffffffffffffffffffffffffffffffff1660009081526003602052604090205460ff1690565b60055473ffffffffffffffffffffffffffffffffffffffff1690565b73ffffffffffffffffffffffffffffffffffffffff80831660009081526004602090815260408083209385168352929052205460ff165b92915050565b600061027c7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d61036105c6565b905090565b600a5460ff1690565b3360009081526003602052604081205460ff166102dc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016102d3906107e3565b60405180910390fd5b600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166398d5fdca6040518163ffffffff1660e01b815260040160206040518083038186803b15801561034457600080fd5b505afa158015610358573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061027c9190810190610687565b6103846105ca565b506040805160608101825260085463ffffffff81168252640100000000810460ff16151560208301526501000000000090046fffffffffffffffffffffffffffffffff169181019190915290565b60008173ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff161480610433575073ffffffffffffffffffffffffffffffffffffffff821660009081526003602052604090205460ff165b80610470575073ffffffffffffffffffffffffffffffffffffffff80841660009081526004602090815260408083209386168352929052205460ff165b9392505050565b61047f6105ea565b5073ffffffffffffffffffffffffffffffffffffffff166000908152600160209081526040918290208251608081018452905460ff808216151583526101008204161515928201929092526effffffffffffffffffffffffffffff62010000830481169382019390935271010000000000000000000000000000000000909104909116606082015290565b6105126105ca565b5073ffffffffffffffffffffffffffffffffffffffff166000908152600260209081526040918290208251606081018452905463ffffffff81168252640100000000810460ff16151592820192909252650100000000009091046fffffffffffffffffffffffffffffffff169181019190915290565b60075473ffffffffffffffffffffffffffffffffffffffff1690565b60065473ffffffffffffffffffffffffffffffffffffffff1690565b60095490565b5490565b604080516060810182526000808252602082018190529181019190915290565b60408051608081018252600080825260208201819052918101829052606081019190915290565b803561024b81610884565b805161024b8161089b565b60006020828403121561063957600080fd5b60006106458484610611565b949350505050565b6000806040838503121561066057600080fd5b600061066c8585610611565b925050602061067d85828601610611565b9150509250929050565b60006020828403121561069957600080fd5b6000610645848461061c565b6106ae81610826565b82525050565b6106ae81610831565b60006106ca602a8361081d565b7f4f7261636c6520707269636520726571756573746572206e6f7420676c6f626181527f6c206f70657261746f7200000000000000000000000000000000000000000000602082015260400192915050565b8051608083019061072d84826106b4565b50602082015161074060208501826106b4565b50604082015161075360408501826107a3565b50606082015161076660608501826107a3565b50505050565b8051606083019061077d84826107be565b50602082015161079060208501826106b4565b50604082015161076660408501826107ac565b6106ae81610836565b6106ae8161084a565b6106ae81610878565b6106ae8161087b565b6020810161024b82846106a5565b6020810161024b82846106b4565b6020808252810161024b816106bd565b6080810161024b828461071c565b6060810161024b828461076c565b6020810161024b82846107b5565b90815260200190565b600061024b8261085f565b151590565b6effffffffffffffffffffffffffffff1690565b6fffffffffffffffffffffffffffffffff1690565b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b63ffffffff1690565b61088d81610826565b811461089857600080fd5b50565b61088d8161087856fea365627a7a72315820657b8850d83d7d3bb0fe52e6af112ef1ed246a9816c2eca448ae255377778cba6c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100df5760003560e01c806380d636811161008c5780639ba63e9e116100665780639ba63e9e146101a2578063dc4f3a0e146101b5578063e3bbb565146101bd578063e830b690146101c5576100df565b806380d636811461015a57806384ea28621461016f57806393423e9c14610182576100df565b80636e9960c3116100bd5780636e9960c3146101355780637099366b1461013d578063796da7af14610145576100df565b8063052f72d7146100e457806328b7bede1461010d5780633a031bf014610122575b600080fd5b6100f76100f2366004610627565b6101cd565b60405161010491906107d5565b60405180910390f35b6101156101f8565b60405161010491906107c7565b6100f761013036600461064d565b610214565b610115610251565b6100f7610281565b61014d61028a565b604051610104919061080f565b61016261037c565b6040516101049190610801565b6100f761017d36600461064d565b6103d2565b610195610190366004610627565b610477565b60405161010491906107f3565b6101626101b0366004610627565b61050a565b610115610588565b6101156105a4565b61014d6105c0565b73ffffffffffffffffffffffffffffffffffffffff1660009081526003602052604090205460ff1690565b60055473ffffffffffffffffffffffffffffffffffffffff1690565b73ffffffffffffffffffffffffffffffffffffffff80831660009081526004602090815260408083209385168352929052205460ff165b92915050565b600061027c7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d61036105c6565b905090565b600a5460ff1690565b3360009081526003602052604081205460ff166102dc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016102d3906107e3565b60405180910390fd5b600660009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166398d5fdca6040518163ffffffff1660e01b815260040160206040518083038186803b15801561034457600080fd5b505afa158015610358573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061027c9190810190610687565b6103846105ca565b506040805160608101825260085463ffffffff81168252640100000000810460ff16151560208301526501000000000090046fffffffffffffffffffffffffffffffff169181019190915290565b60008173ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff161480610433575073ffffffffffffffffffffffffffffffffffffffff821660009081526003602052604090205460ff165b80610470575073ffffffffffffffffffffffffffffffffffffffff80841660009081526004602090815260408083209386168352929052205460ff165b9392505050565b61047f6105ea565b5073ffffffffffffffffffffffffffffffffffffffff166000908152600160209081526040918290208251608081018452905460ff808216151583526101008204161515928201929092526effffffffffffffffffffffffffffff62010000830481169382019390935271010000000000000000000000000000000000909104909116606082015290565b6105126105ca565b5073ffffffffffffffffffffffffffffffffffffffff166000908152600260209081526040918290208251606081018452905463ffffffff81168252640100000000810460ff16151592820192909252650100000000009091046fffffffffffffffffffffffffffffffff169181019190915290565b60075473ffffffffffffffffffffffffffffffffffffffff1690565b60065473ffffffffffffffffffffffffffffffffffffffff1690565b60095490565b5490565b604080516060810182526000808252602082018190529181019190915290565b60408051608081018252600080825260208201819052918101829052606081019190915290565b803561024b81610884565b805161024b8161089b565b60006020828403121561063957600080fd5b60006106458484610611565b949350505050565b6000806040838503121561066057600080fd5b600061066c8585610611565b925050602061067d85828601610611565b9150509250929050565b60006020828403121561069957600080fd5b6000610645848461061c565b6106ae81610826565b82525050565b6106ae81610831565b60006106ca602a8361081d565b7f4f7261636c6520707269636520726571756573746572206e6f7420676c6f626181527f6c206f70657261746f7200000000000000000000000000000000000000000000602082015260400192915050565b8051608083019061072d84826106b4565b50602082015161074060208501826106b4565b50604082015161075360408501826107a3565b50606082015161076660608501826107a3565b50505050565b8051606083019061077d84826107be565b50602082015161079060208501826106b4565b50604082015161076660408501826107ac565b6106ae81610836565b6106ae8161084a565b6106ae81610878565b6106ae8161087b565b6020810161024b82846106a5565b6020810161024b82846106b4565b6020808252810161024b816106bd565b6080810161024b828461071c565b6060810161024b828461076c565b6020810161024b82846107b5565b90815260200190565b600061024b8261085f565b151590565b6effffffffffffffffffffffffffffff1690565b6fffffffffffffffffffffffffffffffff1690565b73ffffffffffffffffffffffffffffffffffffffff1690565b90565b63ffffffff1690565b61088d81610826565b811461089857600080fd5b50565b61088d8161087856fea365627a7a72315820657b8850d83d7d3bb0fe52e6af112ef1ed246a9816c2eca448ae255377778cba6c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "898:4930:18:-;;;868:1:9;1001:8;:22;898:4930:18;;;;;;",
+  "deployedSourceMap": "898:4930:18:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;898:4930:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2665:170;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;2998:119;;;:::i;:::-;;;;;;;;2162:202;;;;;;;;;:::i;1448:153:6:-;;;:::i;4485:144:18:-;;;:::i;4893:270::-;;;:::i;:::-;;;;;;;;3801:137;;;:::i;:::-;;;;;;;;5544:282;;;;;;;;;:::i;1234:176::-;;;;;;;;;:::i;:::-;;;;;;;;1629:177;;;;;;;;;:::i;3538:121::-;;;:::i;3273:::-;;;:::i;4171:128::-;;;:::i;2665:170::-;2800:28;;2773:4;2800:28;;;:18;:28;;;;;;;;;2665:170::o;2998:119::-;3103:7;;;;2998:119;:::o;2162:202::-;2321:26;;;;2294:4;2321:26;;;:17;:26;;;;;;;;:36;;;;;;;;;;;;2162:202;;;;;:::o;1448:153:6:-;1513:7;1567:24;1010:66;1567:12;:24::i;:::-;1559:33;-1:-1:-1;1448:153:6;:::o;4485:144:18:-;4596:26;;;;4485:144;:::o;4893:270::-;5029:10;4966:7;5010:30;;;:18;:30;;;;;;;;4989:119;;;;;;;;;;;;;;;;;;;;;;5136:8;;;;;;;;;;;5125:29;;;:31;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5125:31:18;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;5125:31:18;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;5125:31:18;;;;;;;;3801:137;3874:20;;:::i;:::-;-1:-1:-1;3910:21:18;;;;;;;;3917:14;3910:21;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3801:137::o;5544:282::-;5677:4;5715:8;5704:19;;:7;:19;;;:63;;;-1:-1:-1;5739:28:18;;;;;;;:18;:28;;;;;;;;5704:63;:115;;;-1:-1:-1;5783:26:18;;;;;;;;:17;:26;;;;;;;;:36;;;;;;;;;;;;5704:115;5697:122;5544:282;-1:-1:-1;;;5544:282:18:o;1234:176::-;1339:22;;:::i;:::-;-1:-1:-1;1384:19:18;;;;;;:10;:19;;;;;;;;;1377:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1234:176::o;1629:177::-;1732:20;;:::i;:::-;-1:-1:-1;1775:24:18;;;;;;:15;:24;;;;;;;;;1768:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1629:177::o;3538:121::-;3644:8;;;;3538:121;:::o;3273:::-;3379:8;;;;3273:121;:::o;4171:128::-;4276:16;;4171:128;:::o;879:286:13:-;1115:11;;879:286::o;898:4930:18:-;;;;;;;;;-1:-1:-1;898:4930:18;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;-1:-1:-1;898:4930:18;;;;;;;;;;;;;;;;;;;;;;;:::o;5:130:-1:-;72:20;;97:33;72:20;97:33;;142:134;220:13;;238:33;220:13;238:33;;283:241;;387:2;375:9;366:7;362:23;358:32;355:2;;;403:1;400;393:12;355:2;438:1;455:53;500:7;480:9;455:53;;;445:63;349:175;-1:-1;;;;349:175;531:366;;;652:2;640:9;631:7;627:23;623:32;620:2;;;668:1;665;658:12;620:2;703:1;720:53;765:7;745:9;720:53;;;710:63;;682:97;810:2;828:53;873:7;864:6;853:9;849:22;828:53;;;818:63;;789:98;614:283;;;;;;904:263;;1019:2;1007:9;998:7;994:23;990:32;987:2;;;1035:1;1032;1025:12;987:2;1070:1;1087:64;1143:7;1123:9;1087:64;;1174:113;1257:24;1275:5;1257:24;;;1252:3;1245:37;1239:48;;;1294:94;1361:21;1376:5;1361:21;;1507:379;;1667:67;1731:2;1726:3;1667:67;;;1767:34;1747:55;;1836:12;1831:2;1822:12;;1815:34;1877:2;1868:12;;1653:233;-1:-1;;1653:233;1949:804;2170:23;;2092:4;2083:14;;;2199:57;2087:3;2170:23;2199:57;;;2112:150;2349:4;2342:5;2338:16;2332:23;2361:57;2412:4;2407:3;2403:14;2389:12;2361:57;;;2272:152;2499:4;2492:5;2488:16;2482:23;2511:63;2568:4;2563:3;2559:14;2545:12;2511:63;;;2434:146;2657:4;2650:5;2646:16;2640:23;2669:63;2726:4;2721:3;2717:14;2703:12;2669:63;;;2590:148;2065:688;;;;2811:630;3021:23;;2950:4;2941:14;;;3050:61;2945:3;3021:23;3050:61;;;2970:147;3196:4;3189:5;3185:16;3179:23;3208:57;3259:4;3254:3;3250:14;3236:12;3208:57;;;3127:144;3345:4;3338:5;3334:16;3328:23;3357:63;3414:4;3409:3;3405:14;3391:12;3357:63;;3448:103;3521:24;3539:5;3521:24;;3558:103;3631:24;3649:5;3631:24;;3668:113;3751:24;3769:5;3751:24;;3788:100;3859:23;3876:5;3859:23;;3895:213;4013:2;3998:18;;4027:71;4002:9;4071:6;4027:71;;4115:201;4227:2;4212:18;;4241:65;4216:9;4279:6;4241:65;;4323:407;4514:2;4528:47;;;4499:18;;4589:131;4499:18;4589:131;;4737:314;4905:3;4890:19;;4920:121;4894:9;5014:6;4920:121;;5058:305;5222:2;5207:18;;5236:117;5211:9;5326:6;5236:117;;5370:213;5488:2;5473:18;;5502:71;5477:9;5546:6;5502:71;;5591:163;5694:19;;;5743:4;5734:14;;5687:67;5762:91;;5824:24;5842:5;5824:24;;5860:85;5926:13;5919:21;;5902:43;5952:111;6025:32;6014:44;;5997:66;6070:113;6143:34;6132:46;;6115:68;6190:121;6263:42;6252:54;;6235:76;6318:72;6380:5;6363:27;6397:88;6469:10;6458:22;;6441:44;6492:117;6561:24;6579:5;6561:24;;;6554:5;6551:35;6541:2;;6600:1;6597;6590:12;6541:2;6535:74;;6616:117;6685:24;6703:5;6685:24;",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\nimport { P1Storage } from \"./P1Storage.sol\";\nimport { I_P1Oracle } from \"../intf/I_P1Oracle.sol\";\nimport { P1Types } from \"../lib/P1Types.sol\";\n\n\n/**\n * @title P1Getters\n * @author dYdX\n *\n * @notice Contract for read-only getters.\n */\ncontract P1Getters is\n    P1Storage\n{\n    // ============ Account Getters ============\n\n    /**\n     * @notice Get the balance of an account, without accounting for changes in the index.\n     *\n     * @param  account  The address of the account to query the balances of.\n     * @return          The balances of the account.\n     */\n    function getAccountBalance(\n        address account\n    )\n        external\n        view\n        returns (P1Types.Balance memory)\n    {\n        return _BALANCES_[account];\n    }\n\n    /**\n     * @notice Gets the most recently cached index of an account.\n     *\n     * @param  account  The address of the account to query the index of.\n     * @return          The index of the account.\n     */\n    function getAccountIndex(\n        address account\n    )\n        external\n        view\n        returns (P1Types.Index memory)\n    {\n        return _LOCAL_INDEXES_[account];\n    }\n\n    /**\n     * @notice Gets the local operator status of an operator for a particular account.\n     *\n     * @param  account   The account to query the operator for.\n     * @param  operator  The address of the operator to query the status of.\n     * @return           True if the operator is a local operator of the account, false otherwise.\n     */\n    function getIsLocalOperator(\n        address account,\n        address operator\n    )\n        external\n        view\n        returns (bool)\n    {\n        return _LOCAL_OPERATORS_[account][operator];\n    }\n\n    // ============ Global Getters ============\n\n    /**\n     * @notice Gets the global operator status of an address.\n     *\n     * @param  operator  The address of the operator to query the status of.\n     * @return           True if the address is a global operator, false otherwise.\n     */\n    function getIsGlobalOperator(\n        address operator\n    )\n        external\n        view\n        returns (bool)\n    {\n        return _GLOBAL_OPERATORS_[operator];\n    }\n\n    /**\n     * @notice Gets the address of the ERC20 margin contract used for margin deposits.\n     *\n     * @return The address of the ERC20 token.\n     */\n    function getTokenContract()\n        external\n        view\n        returns (address)\n    {\n        return _TOKEN_;\n    }\n\n    /**\n     * @notice Gets the current address of the price oracle contract.\n     *\n     * @return The address of the price oracle contract.\n     */\n    function getOracleContract()\n        external\n        view\n        returns (address)\n    {\n        return _ORACLE_;\n    }\n\n    /**\n     * @notice Gets the current address of the funder contract.\n     *\n     * @return The address of the funder contract.\n     */\n    function getFunderContract()\n        external\n        view\n        returns (address)\n    {\n        return _FUNDER_;\n    }\n\n    /**\n     * @notice Gets the most recently cached global index.\n     *\n     * @return The most recently cached global index.\n     */\n    function getGlobalIndex()\n        external\n        view\n        returns (P1Types.Index memory)\n    {\n        return _GLOBAL_INDEX_;\n    }\n\n    /**\n     * @notice Gets minimum collateralization ratio of the protocol.\n     *\n     * @return The minimum-acceptable collateralization ratio, returned as a fixed-point number with\n     *  18 decimals of precision.\n     */\n    function getMinCollateral()\n        external\n        view\n        returns (uint256)\n    {\n        return _MIN_COLLATERAL_;\n    }\n\n    /**\n     * @notice Gets the status of whether final-settlement was initiated by the Admin.\n     *\n     * @return True if final-settlement was enabled, false otherwise.\n     */\n    function getFinalSettlementEnabled()\n        external\n        view\n        returns (bool)\n    {\n        return _FINAL_SETTLEMENT_ENABLED_;\n    }\n\n    // ============ Authorized External Getters ============\n\n    /**\n     * @notice Gets the price returned by the oracle.\n     * @dev Only able to be called by global operators.\n     *\n     * @return The price returned by the current price oracle.\n     */\n    function getOraclePrice()\n        external\n        view\n        returns (uint256)\n    {\n        require(\n            _GLOBAL_OPERATORS_[msg.sender],\n            \"Oracle price requester not global operator\"\n        );\n        return I_P1Oracle(_ORACLE_).getPrice();\n    }\n\n    // ============ Public Getters ============\n\n    /**\n     * @notice Gets whether an address has permissions to operate an account.\n     *\n     * @param  account   The account to query.\n     * @param  operator  The address to query.\n     * @return           True if the operator has permission to operate the account,\n     *                   and false otherwise.\n     */\n    function hasAccountPermissions(\n        address account,\n        address operator\n    )\n        public\n        view\n        returns (bool)\n    {\n        return account == operator\n            || _GLOBAL_OPERATORS_[operator]\n            || _LOCAL_OPERATORS_[account][operator];\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Getters.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Getters.sol",
+    "exportedSymbols": {
+      "P1Getters": [
+        1846
+      ]
+    },
+    "id": 1847,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1692,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:18"
+      },
+      {
+        "id": 1693,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:18"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Storage.sol",
+        "file": "./P1Storage.sol",
+        "id": 1695,
+        "nodeType": "ImportDirective",
+        "scope": 1847,
+        "sourceUnit": 2524,
+        "src": "662:44:18",
+        "symbolAliases": [
+          {
+            "foreign": 1694,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Oracle.sol",
+        "file": "../intf/I_P1Oracle.sol",
+        "id": 1697,
+        "nodeType": "ImportDirective",
+        "scope": 1847,
+        "sourceUnit": 3077,
+        "src": "707:52:18",
+        "symbolAliases": [
+          {
+            "foreign": 1696,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol",
+        "file": "../lib/P1Types.sol",
+        "id": 1699,
+        "nodeType": "ImportDirective",
+        "scope": 1847,
+        "sourceUnit": 3690,
+        "src": "760:45:18",
+        "symbolAliases": [
+          {
+            "foreign": 1698,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1700,
+              "name": "P1Storage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2523,
+              "src": "924:9:18",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_P1Storage_$2523",
+                "typeString": "contract P1Storage"
+              }
+            },
+            "id": 1701,
+            "nodeType": "InheritanceSpecifier",
+            "src": "924:9:18"
+          }
+        ],
+        "contractDependencies": [
+          337,
+          609,
+          2523
+        ],
+        "contractKind": "contract",
+        "documentation": "@title P1Getters\n@author dYdX\n * @notice Contract for read-only getters.",
+        "fullyImplemented": true,
+        "id": 1846,
+        "linearizedBaseContracts": [
+          1846,
+          2523,
+          609,
+          337
+        ],
+        "name": "P1Getters",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1712,
+              "nodeType": "Block",
+              "src": "1367:43:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 1708,
+                      "name": "_BALANCES_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2494,
+                      "src": "1384:10:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Balance_$3672_storage_$",
+                        "typeString": "mapping(address => struct P1Types.Balance storage ref)"
+                      }
+                    },
+                    "id": 1710,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 1709,
+                      "name": "account",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1703,
+                      "src": "1395:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1384:19:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Balance_$3672_storage",
+                      "typeString": "struct P1Types.Balance storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 1707,
+                  "id": 1711,
+                  "nodeType": "Return",
+                  "src": "1377:26:18"
+                }
+              ]
+            },
+            "documentation": "@notice Get the balance of an account, without accounting for changes in the index.\n     * @param  account  The address of the account to query the balances of.\n@return          The balances of the account.",
+            "id": 1713,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAccountBalance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1704,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1703,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1713,
+                  "src": "1270:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1702,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1270:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1260:31:18"
+            },
+            "returnParameters": {
+              "id": 1707,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1706,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1713,
+                  "src": "1339:22:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Balance_$3672_memory_ptr",
+                    "typeString": "struct P1Types.Balance"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1705,
+                    "name": "P1Types.Balance",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3672,
+                    "src": "1339:15:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Balance_$3672_storage_ptr",
+                      "typeString": "struct P1Types.Balance"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1338:24:18"
+            },
+            "scope": 1846,
+            "src": "1234:176:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1724,
+              "nodeType": "Block",
+              "src": "1758:48:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 1720,
+                      "name": "_LOCAL_INDEXES_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2498,
+                      "src": "1775:15:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Index_$3663_storage_$",
+                        "typeString": "mapping(address => struct P1Types.Index storage ref)"
+                      }
+                    },
+                    "id": 1722,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 1721,
+                      "name": "account",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1715,
+                      "src": "1791:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1775:24:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Index_$3663_storage",
+                      "typeString": "struct P1Types.Index storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 1719,
+                  "id": 1723,
+                  "nodeType": "Return",
+                  "src": "1768:31:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the most recently cached index of an account.\n     * @param  account  The address of the account to query the index of.\n@return          The index of the account.",
+            "id": 1725,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAccountIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1716,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1715,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1725,
+                  "src": "1663:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1714,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1663:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1653:31:18"
+            },
+            "returnParameters": {
+              "id": 1719,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1718,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1725,
+                  "src": "1732:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Index_$3663_memory_ptr",
+                    "typeString": "struct P1Types.Index"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1717,
+                    "name": "P1Types.Index",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3663,
+                    "src": "1732:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Index_$3663_storage_ptr",
+                      "typeString": "struct P1Types.Index"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1731:22:18"
+            },
+            "scope": 1846,
+            "src": "1629:177:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1740,
+              "nodeType": "Block",
+              "src": "2304:60:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 1734,
+                        "name": "_LOCAL_OPERATORS_",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2508,
+                        "src": "2321:17:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
+                          "typeString": "mapping(address => mapping(address => bool))"
+                        }
+                      },
+                      "id": 1736,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 1735,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1727,
+                        "src": "2339:7:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2321:26:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 1738,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 1737,
+                      "name": "operator",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1729,
+                      "src": "2348:8:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "2321:36:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1733,
+                  "id": 1739,
+                  "nodeType": "Return",
+                  "src": "2314:43:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the local operator status of an operator for a particular account.\n     * @param  account   The account to query the operator for.\n@param  operator  The address of the operator to query the status of.\n@return           True if the operator is a local operator of the account, false otherwise.",
+            "id": 1741,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIsLocalOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1730,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1727,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1741,
+                  "src": "2199:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1726,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2199:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1729,
+                  "name": "operator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1741,
+                  "src": "2224:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1728,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2224:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2189:57:18"
+            },
+            "returnParameters": {
+              "id": 1733,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1732,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1741,
+                  "src": "2294:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1731,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2294:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2293:6:18"
+            },
+            "scope": 1846,
+            "src": "2162:202:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1752,
+              "nodeType": "Block",
+              "src": "2783:52:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 1748,
+                      "name": "_GLOBAL_OPERATORS_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2502,
+                      "src": "2800:18:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 1750,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 1749,
+                      "name": "operator",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1743,
+                      "src": "2819:8:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "2800:28:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1747,
+                  "id": 1751,
+                  "nodeType": "Return",
+                  "src": "2793:35:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the global operator status of an address.\n     * @param  operator  The address of the operator to query the status of.\n@return           True if the address is a global operator, false otherwise.",
+            "id": 1753,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getIsGlobalOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1744,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1743,
+                  "name": "operator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1753,
+                  "src": "2703:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1742,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2703:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2693:32:18"
+            },
+            "returnParameters": {
+              "id": 1747,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1746,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1753,
+                  "src": "2773:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1745,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2773:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2772:6:18"
+            },
+            "scope": 1846,
+            "src": "2665:170:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1760,
+              "nodeType": "Block",
+              "src": "3086:31:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1758,
+                    "name": "_TOKEN_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2510,
+                    "src": "3103:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 1757,
+                  "id": 1759,
+                  "nodeType": "Return",
+                  "src": "3096:14:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the address of the ERC20 margin contract used for margin deposits.\n     * @return The address of the ERC20 token.",
+            "id": 1761,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTokenContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1754,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3023:2:18"
+            },
+            "returnParameters": {
+              "id": 1757,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1756,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1761,
+                  "src": "3073:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1755,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3073:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3072:9:18"
+            },
+            "scope": 1846,
+            "src": "2998:119:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1768,
+              "nodeType": "Block",
+              "src": "3362:32:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1766,
+                    "name": "_ORACLE_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2512,
+                    "src": "3379:8:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 1765,
+                  "id": 1767,
+                  "nodeType": "Return",
+                  "src": "3372:15:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the current address of the price oracle contract.\n     * @return The address of the price oracle contract.",
+            "id": 1769,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOracleContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1762,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3299:2:18"
+            },
+            "returnParameters": {
+              "id": 1765,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1764,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1769,
+                  "src": "3349:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1763,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3349:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3348:9:18"
+            },
+            "scope": 1846,
+            "src": "3273:121:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1776,
+              "nodeType": "Block",
+              "src": "3627:32:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1774,
+                    "name": "_FUNDER_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2514,
+                    "src": "3644:8:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 1773,
+                  "id": 1775,
+                  "nodeType": "Return",
+                  "src": "3637:15:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the current address of the funder contract.\n     * @return The address of the funder contract.",
+            "id": 1777,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFunderContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1770,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3564:2:18"
+            },
+            "returnParameters": {
+              "id": 1773,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1772,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1777,
+                  "src": "3614:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1771,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3614:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3613:9:18"
+            },
+            "scope": 1846,
+            "src": "3538:121:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1784,
+              "nodeType": "Block",
+              "src": "3900:38:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1782,
+                    "name": "_GLOBAL_INDEX_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2516,
+                    "src": "3917:14:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Index_$3663_storage",
+                      "typeString": "struct P1Types.Index storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 1781,
+                  "id": 1783,
+                  "nodeType": "Return",
+                  "src": "3910:21:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the most recently cached global index.\n     * @return The most recently cached global index.",
+            "id": 1785,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGlobalIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1778,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3824:2:18"
+            },
+            "returnParameters": {
+              "id": 1781,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1780,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1785,
+                  "src": "3874:20:18",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Index_$3663_memory_ptr",
+                    "typeString": "struct P1Types.Index"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1779,
+                    "name": "P1Types.Index",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3663,
+                    "src": "3874:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Index_$3663_storage_ptr",
+                      "typeString": "struct P1Types.Index"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3873:22:18"
+            },
+            "scope": 1846,
+            "src": "3801:137:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1792,
+              "nodeType": "Block",
+              "src": "4259:40:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1790,
+                    "name": "_MIN_COLLATERAL_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2518,
+                    "src": "4276:16:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1789,
+                  "id": 1791,
+                  "nodeType": "Return",
+                  "src": "4269:23:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets minimum collateralization ratio of the protocol.\n     * @return The minimum-acceptable collateralization ratio, returned as a fixed-point number with\n 18 decimals of precision.",
+            "id": 1793,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMinCollateral",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1786,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4196:2:18"
+            },
+            "returnParameters": {
+              "id": 1789,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1788,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1793,
+                  "src": "4246:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1787,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4246:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4245:9:18"
+            },
+            "scope": 1846,
+            "src": "4171:128:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1800,
+              "nodeType": "Block",
+              "src": "4579:50:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1798,
+                    "name": "_FINAL_SETTLEMENT_ENABLED_",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2520,
+                    "src": "4596:26:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1797,
+                  "id": 1799,
+                  "nodeType": "Return",
+                  "src": "4589:33:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the status of whether final-settlement was initiated by the Admin.\n     * @return True if final-settlement was enabled, false otherwise.",
+            "id": 1801,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFinalSettlementEnabled",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1794,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4519:2:18"
+            },
+            "returnParameters": {
+              "id": 1797,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1796,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1801,
+                  "src": "4569:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1795,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4569:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4568:6:18"
+            },
+            "scope": 1846,
+            "src": "4485:144:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1820,
+              "nodeType": "Block",
+              "src": "4979:184:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1807,
+                          "name": "_GLOBAL_OPERATORS_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2502,
+                          "src": "5010:18:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                          }
+                        },
+                        "id": 1810,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1808,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 12978,
+                            "src": "5029:3:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1809,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "5029:10:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "5010:30:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4f7261636c6520707269636520726571756573746572206e6f7420676c6f62616c206f70657261746f72",
+                        "id": 1811,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "5054:44:18",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_5380e1d1fb6940f59f2d8c678054b6e5708121c6babdfb32df617c5dac73f246",
+                          "typeString": "literal_string \"Oracle price requester not global operator\""
+                        },
+                        "value": "Oracle price requester not global operator"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_5380e1d1fb6940f59f2d8c678054b6e5708121c6babdfb32df617c5dac73f246",
+                          "typeString": "literal_string \"Oracle price requester not global operator\""
+                        }
+                      ],
+                      "id": 1806,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        12981,
+                        12982
+                      ],
+                      "referencedDeclaration": 12982,
+                      "src": "4989:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1812,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "4989:119:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1813,
+                  "nodeType": "ExpressionStatement",
+                  "src": "4989:119:18"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1815,
+                            "name": "_ORACLE_",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2512,
+                            "src": "5136:8:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 1814,
+                          "name": "I_P1Oracle",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3076,
+                          "src": "5125:10:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_I_P1Oracle_$3076_$",
+                            "typeString": "type(contract I_P1Oracle)"
+                          }
+                        },
+                        "id": 1816,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "5125:20:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_I_P1Oracle_$3076",
+                          "typeString": "contract I_P1Oracle"
+                        }
+                      },
+                      "id": 1817,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getPrice",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3075,
+                      "src": "5125:29:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                        "typeString": "function () view external returns (uint256)"
+                      }
+                    },
+                    "id": 1818,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "5125:31:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 1805,
+                  "id": 1819,
+                  "nodeType": "Return",
+                  "src": "5118:38:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets the price returned by the oracle.\n@dev Only able to be called by global operators.\n     * @return The price returned by the current price oracle.",
+            "id": 1821,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOraclePrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1802,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4916:2:18"
+            },
+            "returnParameters": {
+              "id": 1805,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1804,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1821,
+                  "src": "4966:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1803,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4966:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4965:9:18"
+            },
+            "scope": 1846,
+            "src": "4893:270:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 1844,
+              "nodeType": "Block",
+              "src": "5687:139:18",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 1842,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 1836,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 1832,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 1830,
+                          "name": "account",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1823,
+                          "src": "5704:7:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 1831,
+                          "name": "operator",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1825,
+                          "src": "5715:8:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "5704:19:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "||",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1833,
+                          "name": "_GLOBAL_OPERATORS_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2502,
+                          "src": "5739:18:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                          }
+                        },
+                        "id": 1835,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1834,
+                          "name": "operator",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1825,
+                          "src": "5758:8:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "5739:28:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "5704:63:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "||",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1837,
+                          "name": "_LOCAL_OPERATORS_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2508,
+                          "src": "5783:17:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
+                            "typeString": "mapping(address => mapping(address => bool))"
+                          }
+                        },
+                        "id": 1839,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1838,
+                          "name": "account",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1823,
+                          "src": "5801:7:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "5783:26:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 1841,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 1840,
+                        "name": "operator",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1825,
+                        "src": "5810:8:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "5783:36:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "5704:115:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1829,
+                  "id": 1843,
+                  "nodeType": "Return",
+                  "src": "5697:122:18"
+                }
+              ]
+            },
+            "documentation": "@notice Gets whether an address has permissions to operate an account.\n     * @param  account   The account to query.\n@param  operator  The address to query.\n@return           True if the operator has permission to operate the account,\n                  and false otherwise.",
+            "id": 1845,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "hasAccountPermissions",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1826,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1823,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1845,
+                  "src": "5584:15:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1822,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5584:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1825,
+                  "name": "operator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1845,
+                  "src": "5609:16:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1824,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5609:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5574:57:18"
+            },
+            "returnParameters": {
+              "id": 1829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1828,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1845,
+                  "src": "5677:4:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1827,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5677:4:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5676:6:18"
+            },
+            "scope": 1846,
+            "src": "5544:282:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1847,
+        "src": "898:4930:18"
+      }
+    ],
+    "src": "603:5226:18"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Getters.sol",
+      "exportedSymbols": {
+        "P1Getters": [
+          1846
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 1692,
+        "name": "PragmaDirective",
+        "src": "603:23:18"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 1693,
+        "name": "PragmaDirective",
+        "src": "627:33:18"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2524,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Storage.sol",
+          "file": "./P1Storage.sol",
+          "scope": 1847,
+          "symbolAliases": [
+            {
+              "foreign": 1694,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 1695,
+        "name": "ImportDirective",
+        "src": "662:44:18"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3077,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Oracle.sol",
+          "file": "../intf/I_P1Oracle.sol",
+          "scope": 1847,
+          "symbolAliases": [
+            {
+              "foreign": 1696,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 1697,
+        "name": "ImportDirective",
+        "src": "707:52:18"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3690,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol",
+          "file": "../lib/P1Types.sol",
+          "scope": 1847,
+          "symbolAliases": [
+            {
+              "foreign": 1698,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 1699,
+        "name": "ImportDirective",
+        "src": "760:45:18"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            337,
+            609,
+            2523
+          ],
+          "contractKind": "contract",
+          "documentation": "@title P1Getters\n@author dYdX\n * @notice Contract for read-only getters.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            1846,
+            2523,
+            609,
+            337
+          ],
+          "name": "P1Getters",
+          "scope": 1847
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "P1Storage",
+                  "referencedDeclaration": 2523,
+                  "type": "contract P1Storage"
+                },
+                "id": 1700,
+                "name": "UserDefinedTypeName",
+                "src": "924:9:18"
+              }
+            ],
+            "id": 1701,
+            "name": "InheritanceSpecifier",
+            "src": "924:9:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Get the balance of an account, without accounting for changes in the index.\n     * @param  account  The address of the account to query the balances of.\n@return          The balances of the account.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getAccountBalance",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "account",
+                      "scope": 1713,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1702,
+                        "name": "ElementaryTypeName",
+                        "src": "1270:7:18"
+                      }
+                    ],
+                    "id": 1703,
+                    "name": "VariableDeclaration",
+                    "src": "1270:15:18"
+                  }
+                ],
+                "id": 1704,
+                "name": "ParameterList",
+                "src": "1260:31:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1713,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct P1Types.Balance",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "P1Types.Balance",
+                          "referencedDeclaration": 3672,
+                          "type": "struct P1Types.Balance"
+                        },
+                        "id": 1705,
+                        "name": "UserDefinedTypeName",
+                        "src": "1339:15:18"
+                      }
+                    ],
+                    "id": 1706,
+                    "name": "VariableDeclaration",
+                    "src": "1339:22:18"
+                  }
+                ],
+                "id": 1707,
+                "name": "ParameterList",
+                "src": "1338:24:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1707
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct P1Types.Balance storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2494,
+                              "type": "mapping(address => struct P1Types.Balance storage ref)",
+                              "value": "_BALANCES_"
+                            },
+                            "id": 1708,
+                            "name": "Identifier",
+                            "src": "1384:10:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1703,
+                              "type": "address",
+                              "value": "account"
+                            },
+                            "id": 1709,
+                            "name": "Identifier",
+                            "src": "1395:7:18"
+                          }
+                        ],
+                        "id": 1710,
+                        "name": "IndexAccess",
+                        "src": "1384:19:18"
+                      }
+                    ],
+                    "id": 1711,
+                    "name": "Return",
+                    "src": "1377:26:18"
+                  }
+                ],
+                "id": 1712,
+                "name": "Block",
+                "src": "1367:43:18"
+              }
+            ],
+            "id": 1713,
+            "name": "FunctionDefinition",
+            "src": "1234:176:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the most recently cached index of an account.\n     * @param  account  The address of the account to query the index of.\n@return          The index of the account.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getAccountIndex",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "account",
+                      "scope": 1725,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1714,
+                        "name": "ElementaryTypeName",
+                        "src": "1663:7:18"
+                      }
+                    ],
+                    "id": 1715,
+                    "name": "VariableDeclaration",
+                    "src": "1663:15:18"
+                  }
+                ],
+                "id": 1716,
+                "name": "ParameterList",
+                "src": "1653:31:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1725,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct P1Types.Index",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "P1Types.Index",
+                          "referencedDeclaration": 3663,
+                          "type": "struct P1Types.Index"
+                        },
+                        "id": 1717,
+                        "name": "UserDefinedTypeName",
+                        "src": "1732:13:18"
+                      }
+                    ],
+                    "id": 1718,
+                    "name": "VariableDeclaration",
+                    "src": "1732:20:18"
+                  }
+                ],
+                "id": 1719,
+                "name": "ParameterList",
+                "src": "1731:22:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1719
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct P1Types.Index storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2498,
+                              "type": "mapping(address => struct P1Types.Index storage ref)",
+                              "value": "_LOCAL_INDEXES_"
+                            },
+                            "id": 1720,
+                            "name": "Identifier",
+                            "src": "1775:15:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1715,
+                              "type": "address",
+                              "value": "account"
+                            },
+                            "id": 1721,
+                            "name": "Identifier",
+                            "src": "1791:7:18"
+                          }
+                        ],
+                        "id": 1722,
+                        "name": "IndexAccess",
+                        "src": "1775:24:18"
+                      }
+                    ],
+                    "id": 1723,
+                    "name": "Return",
+                    "src": "1768:31:18"
+                  }
+                ],
+                "id": 1724,
+                "name": "Block",
+                "src": "1758:48:18"
+              }
+            ],
+            "id": 1725,
+            "name": "FunctionDefinition",
+            "src": "1629:177:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the local operator status of an operator for a particular account.\n     * @param  account   The account to query the operator for.\n@param  operator  The address of the operator to query the status of.\n@return           True if the operator is a local operator of the account, false otherwise.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getIsLocalOperator",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "account",
+                      "scope": 1741,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1726,
+                        "name": "ElementaryTypeName",
+                        "src": "2199:7:18"
+                      }
+                    ],
+                    "id": 1727,
+                    "name": "VariableDeclaration",
+                    "src": "2199:15:18"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "operator",
+                      "scope": 1741,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1728,
+                        "name": "ElementaryTypeName",
+                        "src": "2224:7:18"
+                      }
+                    ],
+                    "id": 1729,
+                    "name": "VariableDeclaration",
+                    "src": "2224:16:18"
+                  }
+                ],
+                "id": 1730,
+                "name": "ParameterList",
+                "src": "2189:57:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1741,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1731,
+                        "name": "ElementaryTypeName",
+                        "src": "2294:4:18"
+                      }
+                    ],
+                    "id": 1732,
+                    "name": "VariableDeclaration",
+                    "src": "2294:4:18"
+                  }
+                ],
+                "id": 1733,
+                "name": "ParameterList",
+                "src": "2293:6:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1733
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "mapping(address => bool)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2508,
+                                  "type": "mapping(address => mapping(address => bool))",
+                                  "value": "_LOCAL_OPERATORS_"
+                                },
+                                "id": 1734,
+                                "name": "Identifier",
+                                "src": "2321:17:18"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1727,
+                                  "type": "address",
+                                  "value": "account"
+                                },
+                                "id": 1735,
+                                "name": "Identifier",
+                                "src": "2339:7:18"
+                              }
+                            ],
+                            "id": 1736,
+                            "name": "IndexAccess",
+                            "src": "2321:26:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1729,
+                              "type": "address",
+                              "value": "operator"
+                            },
+                            "id": 1737,
+                            "name": "Identifier",
+                            "src": "2348:8:18"
+                          }
+                        ],
+                        "id": 1738,
+                        "name": "IndexAccess",
+                        "src": "2321:36:18"
+                      }
+                    ],
+                    "id": 1739,
+                    "name": "Return",
+                    "src": "2314:43:18"
+                  }
+                ],
+                "id": 1740,
+                "name": "Block",
+                "src": "2304:60:18"
+              }
+            ],
+            "id": 1741,
+            "name": "FunctionDefinition",
+            "src": "2162:202:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the global operator status of an address.\n     * @param  operator  The address of the operator to query the status of.\n@return           True if the address is a global operator, false otherwise.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getIsGlobalOperator",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "operator",
+                      "scope": 1753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1742,
+                        "name": "ElementaryTypeName",
+                        "src": "2703:7:18"
+                      }
+                    ],
+                    "id": 1743,
+                    "name": "VariableDeclaration",
+                    "src": "2703:16:18"
+                  }
+                ],
+                "id": 1744,
+                "name": "ParameterList",
+                "src": "2693:32:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1753,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1745,
+                        "name": "ElementaryTypeName",
+                        "src": "2773:4:18"
+                      }
+                    ],
+                    "id": 1746,
+                    "name": "VariableDeclaration",
+                    "src": "2773:4:18"
+                  }
+                ],
+                "id": 1747,
+                "name": "ParameterList",
+                "src": "2772:6:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1747
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2502,
+                              "type": "mapping(address => bool)",
+                              "value": "_GLOBAL_OPERATORS_"
+                            },
+                            "id": 1748,
+                            "name": "Identifier",
+                            "src": "2800:18:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1743,
+                              "type": "address",
+                              "value": "operator"
+                            },
+                            "id": 1749,
+                            "name": "Identifier",
+                            "src": "2819:8:18"
+                          }
+                        ],
+                        "id": 1750,
+                        "name": "IndexAccess",
+                        "src": "2800:28:18"
+                      }
+                    ],
+                    "id": 1751,
+                    "name": "Return",
+                    "src": "2793:35:18"
+                  }
+                ],
+                "id": 1752,
+                "name": "Block",
+                "src": "2783:52:18"
+              }
+            ],
+            "id": 1753,
+            "name": "FunctionDefinition",
+            "src": "2665:170:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the address of the ERC20 margin contract used for margin deposits.\n     * @return The address of the ERC20 token.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getTokenContract",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1754,
+                "name": "ParameterList",
+                "src": "3023:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1761,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1755,
+                        "name": "ElementaryTypeName",
+                        "src": "3073:7:18"
+                      }
+                    ],
+                    "id": 1756,
+                    "name": "VariableDeclaration",
+                    "src": "3073:7:18"
+                  }
+                ],
+                "id": 1757,
+                "name": "ParameterList",
+                "src": "3072:9:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1757
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 2510,
+                          "type": "address",
+                          "value": "_TOKEN_"
+                        },
+                        "id": 1758,
+                        "name": "Identifier",
+                        "src": "3103:7:18"
+                      }
+                    ],
+                    "id": 1759,
+                    "name": "Return",
+                    "src": "3096:14:18"
+                  }
+                ],
+                "id": 1760,
+                "name": "Block",
+                "src": "3086:31:18"
+              }
+            ],
+            "id": 1761,
+            "name": "FunctionDefinition",
+            "src": "2998:119:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the current address of the price oracle contract.\n     * @return The address of the price oracle contract.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getOracleContract",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1762,
+                "name": "ParameterList",
+                "src": "3299:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1769,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1763,
+                        "name": "ElementaryTypeName",
+                        "src": "3349:7:18"
+                      }
+                    ],
+                    "id": 1764,
+                    "name": "VariableDeclaration",
+                    "src": "3349:7:18"
+                  }
+                ],
+                "id": 1765,
+                "name": "ParameterList",
+                "src": "3348:9:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1765
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 2512,
+                          "type": "address",
+                          "value": "_ORACLE_"
+                        },
+                        "id": 1766,
+                        "name": "Identifier",
+                        "src": "3379:8:18"
+                      }
+                    ],
+                    "id": 1767,
+                    "name": "Return",
+                    "src": "3372:15:18"
+                  }
+                ],
+                "id": 1768,
+                "name": "Block",
+                "src": "3362:32:18"
+              }
+            ],
+            "id": 1769,
+            "name": "FunctionDefinition",
+            "src": "3273:121:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the current address of the funder contract.\n     * @return The address of the funder contract.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getFunderContract",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1770,
+                "name": "ParameterList",
+                "src": "3564:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1777,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1771,
+                        "name": "ElementaryTypeName",
+                        "src": "3614:7:18"
+                      }
+                    ],
+                    "id": 1772,
+                    "name": "VariableDeclaration",
+                    "src": "3614:7:18"
+                  }
+                ],
+                "id": 1773,
+                "name": "ParameterList",
+                "src": "3613:9:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1773
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 2514,
+                          "type": "address",
+                          "value": "_FUNDER_"
+                        },
+                        "id": 1774,
+                        "name": "Identifier",
+                        "src": "3644:8:18"
+                      }
+                    ],
+                    "id": 1775,
+                    "name": "Return",
+                    "src": "3637:15:18"
+                  }
+                ],
+                "id": 1776,
+                "name": "Block",
+                "src": "3627:32:18"
+              }
+            ],
+            "id": 1777,
+            "name": "FunctionDefinition",
+            "src": "3538:121:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the most recently cached global index.\n     * @return The most recently cached global index.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getGlobalIndex",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1778,
+                "name": "ParameterList",
+                "src": "3824:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1785,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct P1Types.Index",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "P1Types.Index",
+                          "referencedDeclaration": 3663,
+                          "type": "struct P1Types.Index"
+                        },
+                        "id": 1779,
+                        "name": "UserDefinedTypeName",
+                        "src": "3874:13:18"
+                      }
+                    ],
+                    "id": 1780,
+                    "name": "VariableDeclaration",
+                    "src": "3874:20:18"
+                  }
+                ],
+                "id": 1781,
+                "name": "ParameterList",
+                "src": "3873:22:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1781
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 2516,
+                          "type": "struct P1Types.Index storage ref",
+                          "value": "_GLOBAL_INDEX_"
+                        },
+                        "id": 1782,
+                        "name": "Identifier",
+                        "src": "3917:14:18"
+                      }
+                    ],
+                    "id": 1783,
+                    "name": "Return",
+                    "src": "3910:21:18"
+                  }
+                ],
+                "id": 1784,
+                "name": "Block",
+                "src": "3900:38:18"
+              }
+            ],
+            "id": 1785,
+            "name": "FunctionDefinition",
+            "src": "3801:137:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets minimum collateralization ratio of the protocol.\n     * @return The minimum-acceptable collateralization ratio, returned as a fixed-point number with\n 18 decimals of precision.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getMinCollateral",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1786,
+                "name": "ParameterList",
+                "src": "4196:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1793,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1787,
+                        "name": "ElementaryTypeName",
+                        "src": "4246:7:18"
+                      }
+                    ],
+                    "id": 1788,
+                    "name": "VariableDeclaration",
+                    "src": "4246:7:18"
+                  }
+                ],
+                "id": 1789,
+                "name": "ParameterList",
+                "src": "4245:9:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1789
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 2518,
+                          "type": "uint256",
+                          "value": "_MIN_COLLATERAL_"
+                        },
+                        "id": 1790,
+                        "name": "Identifier",
+                        "src": "4276:16:18"
+                      }
+                    ],
+                    "id": 1791,
+                    "name": "Return",
+                    "src": "4269:23:18"
+                  }
+                ],
+                "id": 1792,
+                "name": "Block",
+                "src": "4259:40:18"
+              }
+            ],
+            "id": 1793,
+            "name": "FunctionDefinition",
+            "src": "4171:128:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the status of whether final-settlement was initiated by the Admin.\n     * @return True if final-settlement was enabled, false otherwise.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getFinalSettlementEnabled",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1794,
+                "name": "ParameterList",
+                "src": "4519:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1801,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1795,
+                        "name": "ElementaryTypeName",
+                        "src": "4569:4:18"
+                      }
+                    ],
+                    "id": 1796,
+                    "name": "VariableDeclaration",
+                    "src": "4569:4:18"
+                  }
+                ],
+                "id": 1797,
+                "name": "ParameterList",
+                "src": "4568:6:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1797
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 2520,
+                          "type": "bool",
+                          "value": "_FINAL_SETTLEMENT_ENABLED_"
+                        },
+                        "id": 1798,
+                        "name": "Identifier",
+                        "src": "4596:26:18"
+                      }
+                    ],
+                    "id": 1799,
+                    "name": "Return",
+                    "src": "4589:33:18"
+                  }
+                ],
+                "id": 1800,
+                "name": "Block",
+                "src": "4579:50:18"
+              }
+            ],
+            "id": 1801,
+            "name": "FunctionDefinition",
+            "src": "4485:144:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets the price returned by the oracle.\n@dev Only able to be called by global operators.\n     * @return The price returned by the current price oracle.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getOraclePrice",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1802,
+                "name": "ParameterList",
+                "src": "4916:2:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1821,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1803,
+                        "name": "ElementaryTypeName",
+                        "src": "4966:7:18"
+                      }
+                    ],
+                    "id": 1804,
+                    "name": "VariableDeclaration",
+                    "src": "4966:7:18"
+                  }
+                ],
+                "id": 1805,
+                "name": "ParameterList",
+                "src": "4965:9:18"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_5380e1d1fb6940f59f2d8c678054b6e5708121c6babdfb32df617c5dac73f246",
+                                  "typeString": "literal_string \"Oracle price requester not global operator\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                12981,
+                                12982
+                              ],
+                              "referencedDeclaration": 12982,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 1806,
+                            "name": "Identifier",
+                            "src": "4989:7:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2502,
+                                  "type": "mapping(address => bool)",
+                                  "value": "_GLOBAL_OPERATORS_"
+                                },
+                                "id": 1807,
+                                "name": "Identifier",
+                                "src": "5010:18:18"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 12978,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 1808,
+                                    "name": "Identifier",
+                                    "src": "5029:3:18"
+                                  }
+                                ],
+                                "id": 1809,
+                                "name": "MemberAccess",
+                                "src": "5029:10:18"
+                              }
+                            ],
+                            "id": 1810,
+                            "name": "IndexAccess",
+                            "src": "5010:30:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "4f7261636c6520707269636520726571756573746572206e6f7420676c6f62616c206f70657261746f72",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"Oracle price requester not global operator\"",
+                              "value": "Oracle price requester not global operator"
+                            },
+                            "id": 1811,
+                            "name": "Literal",
+                            "src": "5054:44:18"
+                          }
+                        ],
+                        "id": 1812,
+                        "name": "FunctionCall",
+                        "src": "4989:119:18"
+                      }
+                    ],
+                    "id": 1813,
+                    "name": "ExpressionStatement",
+                    "src": "4989:119:18"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1805
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "getPrice",
+                              "referencedDeclaration": 3075,
+                              "type": "function () view external returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "contract I_P1Oracle",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3076,
+                                      "type": "type(contract I_P1Oracle)",
+                                      "value": "I_P1Oracle"
+                                    },
+                                    "id": 1814,
+                                    "name": "Identifier",
+                                    "src": "5125:10:18"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2512,
+                                      "type": "address",
+                                      "value": "_ORACLE_"
+                                    },
+                                    "id": 1815,
+                                    "name": "Identifier",
+                                    "src": "5136:8:18"
+                                  }
+                                ],
+                                "id": 1816,
+                                "name": "FunctionCall",
+                                "src": "5125:20:18"
+                              }
+                            ],
+                            "id": 1817,
+                            "name": "MemberAccess",
+                            "src": "5125:29:18"
+                          }
+                        ],
+                        "id": 1818,
+                        "name": "FunctionCall",
+                        "src": "5125:31:18"
+                      }
+                    ],
+                    "id": 1819,
+                    "name": "Return",
+                    "src": "5118:38:18"
+                  }
+                ],
+                "id": 1820,
+                "name": "Block",
+                "src": "4979:184:18"
+              }
+            ],
+            "id": 1821,
+            "name": "FunctionDefinition",
+            "src": "4893:270:18"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Gets whether an address has permissions to operate an account.\n     * @param  account   The account to query.\n@param  operator  The address to query.\n@return           True if the operator has permission to operate the account,\n                  and false otherwise.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "hasAccountPermissions",
+              "scope": 1846,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "account",
+                      "scope": 1845,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1822,
+                        "name": "ElementaryTypeName",
+                        "src": "5584:7:18"
+                      }
+                    ],
+                    "id": 1823,
+                    "name": "VariableDeclaration",
+                    "src": "5584:15:18"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "operator",
+                      "scope": 1845,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1824,
+                        "name": "ElementaryTypeName",
+                        "src": "5609:7:18"
+                      }
+                    ],
+                    "id": 1825,
+                    "name": "VariableDeclaration",
+                    "src": "5609:16:18"
+                  }
+                ],
+                "id": 1826,
+                "name": "ParameterList",
+                "src": "5574:57:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1845,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 1827,
+                        "name": "ElementaryTypeName",
+                        "src": "5677:4:18"
+                      }
+                    ],
+                    "id": 1828,
+                    "name": "VariableDeclaration",
+                    "src": "5677:4:18"
+                  }
+                ],
+                "id": 1829,
+                "name": "ParameterList",
+                "src": "5676:6:18"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1829
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "||",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "||",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1823,
+                                      "type": "address",
+                                      "value": "account"
+                                    },
+                                    "id": 1830,
+                                    "name": "Identifier",
+                                    "src": "5704:7:18"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1825,
+                                      "type": "address",
+                                      "value": "operator"
+                                    },
+                                    "id": 1831,
+                                    "name": "Identifier",
+                                    "src": "5715:8:18"
+                                  }
+                                ],
+                                "id": 1832,
+                                "name": "BinaryOperation",
+                                "src": "5704:19:18"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2502,
+                                      "type": "mapping(address => bool)",
+                                      "value": "_GLOBAL_OPERATORS_"
+                                    },
+                                    "id": 1833,
+                                    "name": "Identifier",
+                                    "src": "5739:18:18"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1825,
+                                      "type": "address",
+                                      "value": "operator"
+                                    },
+                                    "id": 1834,
+                                    "name": "Identifier",
+                                    "src": "5758:8:18"
+                                  }
+                                ],
+                                "id": 1835,
+                                "name": "IndexAccess",
+                                "src": "5739:28:18"
+                              }
+                            ],
+                            "id": 1836,
+                            "name": "BinaryOperation",
+                            "src": "5704:63:18"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "mapping(address => bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2508,
+                                      "type": "mapping(address => mapping(address => bool))",
+                                      "value": "_LOCAL_OPERATORS_"
+                                    },
+                                    "id": 1837,
+                                    "name": "Identifier",
+                                    "src": "5783:17:18"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1823,
+                                      "type": "address",
+                                      "value": "account"
+                                    },
+                                    "id": 1838,
+                                    "name": "Identifier",
+                                    "src": "5801:7:18"
+                                  }
+                                ],
+                                "id": 1839,
+                                "name": "IndexAccess",
+                                "src": "5783:26:18"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1825,
+                                  "type": "address",
+                                  "value": "operator"
+                                },
+                                "id": 1840,
+                                "name": "Identifier",
+                                "src": "5810:8:18"
+                              }
+                            ],
+                            "id": 1841,
+                            "name": "IndexAccess",
+                            "src": "5783:36:18"
+                          }
+                        ],
+                        "id": 1842,
+                        "name": "BinaryOperation",
+                        "src": "5704:115:18"
+                      }
+                    ],
+                    "id": 1843,
+                    "name": "Return",
+                    "src": "5697:122:18"
+                  }
+                ],
+                "id": 1844,
+                "name": "Block",
+                "src": "5687:139:18"
+              }
+            ],
+            "id": 1845,
+            "name": "FunctionDefinition",
+            "src": "5544:282:18"
+          }
+        ],
+        "id": 1846,
+        "name": "ContractDefinition",
+        "src": "898:4930:18"
+      }
+    ],
+    "id": 1847,
+    "name": "SourceUnit",
+    "src": "603:5226:18"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.380Z",
+  "devdoc": {
+    "author": "dYdX",
+    "methods": {
+      "getAccountBalance(address)": {
+        "params": {
+          "account": "The address of the account to query the balances of."
+        },
+        "return": "The balances of the account."
+      },
+      "getAccountIndex(address)": {
+        "params": {
+          "account": "The address of the account to query the index of."
+        },
+        "return": "The index of the account."
+      },
+      "getAdmin()": {
+        "return": "The EIP-1967 proxy admin"
+      },
+      "getFinalSettlementEnabled()": {
+        "return": "True if final-settlement was enabled, false otherwise."
+      },
+      "getFunderContract()": {
+        "return": "The address of the funder contract."
+      },
+      "getGlobalIndex()": {
+        "return": "The most recently cached global index."
+      },
+      "getIsGlobalOperator(address)": {
+        "params": {
+          "operator": "The address of the operator to query the status of."
+        },
+        "return": "True if the address is a global operator, false otherwise."
+      },
+      "getIsLocalOperator(address,address)": {
+        "params": {
+          "account": "The account to query the operator for.",
+          "operator": "The address of the operator to query the status of."
+        },
+        "return": "True if the operator is a local operator of the account, false otherwise."
+      },
+      "getMinCollateral()": {
+        "return": "The minimum-acceptable collateralization ratio, returned as a fixed-point number with 18 decimals of precision."
+      },
+      "getOracleContract()": {
+        "return": "The address of the price oracle contract."
+      },
+      "getOraclePrice()": {
+        "details": "Only able to be called by global operators.",
+        "return": "The price returned by the current price oracle."
+      },
+      "getTokenContract()": {
+        "return": "The address of the ERC20 token."
+      },
+      "hasAccountPermissions(address,address)": {
+        "params": {
+          "account": "The account to query.",
+          "operator": "The address to query."
+        },
+        "return": "True if the operator has permission to operate the account,                  and false otherwise."
+      }
+    },
+    "title": "P1Getters"
+  },
+  "userdoc": {
+    "methods": {
+      "getAccountBalance(address)": {
+        "notice": "Get the balance of an account, without accounting for changes in the index."
+      },
+      "getAccountIndex(address)": {
+        "notice": "Gets the most recently cached index of an account."
+      },
+      "getFinalSettlementEnabled()": {
+        "notice": "Gets the status of whether final-settlement was initiated by the Admin."
+      },
+      "getFunderContract()": {
+        "notice": "Gets the current address of the funder contract."
+      },
+      "getGlobalIndex()": {
+        "notice": "Gets the most recently cached global index."
+      },
+      "getIsGlobalOperator(address)": {
+        "notice": "Gets the global operator status of an address."
+      },
+      "getIsLocalOperator(address,address)": {
+        "notice": "Gets the local operator status of an operator for a particular account."
+      },
+      "getMinCollateral()": {
+        "notice": "Gets minimum collateralization ratio of the protocol."
+      },
+      "getOracleContract()": {
+        "notice": "Gets the current address of the price oracle contract."
+      },
+      "getOraclePrice()": {
+        "notice": "Gets the price returned by the oracle."
+      },
+      "getTokenContract()": {
+        "notice": "Gets the address of the ERC20 margin contract used for margin deposits."
+      },
+      "hasAccountPermissions(address,address)": {
+        "notice": "Gets whether an address has permissions to operate an account."
+      }
+    },
+    "notice": "Contract for read-only getters."
+  }
+}

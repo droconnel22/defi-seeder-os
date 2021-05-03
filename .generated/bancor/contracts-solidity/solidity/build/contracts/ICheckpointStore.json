@@ -1,0 +1,932 @@
+{
+  "contractName": "ICheckpointStore",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "addCheckpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_time",
+          "type": "uint256"
+        }
+      ],
+      "name": "addPastCheckpoint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_addresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_times",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "addPastCheckpoints",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "checkpoint",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"addCheckpoint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_time\",\"type\":\"uint256\"}],\"name\":\"addPastCheckpoint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_addresses\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_times\",\"type\":\"uint256[]\"}],\"name\":\"addPastCheckpoints\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"checkpoint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Checkpoint store contract interface\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/ICheckpointStore.sol\":\"ICheckpointStore\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/ICheckpointStore.sol\":{\"keccak256\":\"0xd135a38e301bda2156b40cb51007229722e7ab2500305301364935cbb66b90a0\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://504d7ad0a261cc3ddae76ba365e1895844de8201a04df1d09bce2d8dad042132\",\"dweb:/ipfs/QmSxPGH3rn6LxxoEhfsQCL9ctRbCgYqr8kgyHRRD7L1q5x\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity 0.6.12;\n\n/**\n * @dev Checkpoint store contract interface\n */\ninterface ICheckpointStore {\n    function addCheckpoint(address _address) external;\n\n    function addPastCheckpoint(address _address, uint256 _time) external;\n\n    function addPastCheckpoints(address[] calldata _addresses, uint256[] calldata _times) external;\n\n    function checkpoint(address _address) external view returns (uint256);\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/ICheckpointStore.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/ICheckpointStore.sol",
+    "exportedSymbols": {
+      "ICheckpointStore": [
+        31038
+      ]
+    },
+    "id": 31039,
+    "license": "SEE LICENSE IN LICENSE",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 31008,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "51:23:79"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 31009,
+          "nodeType": "StructuredDocumentation",
+          "src": "76:51:79",
+          "text": " @dev Checkpoint store contract interface"
+        },
+        "fullyImplemented": false,
+        "id": 31038,
+        "linearizedBaseContracts": [
+          31038
+        ],
+        "name": "ICheckpointStore",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "1d092adf",
+            "id": 31014,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addCheckpoint",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 31012,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 31011,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31014,
+                  "src": "184:16:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 31010,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "184:7:79",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "183:18:79"
+            },
+            "returnParameters": {
+              "id": 31013,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "210:0:79"
+            },
+            "scope": 31038,
+            "src": "161:50:79",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "a3699b37",
+            "id": 31021,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addPastCheckpoint",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 31019,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 31016,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31021,
+                  "src": "244:16:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 31015,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "244:7:79",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 31018,
+                  "mutability": "mutable",
+                  "name": "_time",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31021,
+                  "src": "262:13:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 31017,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "262:7:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "243:33:79"
+            },
+            "returnParameters": {
+              "id": 31020,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "285:0:79"
+            },
+            "scope": 31038,
+            "src": "217:69:79",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "bcb81bfc",
+            "id": 31030,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addPastCheckpoints",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 31028,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 31024,
+                  "mutability": "mutable",
+                  "name": "_addresses",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31030,
+                  "src": "320:29:79",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 31022,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "320:7:79",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 31023,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "320:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 31027,
+                  "mutability": "mutable",
+                  "name": "_times",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31030,
+                  "src": "351:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_calldata_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 31025,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "351:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 31026,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "351:9:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "319:58:79"
+            },
+            "returnParameters": {
+              "id": 31029,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "386:0:79"
+            },
+            "scope": 31038,
+            "src": "292:95:79",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "a972985e",
+            "id": 31037,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkpoint",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 31033,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 31032,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31037,
+                  "src": "413:16:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 31031,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:7:79",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "412:18:79"
+            },
+            "returnParameters": {
+              "id": 31036,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 31035,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 31037,
+                  "src": "454:7:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 31034,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "454:7:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "453:9:79"
+            },
+            "scope": 31038,
+            "src": "393:70:79",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 31039,
+        "src": "128:337:79"
+      }
+    ],
+    "src": "51:415:79"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/ICheckpointStore.sol",
+      "exportedSymbols": {
+        "ICheckpointStore": [
+          31038
+        ]
+      },
+      "license": "SEE LICENSE IN LICENSE"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 31008,
+        "name": "PragmaDirective",
+        "src": "51:23:79"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            31038
+          ],
+          "name": "ICheckpointStore",
+          "scope": 31039
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @dev Checkpoint store contract interface"
+            },
+            "id": 31009,
+            "name": "StructuredDocumentation",
+            "src": "76:51:79"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "1d092adf",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "addCheckpoint",
+              "overrides": null,
+              "scope": 31038,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_address",
+                      "overrides": null,
+                      "scope": 31014,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 31010,
+                        "name": "ElementaryTypeName",
+                        "src": "184:7:79"
+                      }
+                    ],
+                    "id": 31011,
+                    "name": "VariableDeclaration",
+                    "src": "184:16:79"
+                  }
+                ],
+                "id": 31012,
+                "name": "ParameterList",
+                "src": "183:18:79"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 31013,
+                "name": "ParameterList",
+                "src": "210:0:79"
+              }
+            ],
+            "id": 31014,
+            "name": "FunctionDefinition",
+            "src": "161:50:79"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "a3699b37",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "addPastCheckpoint",
+              "overrides": null,
+              "scope": 31038,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_address",
+                      "overrides": null,
+                      "scope": 31021,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 31015,
+                        "name": "ElementaryTypeName",
+                        "src": "244:7:79"
+                      }
+                    ],
+                    "id": 31016,
+                    "name": "VariableDeclaration",
+                    "src": "244:16:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_time",
+                      "overrides": null,
+                      "scope": 31021,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 31017,
+                        "name": "ElementaryTypeName",
+                        "src": "262:7:79"
+                      }
+                    ],
+                    "id": 31018,
+                    "name": "VariableDeclaration",
+                    "src": "262:13:79"
+                  }
+                ],
+                "id": 31019,
+                "name": "ParameterList",
+                "src": "243:33:79"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 31020,
+                "name": "ParameterList",
+                "src": "285:0:79"
+              }
+            ],
+            "id": 31021,
+            "name": "FunctionDefinition",
+            "src": "217:69:79"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "bcb81bfc",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "addPastCheckpoints",
+              "overrides": null,
+              "scope": 31038,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_addresses",
+                      "overrides": null,
+                      "scope": 31030,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "address[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "stateMutability": "nonpayable",
+                              "type": "address"
+                            },
+                            "id": 31022,
+                            "name": "ElementaryTypeName",
+                            "src": "320:7:79"
+                          }
+                        ],
+                        "id": 31023,
+                        "name": "ArrayTypeName",
+                        "src": "320:9:79"
+                      }
+                    ],
+                    "id": 31024,
+                    "name": "VariableDeclaration",
+                    "src": "320:29:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_times",
+                      "overrides": null,
+                      "scope": 31030,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "uint256[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "uint256[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint256",
+                              "type": "uint256"
+                            },
+                            "id": 31025,
+                            "name": "ElementaryTypeName",
+                            "src": "351:7:79"
+                          }
+                        ],
+                        "id": 31026,
+                        "name": "ArrayTypeName",
+                        "src": "351:9:79"
+                      }
+                    ],
+                    "id": 31027,
+                    "name": "VariableDeclaration",
+                    "src": "351:25:79"
+                  }
+                ],
+                "id": 31028,
+                "name": "ParameterList",
+                "src": "319:58:79"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 31029,
+                "name": "ParameterList",
+                "src": "386:0:79"
+              }
+            ],
+            "id": 31030,
+            "name": "FunctionDefinition",
+            "src": "292:95:79"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "a972985e",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "checkpoint",
+              "overrides": null,
+              "scope": 31038,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_address",
+                      "overrides": null,
+                      "scope": 31037,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 31031,
+                        "name": "ElementaryTypeName",
+                        "src": "413:7:79"
+                      }
+                    ],
+                    "id": 31032,
+                    "name": "VariableDeclaration",
+                    "src": "413:16:79"
+                  }
+                ],
+                "id": 31033,
+                "name": "ParameterList",
+                "src": "412:18:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 31037,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 31034,
+                        "name": "ElementaryTypeName",
+                        "src": "454:7:79"
+                      }
+                    ],
+                    "id": 31035,
+                    "name": "VariableDeclaration",
+                    "src": "454:7:79"
+                  }
+                ],
+                "id": 31036,
+                "name": "ParameterList",
+                "src": "453:9:79"
+              }
+            ],
+            "id": 31037,
+            "name": "FunctionDefinition",
+            "src": "393:70:79"
+          }
+        ],
+        "id": 31038,
+        "name": "ContractDefinition",
+        "src": "128:337:79"
+      }
+    ],
+    "id": 31039,
+    "name": "SourceUnit",
+    "src": "51:415:79"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-04-01T18:17:52.188Z",
+  "devdoc": {
+    "details": "Checkpoint store contract interface",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

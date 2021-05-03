@@ -1,0 +1,627 @@
+{
+  "contractName": "CDelegatorInterface",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldImplementation",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        }
+      ],
+      "name": "NewImplementation",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "implementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "implementation_",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "allowResign",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "becomeImplementationData",
+          "type": "bytes"
+        }
+      ],
+      "name": "_setImplementation",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"NewImplementation\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation_\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"allowResign\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"becomeImplementationData\",\"type\":\"bytes\"}],\"name\":\"_setImplementation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"_setImplementation(address,bool,bytes)\":{\"params\":{\"allowResign\":\"Flag to indicate whether to call _resignImplementation on the old implementation\",\"becomeImplementationData\":\"The encoded bytes data to be passed to _becomeImplementation\",\"implementation_\":\"The address of the new implementation for delegation\"}}},\"version\":1},\"userdoc\":{\"events\":{\"NewImplementation(address,address)\":{\"notice\":\"Emitted when implementation is changed\"}},\"kind\":\"user\",\"methods\":{\"_setImplementation(address,bool,bytes)\":{\"notice\":\"Called by the admin to update the implementation of the delegator\"},\"implementation()\":{\"notice\":\"Implementation address for this contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegatorInterface.sol\":\"CDelegatorInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegationStorage.sol\":{\"keccak256\":\"0xe56575d3a1ed586270ddbb5e0fe16c02de255ebbdd71004c7963f04eafdb194e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fcf915042728f564b327a512a351bd7da10c50ed0d682df03a1e39ad0ae5b67f\",\"dweb:/ipfs/QmP6xWaiVKcNVM2VxsSU3YDsQB9AAARzpjGbn8znSwmqQP\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegatorInterface.sol\":{\"keccak256\":\"0xbcfa5625cca0f6d9612cad7ee3502adec299955fb0c77c993c3a723b12f67244\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c133dfb365cc1acddf2532e70cd039940621d2d6e1c69ccd79489b4f0ab23b98\",\"dweb:/ipfs/QmZx63PVzdzTMhdXC3j3Mqq6MnkLCcQurQ82YXgsJTLfLP\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport \"./CDelegationStorage.sol\";\n\n\nabstract contract CDelegatorInterface is CDelegationStorage {\n    /**\n     * @notice Emitted when implementation is changed\n     */\n    event NewImplementation(address oldImplementation, address newImplementation);\n\n    /**\n     * @notice Called by the admin to update the implementation of the delegator\n     * @param implementation_ The address of the new implementation for delegation\n     * @param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n     * @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation\n     */\n    function _setImplementation(address implementation_, bool allowResign, bytes memory becomeImplementationData) public virtual;\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegatorInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegatorInterface.sol",
+    "exportedSymbols": {
+      "CDelegationStorage": [
+        23928
+      ],
+      "CDelegatorInterface": [
+        23951
+      ]
+    },
+    "id": 23952,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 23930,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:59"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegationStorage.sol",
+        "file": "./CDelegationStorage.sol",
+        "id": 23931,
+        "nodeType": "ImportDirective",
+        "scope": 23952,
+        "sourceUnit": 23929,
+        "src": "57:34:59",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 23932,
+              "name": "CDelegationStorage",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 23928,
+              "src": "135:18:59"
+            },
+            "id": 23933,
+            "nodeType": "InheritanceSpecifier",
+            "src": "135:18:59"
+          }
+        ],
+        "contractDependencies": [
+          23928
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 23951,
+        "linearizedBaseContracts": [
+          23951,
+          23928
+        ],
+        "name": "CDelegatorInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 23934,
+              "nodeType": "StructuredDocumentation",
+              "src": "160:65:59",
+              "text": " @notice Emitted when implementation is changed"
+            },
+            "id": 23940,
+            "name": "NewImplementation",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 23939,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23936,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23940,
+                  "src": "254:25:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23935,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "254:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23938,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23940,
+                  "src": "281:25:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23937,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "281:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "253:54:59"
+            },
+            "src": "230:78:59"
+          },
+          {
+            "documentation": {
+              "id": 23941,
+              "nodeType": "StructuredDocumentation",
+              "src": "314:382:59",
+              "text": " @notice Called by the admin to update the implementation of the delegator\n @param implementation_ The address of the new implementation for delegation\n @param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation"
+            },
+            "functionSelector": "555bcc40",
+            "id": 23950,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23948,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23943,
+                  "mutability": "mutable",
+                  "name": "implementation_",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23950,
+                  "src": "729:23:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23942,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "729:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23945,
+                  "mutability": "mutable",
+                  "name": "allowResign",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23950,
+                  "src": "754:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 23944,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "754:4:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23947,
+                  "mutability": "mutable",
+                  "name": "becomeImplementationData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23950,
+                  "src": "772:37:59",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 23946,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "772:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "728:82:59"
+            },
+            "returnParameters": {
+              "id": 23949,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "825:0:59"
+            },
+            "scope": 23951,
+            "src": "701:125:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 23952,
+        "src": "94:734:59"
+      }
+    ],
+    "src": "32:797:59"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegatorInterface.sol",
+    "exportedSymbols": {
+      "CDelegationStorage": [
+        23928
+      ],
+      "CDelegatorInterface": [
+        23951
+      ]
+    },
+    "id": 23952,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 23930,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:59"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/compound/v2.1/interfaces/CDelegationStorage.sol",
+        "file": "./CDelegationStorage.sol",
+        "id": 23931,
+        "nodeType": "ImportDirective",
+        "scope": 23952,
+        "sourceUnit": 23929,
+        "src": "57:34:59",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 23932,
+              "name": "CDelegationStorage",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 23928,
+              "src": "135:18:59"
+            },
+            "id": 23933,
+            "nodeType": "InheritanceSpecifier",
+            "src": "135:18:59"
+          }
+        ],
+        "contractDependencies": [
+          23928
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": false,
+        "id": 23951,
+        "linearizedBaseContracts": [
+          23951,
+          23928
+        ],
+        "name": "CDelegatorInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 23934,
+              "nodeType": "StructuredDocumentation",
+              "src": "160:65:59",
+              "text": " @notice Emitted when implementation is changed"
+            },
+            "id": 23940,
+            "name": "NewImplementation",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 23939,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23936,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23940,
+                  "src": "254:25:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23935,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "254:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23938,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23940,
+                  "src": "281:25:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23937,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "281:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "253:54:59"
+            },
+            "src": "230:78:59"
+          },
+          {
+            "documentation": {
+              "id": 23941,
+              "nodeType": "StructuredDocumentation",
+              "src": "314:382:59",
+              "text": " @notice Called by the admin to update the implementation of the delegator\n @param implementation_ The address of the new implementation for delegation\n @param allowResign Flag to indicate whether to call _resignImplementation on the old implementation\n @param becomeImplementationData The encoded bytes data to be passed to _becomeImplementation"
+            },
+            "functionSelector": "555bcc40",
+            "id": 23950,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 23948,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23943,
+                  "mutability": "mutable",
+                  "name": "implementation_",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23950,
+                  "src": "729:23:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 23942,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "729:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23945,
+                  "mutability": "mutable",
+                  "name": "allowResign",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23950,
+                  "src": "754:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 23944,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "754:4:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23947,
+                  "mutability": "mutable",
+                  "name": "becomeImplementationData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 23950,
+                  "src": "772:37:59",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 23946,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "772:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "728:82:59"
+            },
+            "returnParameters": {
+              "id": 23949,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "825:0:59"
+            },
+            "scope": 23951,
+            "src": "701:125:59",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 23952,
+        "src": "94:734:59"
+      }
+    ],
+    "src": "32:797:59"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-31T20:20:04.386Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "_setImplementation(address,bool,bytes)": {
+        "params": {
+          "allowResign": "Flag to indicate whether to call _resignImplementation on the old implementation",
+          "becomeImplementationData": "The encoded bytes data to be passed to _becomeImplementation",
+          "implementation_": "The address of the new implementation for delegation"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "events": {
+      "NewImplementation(address,address)": {
+        "notice": "Emitted when implementation is changed"
+      }
+    },
+    "kind": "user",
+    "methods": {
+      "_setImplementation(address,bool,bytes)": {
+        "notice": "Called by the admin to update the implementation of the delegator"
+      },
+      "implementation()": {
+        "notice": "Implementation address for this contract"
+      }
+    },
+    "version": 1
+  }
+}

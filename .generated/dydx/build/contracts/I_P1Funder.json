@@ -1,0 +1,396 @@
+{
+  "contractName": "I_P1Funder",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "timeDelta",
+          "type": "uint256"
+        }
+      ],
+      "name": "getFunding",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"timeDelta\",\"type\":\"uint256\"}],\"name\":\"getFunding\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX\",\"methods\":{\"getFunding(uint256)\":{\"params\":{\"timeDelta\":\"Number of seconds over which to calculate the accumulated funding amount.\"},\"return\":\"True if the funding rate is positive, and false otherwise.The funding amount as a unitless rate, represented as a fixed-point number                   with 18 decimals.\"}},\"title\":\"I_P1Funder\"},\"userdoc\":{\"methods\":{\"getFunding(uint256)\":{\"notice\":\"Calculates the signed funding amount that has accumulated over a period of time.\"}},\"notice\":\"Interface for an oracle providing the funding rate for a perpetual market.\"}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Funder.sol\":\"I_P1Funder\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Funder.sol\":{\"keccak256\":\"0x94b87bb2acc52ad7538f25cca68510f72065b8054effc2257c800d5b471a495b\",\"urls\":[\"bzz-raw://95dc30b18d04f96c25e899eda92edb816bdf63e14dbf63a1a86b0a80682f6984\",\"dweb:/ipfs/QmeCXnbuNF9AAMcALPD1hgx1LQ9Cp2vh7NwAHvoVmyyboR\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\n\n/**\n * @title I_P1Funder\n * @author dYdX\n *\n * @notice Interface for an oracle providing the funding rate for a perpetual market.\n */\ninterface I_P1Funder {\n\n    /**\n     * @notice Calculates the signed funding amount that has accumulated over a period of time.\n     *\n     * @param  timeDelta  Number of seconds over which to calculate the accumulated funding amount.\n     * @return            True if the funding rate is positive, and false otherwise.\n     * @return            The funding amount as a unitless rate, represented as a fixed-point number\n     *                    with 18 decimals.\n     */\n    function getFunding(\n        uint256 timeDelta\n    )\n        external\n        view\n        returns (bool, uint256);\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Funder.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Funder.sol",
+    "exportedSymbols": {
+      "I_P1Funder": [
+        3067
+      ]
+    },
+    "id": 3068,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3056,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:24"
+      },
+      {
+        "id": 3057,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:24"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title I_P1Funder\n@author dYdX\n * @notice Interface for an oracle providing the funding rate for a perpetual market.",
+        "fullyImplemented": false,
+        "id": 3067,
+        "linearizedBaseContracts": [
+          3067
+        ],
+        "name": "I_P1Funder",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Calculates the signed funding amount that has accumulated over a period of time.\n     * @param  timeDelta  Number of seconds over which to calculate the accumulated funding amount.\n@return            True if the funding rate is positive, and false otherwise.\n@return            The funding amount as a unitless rate, represented as a fixed-point number\n                   with 18 decimals.",
+            "id": 3066,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getFunding",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3060,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3059,
+                  "name": "timeDelta",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3066,
+                  "src": "1303:17:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3058,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1303:7:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1293:33:24"
+            },
+            "returnParameters": {
+              "id": 3065,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3062,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3066,
+                  "src": "1374:4:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3061,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1374:4:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3064,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3066,
+                  "src": "1380:7:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3063,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1380:7:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1373:15:24"
+            },
+            "scope": 3067,
+            "src": "1274:115:24",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3068,
+        "src": "797:594:24"
+      }
+    ],
+    "src": "603:789:24"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Funder.sol",
+      "exportedSymbols": {
+        "I_P1Funder": [
+          3067
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 3056,
+        "name": "PragmaDirective",
+        "src": "603:23:24"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 3057,
+        "name": "PragmaDirective",
+        "src": "627:33:24"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title I_P1Funder\n@author dYdX\n * @notice Interface for an oracle providing the funding rate for a perpetual market.",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            3067
+          ],
+          "name": "I_P1Funder",
+          "scope": 3068
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@notice Calculates the signed funding amount that has accumulated over a period of time.\n     * @param  timeDelta  Number of seconds over which to calculate the accumulated funding amount.\n@return            True if the funding rate is positive, and false otherwise.\n@return            The funding amount as a unitless rate, represented as a fixed-point number\n                   with 18 decimals.",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getFunding",
+              "scope": 3067,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "timeDelta",
+                      "scope": 3066,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3058,
+                        "name": "ElementaryTypeName",
+                        "src": "1303:7:24"
+                      }
+                    ],
+                    "id": 3059,
+                    "name": "VariableDeclaration",
+                    "src": "1303:17:24"
+                  }
+                ],
+                "id": 3060,
+                "name": "ParameterList",
+                "src": "1293:33:24"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3066,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 3061,
+                        "name": "ElementaryTypeName",
+                        "src": "1374:4:24"
+                      }
+                    ],
+                    "id": 3062,
+                    "name": "VariableDeclaration",
+                    "src": "1374:4:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3066,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3063,
+                        "name": "ElementaryTypeName",
+                        "src": "1380:7:24"
+                      }
+                    ],
+                    "id": 3064,
+                    "name": "VariableDeclaration",
+                    "src": "1380:7:24"
+                  }
+                ],
+                "id": 3065,
+                "name": "ParameterList",
+                "src": "1373:15:24"
+              }
+            ],
+            "id": 3066,
+            "name": "FunctionDefinition",
+            "src": "1274:115:24"
+          }
+        ],
+        "id": 3067,
+        "name": "ContractDefinition",
+        "src": "797:594:24"
+      }
+    ],
+    "id": 3068,
+    "name": "SourceUnit",
+    "src": "603:789:24"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.394Z",
+  "devdoc": {
+    "author": "dYdX",
+    "methods": {
+      "getFunding(uint256)": {
+        "params": {
+          "timeDelta": "Number of seconds over which to calculate the accumulated funding amount."
+        },
+        "return": "True if the funding rate is positive, and false otherwise.The funding amount as a unitless rate, represented as a fixed-point number                   with 18 decimals."
+      }
+    },
+    "title": "I_P1Funder"
+  },
+  "userdoc": {
+    "methods": {
+      "getFunding(uint256)": {
+        "notice": "Calculates the signed funding amount that has accumulated over a period of time."
+      }
+    },
+    "notice": "Interface for an oracle providing the funding rate for a perpetual market."
+  }
+}

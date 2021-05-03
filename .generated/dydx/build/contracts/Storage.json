@@ -1,0 +1,731 @@
+{
+  "contractName": "Storage",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"author\":\"dYdX\",\"details\":\"Storage library for reading/writing storage at a low level.\",\"methods\":{},\"title\":\"Storage\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol\":\"Storage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol\":{\"keccak256\":\"0xc590571da7105cdc49ce6ee12928ecc0ca4f2a9ee4496fddbd525e3eaca92ea1\",\"urls\":[\"bzz-raw://21f2dee7536262eb7562a14b945f40aa2da36e5b9012ee6027c1aa5c0a5f7a77\",\"dweb:/ipfs/QmWBynJXHDZTgLyWyTjpxm9u4nmNAnvHY2vg2DigzfWSX4\"]}},\"version\":1}",
+  "bytecode": "0x60636023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea365627a7a723158208498196b4038102853ccf307cc7b082f416887b4573ea1273c5dcb4e4b2246be6c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea365627a7a723158208498196b4038102853ccf307cc7b082f416887b4573ea1273c5dcb4e4b2246be6c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "776:697:13:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "776:697:13:-;;;;;;;;",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\n\n/**\n * @title Storage\n * @author dYdX\n *\n * @dev Storage library for reading/writing storage at a low level.\n */\nlibrary Storage {\n\n    /**\n     * @dev Performs an SLOAD and returns the data in the slot.\n     */\n    function load(\n        bytes32 slot\n    )\n        internal\n        view\n        returns (bytes32)\n    {\n        bytes32 result;\n        /* solium-disable-next-line security/no-inline-assembly */\n        assembly {\n            result := sload(slot)\n        }\n        return result;\n    }\n\n    /**\n     * @dev Performs an SSTORE to save the value to the slot.\n     */\n    function store(\n        bytes32 slot,\n        bytes32 value\n    )\n        internal\n    {\n        /* solium-disable-next-line security/no-inline-assembly */\n        assembly {\n            sstore(slot, value)\n        }\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol",
+    "exportedSymbols": {
+      "Storage": [
+        1097
+      ]
+    },
+    "id": 1098,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1072,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:13"
+      },
+      {
+        "id": 1073,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:13"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": "@title Storage\n@author dYdX\n * @dev Storage library for reading/writing storage at a low level.",
+        "fullyImplemented": true,
+        "id": 1097,
+        "linearizedBaseContracts": [
+          1097
+        ],
+        "name": "Storage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1086,
+              "nodeType": "Block",
+              "src": "981:184:13",
+              "statements": [
+                {
+                  "assignments": [
+                    1081
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1081,
+                      "name": "result",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1086,
+                      "src": "991:14:13",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      "typeName": {
+                        "id": 1080,
+                        "name": "bytes32",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "991:7:13",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1082,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "991:14:13"
+                },
+                {
+                  "externalReferences": [
+                    {
+                      "result": {
+                        "declaration": 1081,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1105:6:13",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "slot": {
+                        "declaration": 1075,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1121:4:13",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 1083,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{ result := sload(slot) }",
+                  "src": "1082:54:13"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1084,
+                    "name": "result",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1081,
+                    "src": "1152:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 1079,
+                  "id": 1085,
+                  "nodeType": "Return",
+                  "src": "1145:13:13"
+                }
+              ]
+            },
+            "documentation": "@dev Performs an SLOAD and returns the data in the slot.",
+            "id": 1087,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "load",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1076,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1075,
+                  "name": "slot",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1087,
+                  "src": "902:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1074,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "902:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "892:28:13"
+            },
+            "returnParameters": {
+              "id": 1079,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1078,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1087,
+                  "src": "968:7:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1077,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "968:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "967:9:13"
+            },
+            "scope": 1097,
+            "src": "879:286:13",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1095,
+              "nodeType": "Block",
+              "src": "1336:135:13",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "slot": {
+                        "declaration": 1089,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1443:4:13",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "value": {
+                        "declaration": 1091,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1449:5:13",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 1094,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{ sstore(slot, value) }",
+                  "src": "1413:52:13"
+                }
+              ]
+            },
+            "documentation": "@dev Performs an SSTORE to save the value to the slot.",
+            "id": 1096,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "store",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1092,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1089,
+                  "name": "slot",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1096,
+                  "src": "1273:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1088,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1273:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1091,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1096,
+                  "src": "1295:13:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1090,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1295:7:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1263:51:13"
+            },
+            "returnParameters": {
+              "id": 1093,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1336:0:13"
+            },
+            "scope": 1097,
+            "src": "1249:222:13",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1098,
+        "src": "776:697:13"
+      }
+    ],
+    "src": "603:871:13"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol",
+      "exportedSymbols": {
+        "Storage": [
+          1097
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 1072,
+        "name": "PragmaDirective",
+        "src": "603:23:13"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 1073,
+        "name": "PragmaDirective",
+        "src": "627:33:13"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": "@title Storage\n@author dYdX\n * @dev Storage library for reading/writing storage at a low level.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            1097
+          ],
+          "name": "Storage",
+          "scope": 1098
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": "@dev Performs an SLOAD and returns the data in the slot.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "load",
+              "scope": 1097,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "slot",
+                      "scope": 1087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1074,
+                        "name": "ElementaryTypeName",
+                        "src": "902:7:13"
+                      }
+                    ],
+                    "id": 1075,
+                    "name": "VariableDeclaration",
+                    "src": "902:12:13"
+                  }
+                ],
+                "id": 1076,
+                "name": "ParameterList",
+                "src": "892:28:13"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1077,
+                        "name": "ElementaryTypeName",
+                        "src": "968:7:13"
+                      }
+                    ],
+                    "id": 1078,
+                    "name": "VariableDeclaration",
+                    "src": "968:7:13"
+                  }
+                ],
+                "id": 1079,
+                "name": "ParameterList",
+                "src": "967:9:13"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        1081
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "result",
+                          "scope": 1086,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "bytes32",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes32",
+                              "type": "bytes32"
+                            },
+                            "id": 1080,
+                            "name": "ElementaryTypeName",
+                            "src": "991:7:13"
+                          }
+                        ],
+                        "id": 1081,
+                        "name": "VariableDeclaration",
+                        "src": "991:14:13"
+                      }
+                    ],
+                    "id": 1082,
+                    "name": "VariableDeclarationStatement",
+                    "src": "991:14:13"
+                  },
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "result": {
+                            "declaration": 1081,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1105:6:13",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "slot": {
+                            "declaration": 1075,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1121:4:13",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{ result := sload(slot) }"
+                    },
+                    "children": [],
+                    "id": 1083,
+                    "name": "InlineAssembly",
+                    "src": "1082:54:13"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1079
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 1081,
+                          "type": "bytes32",
+                          "value": "result"
+                        },
+                        "id": 1084,
+                        "name": "Identifier",
+                        "src": "1152:6:13"
+                      }
+                    ],
+                    "id": 1085,
+                    "name": "Return",
+                    "src": "1145:13:13"
+                  }
+                ],
+                "id": 1086,
+                "name": "Block",
+                "src": "981:184:13"
+              }
+            ],
+            "id": 1087,
+            "name": "FunctionDefinition",
+            "src": "879:286:13"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Performs an SSTORE to save the value to the slot.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "store",
+              "scope": 1097,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "slot",
+                      "scope": 1096,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1088,
+                        "name": "ElementaryTypeName",
+                        "src": "1273:7:13"
+                      }
+                    ],
+                    "id": 1089,
+                    "name": "VariableDeclaration",
+                    "src": "1273:12:13"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "value",
+                      "scope": 1096,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1090,
+                        "name": "ElementaryTypeName",
+                        "src": "1295:7:13"
+                      }
+                    ],
+                    "id": 1091,
+                    "name": "VariableDeclaration",
+                    "src": "1295:13:13"
+                  }
+                ],
+                "id": 1092,
+                "name": "ParameterList",
+                "src": "1263:51:13"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1093,
+                "name": "ParameterList",
+                "src": "1336:0:13"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "slot": {
+                            "declaration": 1089,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1443:4:13",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "value": {
+                            "declaration": 1091,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1449:5:13",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{ sstore(slot, value) }"
+                    },
+                    "children": [],
+                    "id": 1094,
+                    "name": "InlineAssembly",
+                    "src": "1413:52:13"
+                  }
+                ],
+                "id": 1095,
+                "name": "Block",
+                "src": "1336:135:13"
+              }
+            ],
+            "id": 1096,
+            "name": "FunctionDefinition",
+            "src": "1249:222:13"
+          }
+        ],
+        "id": 1097,
+        "name": "ContractDefinition",
+        "src": "776:697:13"
+      }
+    ],
+    "id": 1098,
+    "name": "SourceUnit",
+    "src": "603:871:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.366Z",
+  "devdoc": {
+    "author": "dYdX",
+    "details": "Storage library for reading/writing storage at a low level.",
+    "methods": {},
+    "title": "Storage"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

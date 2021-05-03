@@ -1,0 +1,851 @@
+{
+  "contractName": "PerpetualProxy",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "logic",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "implementation",
+          "type": "address"
+        }
+      ],
+      "name": "Upgraded",
+      "type": "event"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeAdmin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "implementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        }
+      ],
+      "name": "upgradeTo",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newImplementation",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "upgradeToAndCall",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"logic\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousAdmin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"Upgraded\",\"type\":\"event\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"constant\":false,\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"changeAdmin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"implementation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"upgradeTo\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"upgradeToAndCall\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX\",\"methods\":{\"admin()\":{\"return\":\"The address of the proxy admin.\"},\"changeAdmin(address)\":{\"details\":\"Changes the admin of the proxy. Only the current admin can call this function.\",\"params\":{\"newAdmin\":\"Address to transfer proxy administration to.\"}},\"constructor\":{\"details\":\"The constructor of the proxy that sets the admin and logic.\",\"params\":{\"admin\":\"The address of the admin of the proxy.\",\"data\":\"Any data to send immediately to the implementation contract.\",\"logic\":\"The address of the contract that implements the underlying logic.\"}},\"implementation()\":{\"return\":\"The address of the implementation.\"},\"upgradeTo(address)\":{\"details\":\"Upgrade the backing implementation of the proxy. Only the admin can call this function.\",\"params\":{\"newImplementation\":\"Address of the new implementation.\"}},\"upgradeToAndCall(address,bytes)\":{\"details\":\"Upgrade the backing implementation of the proxy and call a function on the new implementation. This is useful to initialize the proxied contract.\",\"params\":{\"data\":\"Data to send as msg.data in the low level call. It should include the signature and the parameters of the function to be called, as described in https://solidity.readthedocs.io/en/v0.4.24/abi-spec.html#function-selector-and-argument-encoding.\",\"newImplementation\":\"Address of the new implementation.\"}}},\"title\":\"PerpetualProxy\"},\"userdoc\":{\"methods\":{},\"notice\":\"Proxy contract that forwards calls to the main Perpetual contract.\"}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/PerpetualProxy.sol\":\"PerpetualProxy\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/PerpetualProxy.sol\":{\"keccak256\":\"0x3ee3ee2e3bce1db5cdc704da008c7a850cd8018e6031057cd22f8979cc29bf2d\",\"urls\":[\"bzz-raw://553d01effbbefa76f41aa09f086f160d3342d3d6801ea33b38600ee70cc094d4\",\"dweb:/ipfs/QmNeUCdT9wRXUjxrA4QQBN289Wk1C2JT9MWMNdwTvQsxWL\"]},\"@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol\":{\"keccak256\":\"0x10ce81d835a4776c23f72c9abe8f65cd806352034d2fa9ebe7a42868a1ad7b22\",\"urls\":[\"bzz-raw://096dc2c9c1def99f1b3e2bb766cb2c7c3dbdf34b8b41f58ad1fd03ec2f168aad\",\"dweb:/ipfs/QmQ3gQaM8zgge4o2hgrKMeVpGsymLHpur4pQQewAP8UGLd\"]},\"@openzeppelin/upgrades/contracts/upgradeability/BaseAdminUpgradeabilityProxy.sol\":{\"keccak256\":\"0xbf8ee1cf63a430a3eb8b39a9145d0d133400b8db06fa9fd33056597f7d8ceb25\",\"urls\":[\"bzz-raw://58dc9f7b607b235e9efae48b003bf43aacb1b034853b8ead82830834405904a6\",\"dweb:/ipfs/QmXqDDwV8vpufd6Xka5zYrxrSgbnfzrQTSMoN7dPTAHJ21\"]},\"@openzeppelin/upgrades/contracts/upgradeability/BaseUpgradeabilityProxy.sol\":{\"keccak256\":\"0x1b37f808dc0a45976ad23aa53908c485a74a4d9fbd03066a5ab399c46436e570\",\"urls\":[\"bzz-raw://de04959e1261bbc2ee53a88b98469a888a2f2fa49c07ea87a5d646a8fe438558\",\"dweb:/ipfs/QmUmYQaNnAMfvbfKLniFLHyBzsH77bCMf9NpNSfndfuqWh\"]},\"@openzeppelin/upgrades/contracts/upgradeability/Proxy.sol\":{\"keccak256\":\"0xd8074ae5fa7ee6384ca8196a896612fb044bbf4ff4b7336d03cd97845000ac21\",\"urls\":[\"bzz-raw://3a111e1dc777d80e6c2ad41c6ff2bfb3ae8f61658fd6580ddf9ba9ab0d25a354\",\"dweb:/ipfs/QmSfwvUqqiownzHeMmUiYkejWs6FXR2KLtHQnSzP6FivTj\"]},\"@openzeppelin/upgrades/contracts/upgradeability/UpgradeabilityProxy.sol\":{\"keccak256\":\"0xb02c6349ba01df9902857b6058f92b37f13187775cce9da74f6f28410205445b\",\"urls\":[\"bzz-raw://f05434b5110c9de912e001a5dc2b252947f474346cb8ea5ec26ea2efe7143aa7\",\"dweb:/ipfs/QmbaksVa6vQz926TCHgJniKFuod44QhuGzVFYMtdUgdxba\"]},\"@openzeppelin/upgrades/contracts/utils/Address.sol\":{\"keccak256\":\"0x7be7f8e4c08bc70ff9815e3f11c569f42aa3c447b5bc61fd75fb5cec97f63a9f\",\"urls\":[\"bzz-raw://f301a9226d637e1593916ba2de7b0b28c35f2adc3ca8526289fe1eedafa83bc2\",\"dweb:/ipfs/QmPb991LE8nyvhB4BkX46P1Pan2ijH9tfqWwLAz65VUUKs\"]}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5060405162000c8b38038062000c8b833981016040819052620000349162000223565b828282828160016040516200004990620003b0565b6040519081900390200360008051602062000c6b833981519152146200006b57fe5b6200007f826001600160e01b036200014a16565b805115620000f6576000826001600160a01b031682604051620000a391906200039b565b600060405180830381855af49150503d8060008114620000e0576040519150601f19603f3d011682016040523d82523d6000602084013e620000e5565b606091505b5050905080620000f457600080fd5b505b505060016040516200010890620003bd565b6040519081900390200360008051602062000c4b833981519152146200012a57fe5b6200013e826001600160e01b036200019b16565b5050505050506200049c565b6200016081620001ae60201b620004eb1760201c565b620001885760405162461bcd60e51b81526004016200017f90620003ca565b60405180910390fd5b60008051602062000c6b83398151915255565b60008051602062000c4b83398151915255565b3b151590565b8051620001c18162000482565b92915050565b600082601f830112620001d957600080fd5b8151620001f0620001ea8262000403565b620003dc565b915080825260208301602083018583830111156200020d57600080fd5b6200021a8382846200044f565b50505092915050565b6000806000606084860312156200023957600080fd5b6000620002478686620001b4565b93505060206200025a86828701620001b4565b92505060408401516001600160401b038111156200027757600080fd5b6200028586828701620001c7565b9150509250925092565b60006200029c826200042b565b620002a881856200042f565b9350620002ba8185602086016200044f565b9290920192915050565b6000620002d3601c836200042f565b7f656970313936372e70726f78792e696d706c656d656e746174696f6e000000008152601c0192915050565b60006200030e603b8362000434565b7f43616e6e6f742073657420612070726f787920696d706c656d656e746174696f81527f6e20746f2061206e6f6e2d636f6e747261637420616464726573730000000000602082015260400192915050565b60006200036f6013836200042f565b7f656970313936372e70726f78792e61646d696e00000000000000000000000000815260130192915050565b6000620003a982846200028f565b9392505050565b6000620001c182620002c4565b6000620001c18262000360565b60208082528101620001c181620002ff565b6040518181016001600160401b0381118282101715620003fb57600080fd5b604052919050565b60006001600160401b038211156200041a57600080fd5b506020601f91909101601f19160190565b5190565b919050565b90815260200190565b60006001600160a01b038216620001c1565b60005b838110156200046c57818101518382015260200162000452565b838111156200047c576000848401525b50505050565b6200048d816200043d565b81146200049957600080fd5b50565b61079f80620004ac6000396000f3fe60806040526004361061005a5760003560e01c80635c60da1b116100435780635c60da1b146100975780638f283970146100c2578063f851a440146100e25761005a565b80633659cfe6146100645780634f1ef28614610084575b6100626100f7565b005b34801561007057600080fd5b5061006261007f36600461054b565b610111565b610062610092366004610571565b610165565b3480156100a357600080fd5b506100ac610233565b6040516100b991906106c0565b60405180910390f35b3480156100ce57600080fd5b506100626100dd36600461054b565b61028a565b3480156100ee57600080fd5b506100ac610364565b6100ff61010f565b61010f61010a6103a9565b6103ce565b565b6101196103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561015a5761015581610417565b610162565b6101626100f7565b50565b61016d6103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610226576101a983610417565b60008373ffffffffffffffffffffffffffffffffffffffff1683836040516101d29291906106b3565b600060405180830381855af49150503d806000811461020d576040519150601f19603f3d011682016040523d82523d6000602084013e610212565b606091505b505090508061022057600080fd5b5061022e565b61022e6100f7565b505050565b600061023d6103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f576102786103a9565b9050610287565b6102876100f7565b90565b6102926103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561015a5773ffffffffffffffffffffffffffffffffffffffff811661031b576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610312906106f0565b60405180910390fd5b7f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f6103446103f2565b826040516103539291906106ce565b60405180910390a161015581610464565b600061036e6103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f576102786103f2565b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc5490565b3660008037600080366000845af43d6000803e8080156103ed573d6000f35b3d6000fd5b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d61035490565b61042081610488565b60405173ffffffffffffffffffffffffffffffffffffffff8216907fbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b90600090a250565b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d610355565b610491816104eb565b6104c7576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161031290610700565b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc55565b3b151590565b80356104fc81610748565b92915050565b60008083601f84011261051457600080fd5b50813567ffffffffffffffff81111561052c57600080fd5b60208301915083600182028301111561054457600080fd5b9250929050565b60006020828403121561055d57600080fd5b600061056984846104f1565b949350505050565b60008060006040848603121561058657600080fd5b600061059286866104f1565b935050602084013567ffffffffffffffff8111156105af57600080fd5b6105bb86828701610502565b92509250509250925092565b6105d08161071e565b82525050565b60006105e28385610710565b93506105ef83858461073c565b50500190565b6000610602603683610715565b7f43616e6e6f74206368616e6765207468652061646d696e206f6620612070726f81527f787920746f20746865207a65726f206164647265737300000000000000000000602082015260400192915050565b6000610661603b83610715565b7f43616e6e6f742073657420612070726f787920696d706c656d656e746174696f81527f6e20746f2061206e6f6e2d636f6e747261637420616464726573730000000000602082015260400192915050565b60006105698284866105d6565b602081016104fc82846105c7565b604081016106dc82856105c7565b6106e960208301846105c7565b9392505050565b602080825281016104fc816105f5565b602080825281016104fc81610654565b919050565b90815260200190565b600073ffffffffffffffffffffffffffffffffffffffff82166104fc565b82818337506000910152565b6107518161071e565b811461016257600080fdfea365627a7a72315820d5b74a3e9f84b449ade86218107da35b2af0d645152aea517ee322f695b254926c6578706572696d656e74616cf564736f6c63430005100040b53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+  "deployedBytecode": "0x60806040526004361061005a5760003560e01c80635c60da1b116100435780635c60da1b146100975780638f283970146100c2578063f851a440146100e25761005a565b80633659cfe6146100645780634f1ef28614610084575b6100626100f7565b005b34801561007057600080fd5b5061006261007f36600461054b565b610111565b610062610092366004610571565b610165565b3480156100a357600080fd5b506100ac610233565b6040516100b991906106c0565b60405180910390f35b3480156100ce57600080fd5b506100626100dd36600461054b565b61028a565b3480156100ee57600080fd5b506100ac610364565b6100ff61010f565b61010f61010a6103a9565b6103ce565b565b6101196103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561015a5761015581610417565b610162565b6101626100f7565b50565b61016d6103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610226576101a983610417565b60008373ffffffffffffffffffffffffffffffffffffffff1683836040516101d29291906106b3565b600060405180830381855af49150503d806000811461020d576040519150601f19603f3d011682016040523d82523d6000602084013e610212565b606091505b505090508061022057600080fd5b5061022e565b61022e6100f7565b505050565b600061023d6103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f576102786103a9565b9050610287565b6102876100f7565b90565b6102926103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561015a5773ffffffffffffffffffffffffffffffffffffffff811661031b576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610312906106f0565b60405180910390fd5b7f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f6103446103f2565b826040516103539291906106ce565b60405180910390a161015581610464565b600061036e6103f2565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f576102786103f2565b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc5490565b3660008037600080366000845af43d6000803e8080156103ed573d6000f35b3d6000fd5b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d61035490565b61042081610488565b60405173ffffffffffffffffffffffffffffffffffffffff8216907fbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b90600090a250565b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d610355565b610491816104eb565b6104c7576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161031290610700565b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc55565b3b151590565b80356104fc81610748565b92915050565b60008083601f84011261051457600080fd5b50813567ffffffffffffffff81111561052c57600080fd5b60208301915083600182028301111561054457600080fd5b9250929050565b60006020828403121561055d57600080fd5b600061056984846104f1565b949350505050565b60008060006040848603121561058657600080fd5b600061059286866104f1565b935050602084013567ffffffffffffffff8111156105af57600080fd5b6105bb86828701610502565b92509250509250925092565b6105d08161071e565b82525050565b60006105e28385610710565b93506105ef83858461073c565b50500190565b6000610602603683610715565b7f43616e6e6f74206368616e6765207468652061646d696e206f6620612070726f81527f787920746f20746865207a65726f206164647265737300000000000000000000602082015260400192915050565b6000610661603b83610715565b7f43616e6e6f742073657420612070726f787920696d706c656d656e746174696f81527f6e20746f2061206e6f6e2d636f6e747261637420616464726573730000000000602082015260400192915050565b60006105698284866105d6565b602081016104fc82846105c7565b604081016106dc82856105c7565b6106e960208301846105c7565b9392505050565b602080825281016104fc816105f5565b602080825281016104fc81610654565b919050565b90815260200190565b600073ffffffffffffffffffffffffffffffffffffffff82166104fc565b82818337506000910152565b6107518161071e565b811461016257600080fdfea365627a7a72315820d5b74a3e9f84b449ade86218107da35b2af0d645152aea517ee322f695b254926c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "946:838:5:-;;;1335:211;8:9:-1;5:2;;;30:1;27;20:12;5:2;1335:211:5;;;;;;;;;;;;;;;;;;;;;1487:5;1506;1525:4;993:6:67;1001:5;955:1:71;910:41;;;;;;;;;;;;;;;902:54;-1:-1:-1;;;;;;;;;;;871:86:71;864:94;;;;964:26;983:6;-1:-1:-1;;;;;964:18:71;:26;:::i;:::-;999:12;;:16;996:104;;1026:12;1043:6;-1:-1:-1;;;;;1043:19:71;1063:5;1043:26;;;;;;;;;;;;;;;;;;;;;;14:1:-1;21;16:31;;;;75:4;69:11;64:16;;144:4;140:9;133:4;115:16;111:27;107:43;104:1;100:51;94:4;87:65;169:16;166:1;159:27;225:16;222:1;215:4;212:1;208:12;193:49;7:242;;16:31;36:4;31:9;;7:242;;1025:44:71;;;1085:7;1077:16;;;;;;996:104;;795:309;;1102:1:67;1066:32;;;;;;;;;;;;;;;1058:45;-1:-1:-1;;;;;;;;;;;1036:68:67;1029:76;;;;1111:17;1121:6;-1:-1:-1;;;;;1111:9:67;:17;:::i;:::-;909:224;;;1335:211:5;;;946:838;;1528:305:69;1606:57;1645:17;1606:38;;;;;:57;;:::i;:::-;1598:129;;;;-1:-1:-1;;;1598:129:69;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1792:31:69;1784:45::o;3344:133:68:-;-1:-1:-1;;;;;;;;;;;3445:22:68;3437:36::o;924:616:72:-;1487:20;1525:8;;;924:616::o;5:134:-1:-;83:13;;101:33;83:13;101:33;;;68:71;;;;;147:442;;259:3;252:4;244:6;240:17;236:27;226:2;;277:1;274;267:12;226:2;307:6;301:13;329:64;344:48;385:6;344:48;;;329:64;;;320:73;;413:6;406:5;399:21;449:4;441:6;437:17;482:4;475:5;471:16;517:3;508:6;503:3;499:16;496:25;493:2;;;534:1;531;524:12;493:2;544:39;576:6;571:3;566;544:39;;;219:370;;;;;;;;597:632;;;;755:2;743:9;734:7;730:23;726:32;723:2;;;771:1;768;761:12;723:2;806:1;823:64;879:7;859:9;823:64;;;813:74;;785:108;924:2;942:64;998:7;989:6;978:9;974:22;942:64;;;932:74;;903:109;1064:2;1053:9;1049:18;1043:25;-1:-1;;;;;1080:6;1077:30;1074:2;;;1120:1;1117;1110:12;1074:2;1140:73;1205:7;1196:6;1185:9;1181:22;1140:73;;;1130:83;;1022:197;717:512;;;;;;1236:356;;1364:38;1396:5;1364:38;;;1414:88;1495:6;1490:3;1414:88;;;1407:95;;1507:52;1552:6;1547:3;1540:4;1533:5;1529:16;1507:52;;;1571:16;;;;;1344:248;-1:-1;;1344:248;1600:364;;1778:85;1860:2;1855:3;1778:85;;;1896:30;1876:51;;1955:2;1946:12;;1764:200;-1:-1;;1764:200;1973:396;;2133:67;2197:2;2192:3;2133:67;;;2233:34;2213:55;;2302:29;2297:2;2288:12;;2281:51;2360:2;2351:12;;2119:250;-1:-1;;2119:250;2378:355;;2556:85;2638:2;2633:3;2556:85;;;2674:21;2654:42;;2724:2;2715:12;;2542:191;-1:-1;;2542:191;2741:262;;2885:93;2974:3;2965:6;2885:93;;;2878:100;2866:137;-1:-1;;;2866:137;3010:372;;3209:148;3353:3;3209:148;;3389:372;;3588:148;3732:3;3588:148;;3768:407;3959:2;3973:47;;;3944:18;;4034:131;3944:18;4034:131;;4182:256;4244:2;4238:9;4270:17;;;-1:-1;;;;;4330:34;;4366:22;;;4327:62;4324:2;;;4402:1;4399;4392:12;4324:2;4418;4411:22;4222:216;;-1:-1;4222:216;4445:321;;-1:-1;;;;;4580:6;4577:30;4574:2;;;4620:1;4617;4610:12;4574:2;-1:-1;4751:4;4687;4664:17;;;;-1:-1;;4660:33;4741:15;;4511:255;4773:121;4860:12;;4831:63;4902:144;5037:3;5015:31;-1:-1;5015:31;5055:163;5158:19;;;5207:4;5198:14;;5151:67;5380:91;;-1:-1;;;;;5540:54;;5442:24;5523:76;5607:268;5672:1;5679:101;5693:6;5690:1;5687:13;5679:101;;;5760:11;;;5754:18;5741:11;;;5734:39;5715:2;5708:10;5679:101;;;5795:6;5792:1;5789:13;5786:2;;;5860:1;5851:6;5846:3;5842:16;5835:27;5786:2;5656:219;;;;;5883:117;5952:24;5970:5;5952:24;;;5945:5;5942:35;5932:2;;5991:1;5988;5981:12;5932:2;5926:74;;;946:838:5;;;;;;",
+  "deployedSourceMap": "946:838:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;453:11:70;:9;:11::i;:::-;946:838:5;2206:103:68;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;2206:103:68;;;;;;;;:::i;2826:221::-;;;;;;;;;:::i;1526:96::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1526:96:68;;;:::i;:::-;;;;;;;;;;;;;;;;1798:224;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;1798:224:68;;;;;;;;:::i;1384:78::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1384:78:68;;;:::i;1952:90:70:-;1988:15;:13;:15::i;:::-;2009:28;2019:17;:15;:17::i;:::-;2009:9;:28::i;:::-;1952:90::o;2206:103:68:-;1261:8;:6;:8::i;:::-;1247:22;;:10;:22;;;1243:76;;;2275:29;2286:17;2275:10;:29::i;:::-;1243:76;;;1301:11;:9;:11::i;:::-;2206:103;:::o;2826:221::-;1261:8;:6;:8::i;:::-;1247:22;;:10;:22;;;1243:76;;;2931:29;2942:17;2931:10;:29::i;:::-;2967:12;2984:17;:30;;3015:4;;2984:36;;;;;;;;;;;;;;;;;;;;;;;14:1:-1;21;16:31;;;;75:4;69:11;64:16;;144:4;140:9;133:4;115:16;111:27;107:43;104:1;100:51;94:4;87:65;169:16;166:1;159:27;225:16;222:1;215:4;212:1;208:12;193:49;7:242;;16:31;36:4;31:9;;7:242;;2966:54:68;;;3034:7;3026:16;;;;;;1279:1;1243:76;;;1301:11;:9;:11::i;:::-;2826:221;;;:::o;1526:96::-;1578:7;1261:8;:6;:8::i;:::-;1247:22;;:10;:22;;;1243:76;;;1600:17;:15;:17::i;:::-;1593:24;;1243:76;;;1301:11;:9;:11::i;:::-;1526:96;:::o;1798:224::-;1261:8;:6;:8::i;:::-;1247:22;;:10;:22;;;1243:76;;;1868:22;;;1860:89;;;;;;;;;;;;;;;;;;;;;;1960:32;1973:8;:6;:8::i;:::-;1983;1960:32;;;;;;;;;;;;;;;;1998:19;2008:8;1998:9;:19::i;1384:78::-;1427:7;1261:8;:6;:8::i;:::-;1247:22;;:10;:22;;;1243:76;;;1449:8;:6;:8::i;958:156:69:-;778:66;1093:11;;1077:33::o;878:731:70:-;1180:12;1177:1;1174;1161:32;1370:1;1367;1353:12;1350:1;1334:14;1329:3;1316:56;1434:14;1431:1;1428;1413:36;1464:6;1519:36;;;;1582:14;1579:1;1572:25;1519:36;1538:14;1535:1;1528:25;3092:136:68;962:66;3207:11;;3192:32::o;1249:142:69:-;1311:37;1330:17;1311:18;:37::i;:::-;1359:27;;;;;;;;;;;1249:142;:::o;3344:133:68:-;962:66;3445:22;3437:36::o;1528:305:69:-;1606:57;1645:17;1606:38;:57::i;:::-;1598:129;;;;;;;;;;;;;;778:66;1792:31;1784:45::o;924:616:72:-;1487:20;1525:8;;;924:616::o;5:130:-1:-;72:20;;97:33;72:20;97:33;;;57:78;;;;;156:336;;;270:3;263:4;255:6;251:17;247:27;237:2;;288:1;285;278:12;237:2;-1:-1;308:20;;348:18;337:30;;334:2;;;380:1;377;370:12;334:2;414:4;406:6;402:17;390:29;;465:3;457:4;449:6;445:17;435:8;431:32;428:41;425:2;;;482:1;479;472:12;425:2;230:262;;;;;;500:241;;604:2;592:9;583:7;579:23;575:32;572:2;;;620:1;617;610:12;572:2;655:1;672:53;717:7;697:9;672:53;;;662:63;566:175;-1:-1;;;;566:175;748:490;;;;888:2;876:9;867:7;863:23;859:32;856:2;;;904:1;901;894:12;856:2;939:1;956:53;1001:7;981:9;956:53;;;946:63;;918:97;1074:2;1063:9;1059:18;1046:32;1098:18;1090:6;1087:30;1084:2;;;1130:1;1127;1120:12;1084:2;1158:64;1214:7;1205:6;1194:9;1190:22;1158:64;;;1148:74;;;;1025:203;850:388;;;;;;1245:113;1328:24;1346:5;1328:24;;;1323:3;1316:37;1310:48;;;1388:310;;1520:88;1601:6;1596:3;1520:88;;;1513:95;;1620:43;1656:6;1651:3;1644:5;1620:43;;;-1:-1;;1676:16;;1506:192;1707:391;;1867:67;1931:2;1926:3;1867:67;;;1967:34;1947:55;;2036:24;2031:2;2022:12;;2015:46;2089:2;2080:12;;1853:245;-1:-1;;1853:245;2107:396;;2267:67;2331:2;2326:3;2267:67;;;2367:34;2347:55;;2436:29;2431:2;2422:12;;2415:51;2494:2;2485:12;;2253:250;-1:-1;;2253:250;2511:282;;2665:103;2764:3;2755:6;2747;2665:103;;2800:213;2918:2;2903:18;;2932:71;2907:9;2976:6;2932:71;;3020:324;3166:2;3151:18;;3180:71;3155:9;3224:6;3180:71;;;3262:72;3330:2;3319:9;3315:18;3306:6;3262:72;;;3137:207;;;;;;3351:407;3542:2;3556:47;;;3527:18;;3617:131;3527:18;3617:131;;3765:407;3956:2;3970:47;;;3941:18;;4031:131;3941:18;4031:131;;4180:144;4315:3;4293:31;-1:-1;4293:31;4333:163;4436:19;;;4485:4;4476:14;;4429:67;4504:91;;4675:42;4664:54;;4566:24;4647:76;4731:145;4812:6;4807:3;4802;4789:30;-1:-1;4868:1;4850:16;;4843:27;4782:94;4884:117;4953:24;4971:5;4953:24;;;4946:5;4943:35;4933:2;;4992:1;4989;4982:12",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\n/* solium-disable-next-line */\nimport { AdminUpgradeabilityProxy } from \"@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol\";\n\n\n/**\n * @title PerpetualProxy\n * @author dYdX\n *\n * @notice Proxy contract that forwards calls to the main Perpetual contract.\n */\ncontract PerpetualProxy is\n    AdminUpgradeabilityProxy\n{\n    /**\n     * @dev The constructor of the proxy that sets the admin and logic.\n     *\n     * @param  logic  The address of the contract that implements the underlying logic.\n     * @param  admin  The address of the admin of the proxy.\n     * @param  data   Any data to send immediately to the implementation contract.\n     */\n    constructor(\n        address logic,\n        address admin,\n        bytes memory data\n    )\n        public\n        AdminUpgradeabilityProxy(\n            logic,\n            admin,\n            data\n        )\n    {}\n\n    /**\n     * @dev Overrides the default functionality that prevents the admin from reaching the\n     *  implementation contract.\n     */\n    function _willFallback()\n        internal\n    { /* solium-disable-line no-empty-blocks */ }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/PerpetualProxy.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/PerpetualProxy.sol",
+    "exportedSymbols": {
+      "PerpetualProxy": [
+        298
+      ]
+    },
+    "id": 299,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 273,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:5"
+      },
+      {
+        "id": 274,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:5"
+      },
+      {
+        "absolutePath": "@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol",
+        "file": "@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol",
+        "id": 276,
+        "nodeType": "ImportDirective",
+        "scope": 299,
+        "sourceUnit": 12398,
+        "src": "693:120:5",
+        "symbolAliases": [
+          {
+            "foreign": 275,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 277,
+              "name": "AdminUpgradeabilityProxy",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12397,
+              "src": "977:24:5",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AdminUpgradeabilityProxy_$12397",
+                "typeString": "contract AdminUpgradeabilityProxy"
+              }
+            },
+            "id": 278,
+            "nodeType": "InheritanceSpecifier",
+            "src": "977:24:5"
+          }
+        ],
+        "contractDependencies": [
+          12397,
+          12553,
+          12611,
+          12649,
+          12698
+        ],
+        "contractKind": "contract",
+        "documentation": "@title PerpetualProxy\n@author dYdX\n * @notice Proxy contract that forwards calls to the main Perpetual contract.",
+        "fullyImplemented": true,
+        "id": 298,
+        "linearizedBaseContracts": [
+          298,
+          12397,
+          12698,
+          12553,
+          12611,
+          12649
+        ],
+        "name": "PerpetualProxy",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 292,
+              "nodeType": "Block",
+              "src": "1544:2:5",
+              "statements": []
+            },
+            "documentation": "@dev The constructor of the proxy that sets the admin and logic.\n     * @param  logic  The address of the contract that implements the underlying logic.\n@param  admin  The address of the admin of the proxy.\n@param  data   Any data to send immediately to the implementation contract.",
+            "id": 293,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 287,
+                    "name": "logic",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 280,
+                    "src": "1487:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 288,
+                    "name": "admin",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 282,
+                    "src": "1506:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 289,
+                    "name": "data",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 284,
+                    "src": "1525:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_memory_ptr",
+                      "typeString": "bytes memory"
+                    }
+                  }
+                ],
+                "id": 290,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 286,
+                  "name": "AdminUpgradeabilityProxy",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 12397,
+                  "src": "1449:24:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_AdminUpgradeabilityProxy_$12397_$",
+                    "typeString": "type(contract AdminUpgradeabilityProxy)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1449:90:5"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 285,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 280,
+                  "name": "logic",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 293,
+                  "src": "1356:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 279,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1356:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 282,
+                  "name": "admin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 293,
+                  "src": "1379:13:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 281,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1379:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 284,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 293,
+                  "src": "1402:17:5",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 283,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1402:5:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1346:79:5"
+            },
+            "returnParameters": {
+              "id": 291,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1544:0:5"
+            },
+            "scope": 298,
+            "src": "1335:211:5",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 296,
+              "nodeType": "Block",
+              "src": "1737:45:5",
+              "statements": []
+            },
+            "documentation": "@dev Overrides the default functionality that prevents the admin from reaching the\n implementation contract.",
+            "id": 297,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_willFallback",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 294,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1713:2:5"
+            },
+            "returnParameters": {
+              "id": 295,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1737:0:5"
+            },
+            "scope": 298,
+            "src": "1691:91:5",
+            "stateMutability": "nonpayable",
+            "superFunction": 12552,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 299,
+        "src": "946:838:5"
+      }
+    ],
+    "src": "603:1182:5"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/PerpetualProxy.sol",
+      "exportedSymbols": {
+        "PerpetualProxy": [
+          298
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 273,
+        "name": "PragmaDirective",
+        "src": "603:23:5"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 274,
+        "name": "PragmaDirective",
+        "src": "627:33:5"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 12398,
+          "absolutePath": "@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol",
+          "file": "@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol",
+          "scope": 299,
+          "symbolAliases": [
+            {
+              "foreign": 275,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 276,
+        "name": "ImportDirective",
+        "src": "693:120:5"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            12397,
+            12553,
+            12611,
+            12649,
+            12698
+          ],
+          "contractKind": "contract",
+          "documentation": "@title PerpetualProxy\n@author dYdX\n * @notice Proxy contract that forwards calls to the main Perpetual contract.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            298,
+            12397,
+            12698,
+            12553,
+            12611,
+            12649
+          ],
+          "name": "PerpetualProxy",
+          "scope": 299
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "AdminUpgradeabilityProxy",
+                  "referencedDeclaration": 12397,
+                  "type": "contract AdminUpgradeabilityProxy"
+                },
+                "id": 277,
+                "name": "UserDefinedTypeName",
+                "src": "977:24:5"
+              }
+            ],
+            "id": 278,
+            "name": "InheritanceSpecifier",
+            "src": "977:24:5"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev The constructor of the proxy that sets the admin and logic.\n     * @param  logic  The address of the contract that implements the underlying logic.\n@param  admin  The address of the admin of the proxy.\n@param  data   Any data to send immediately to the implementation contract.",
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "name": "",
+              "scope": 298,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "logic",
+                      "scope": 293,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 279,
+                        "name": "ElementaryTypeName",
+                        "src": "1356:7:5"
+                      }
+                    ],
+                    "id": 280,
+                    "name": "VariableDeclaration",
+                    "src": "1356:13:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "admin",
+                      "scope": 293,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 281,
+                        "name": "ElementaryTypeName",
+                        "src": "1379:7:5"
+                      }
+                    ],
+                    "id": 282,
+                    "name": "VariableDeclaration",
+                    "src": "1379:13:5"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "data",
+                      "scope": 293,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 283,
+                        "name": "ElementaryTypeName",
+                        "src": "1402:5:5"
+                      }
+                    ],
+                    "id": 284,
+                    "name": "VariableDeclaration",
+                    "src": "1402:17:5"
+                  }
+                ],
+                "id": 285,
+                "name": "ParameterList",
+                "src": "1346:79:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 291,
+                "name": "ParameterList",
+                "src": "1544:0:5"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 12397,
+                      "type": "type(contract AdminUpgradeabilityProxy)",
+                      "value": "AdminUpgradeabilityProxy"
+                    },
+                    "id": 286,
+                    "name": "Identifier",
+                    "src": "1449:24:5"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 280,
+                      "type": "address",
+                      "value": "logic"
+                    },
+                    "id": 287,
+                    "name": "Identifier",
+                    "src": "1487:5:5"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 282,
+                      "type": "address",
+                      "value": "admin"
+                    },
+                    "id": 288,
+                    "name": "Identifier",
+                    "src": "1506:5:5"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 284,
+                      "type": "bytes memory",
+                      "value": "data"
+                    },
+                    "id": 289,
+                    "name": "Identifier",
+                    "src": "1525:4:5"
+                  }
+                ],
+                "id": 290,
+                "name": "ModifierInvocation",
+                "src": "1449:90:5"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 292,
+                "name": "Block",
+                "src": "1544:2:5"
+              }
+            ],
+            "id": 293,
+            "name": "FunctionDefinition",
+            "src": "1335:211:5"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Overrides the default functionality that prevents the admin from reaching the\n implementation contract.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_willFallback",
+              "scope": 298,
+              "stateMutability": "nonpayable",
+              "superFunction": 12552,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 294,
+                "name": "ParameterList",
+                "src": "1713:2:5"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 295,
+                "name": "ParameterList",
+                "src": "1737:0:5"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 296,
+                "name": "Block",
+                "src": "1737:45:5"
+              }
+            ],
+            "id": 297,
+            "name": "FunctionDefinition",
+            "src": "1691:91:5"
+          }
+        ],
+        "id": 298,
+        "name": "ContractDefinition",
+        "src": "946:838:5"
+      }
+    ],
+    "id": 299,
+    "name": "SourceUnit",
+    "src": "603:1182:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.356Z",
+  "devdoc": {
+    "author": "dYdX",
+    "methods": {
+      "admin()": {
+        "return": "The address of the proxy admin."
+      },
+      "changeAdmin(address)": {
+        "details": "Changes the admin of the proxy. Only the current admin can call this function.",
+        "params": {
+          "newAdmin": "Address to transfer proxy administration to."
+        }
+      },
+      "constructor": {
+        "details": "The constructor of the proxy that sets the admin and logic.",
+        "params": {
+          "admin": "The address of the admin of the proxy.",
+          "data": "Any data to send immediately to the implementation contract.",
+          "logic": "The address of the contract that implements the underlying logic."
+        }
+      },
+      "implementation()": {
+        "return": "The address of the implementation."
+      },
+      "upgradeTo(address)": {
+        "details": "Upgrade the backing implementation of the proxy. Only the admin can call this function.",
+        "params": {
+          "newImplementation": "Address of the new implementation."
+        }
+      },
+      "upgradeToAndCall(address,bytes)": {
+        "details": "Upgrade the backing implementation of the proxy and call a function on the new implementation. This is useful to initialize the proxied contract.",
+        "params": {
+          "data": "Data to send as msg.data in the low level call. It should include the signature and the parameters of the function to be called, as described in https://solidity.readthedocs.io/en/v0.4.24/abi-spec.html#function-selector-and-argument-encoding.",
+          "newImplementation": "Address of the new implementation."
+        }
+      }
+    },
+    "title": "PerpetualProxy"
+  },
+  "userdoc": {
+    "methods": {},
+    "notice": "Proxy contract that forwards calls to the main Perpetual contract."
+  }
+}

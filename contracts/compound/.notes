@@ -1,0 +1,67 @@
+https://github.com/compound-finance/compound-config/blob/master/networks/mainnet.json
+
+let supplyResult = await myContract.methods.supplyEthToCompound(
+    compoundCEthContractAddress
+  ).send({
+    from: myWalletAddress, // Some Ganache wallet address
+    gasLimit: web3.utils.toHex(750000),        // posted at compound.finance/developers#gas-costs
+    gasPrice: web3.utils.toHex(20000000000),   // use ethgasstation.info (mainnet only)
+    value: web3.utils.toHex(web3.utils.toWei('1', 'ether'))
+  });
+
+
+contract MyContract {
+    event MyLog(string, uint256);
+
+    function supplyEthToCompound(address payable _cEtherContract)
+        public
+        payable
+        returns (bool)
+    {
+        // Create a reference to the corresponding cToken contract
+        CEth cToken = CEth(_cEtherContract);
+
+        // Amount of current exchange rate from cToken to underlying
+        uint256 exchangeRateMantissa = cToken.exchangeRateCurrent();
+        emit MyLog("Exchange Rate (scaled up by 1e18): ", exchangeRateMantissa);
+
+        // Amount added to you supply balance this block
+        uint256 supplyRateMantissa = cToken.supplyRatePerBlock();
+        emit MyLog("Supply Rate: (scaled up by 1e18)", supplyRateMantissa);
+
+        cToken.mint.value(msg.value).gas(250000)();
+        return true;
+    }
+
+ComptrollerG6
+function liquidateBorrowAllowed(
+        address cTokenBorrowed,
+        address cTokenCollateral,
+        address liquidator,
+        address borrower,
+        uint repayAmount) external returns (uint) {
+        // Shh - currently unused
+        liquidator;
+
+        if (!markets[cTokenBorrowed].isListed || !markets[cTokenCollateral].isListed) {
+            return uint(Error.MARKET_NOT_LISTED);
+        }
+
+        /* The borrower must have shortfall in order to be liquidatable */
+        (Error err, , uint shortfall) = getAccountLiquidityInternal(borrower);
+        if (err != Error.NO_ERROR) {
+            return uint(err);
+        }
+        if (shortfall == 0) {
+            return uint(Error.INSUFFICIENT_SHORTFALL);
+        }
+
+        /* The liquidator may not repay more than what is allowed by the closeFactor */
+        uint borrowBalance = CToken(cTokenBorrowed).borrowBalanceStored(borrower);
+        uint maxClose = mul_ScalarTruncate(Exp({mantissa: closeFactorMantissa}), borrowBalance);
+        if (repayAmount > maxClose) {
+            return uint(Error.TOO_MUCH_REPAY);
+        }
+
+        return uint(Error.NO_ERROR);
+    }

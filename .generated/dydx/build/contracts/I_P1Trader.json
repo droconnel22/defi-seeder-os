@@ -1,0 +1,695 @@
+{
+  "contractName": "I_P1Trader",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "maker",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "taker",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "traderFlags",
+          "type": "bytes32"
+        }
+      ],
+      "name": "trade",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "marginAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "positionAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isBuy",
+              "type": "bool"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "traderFlags",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct P1Types.TradeResult",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"maker\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"taker\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"traderFlags\",\"type\":\"bytes32\"}],\"name\":\"trade\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"marginAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"positionAmount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isBuy\",\"type\":\"bool\"},{\"internalType\":\"bytes32\",\"name\":\"traderFlags\",\"type\":\"bytes32\"}],\"internalType\":\"struct P1Types.TradeResult\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX\",\"methods\":{\"trade(address,address,address,uint256,bytes,bytes32)\":{\"params\":{\"data\":\"Arbitrary data passed in to the `trade()` function of PerpetualV1.\",\"maker\":\"The address of the passive maker account.\",\"price\":\"The current oracle price of the underlying asset.\",\"sender\":\"The address that called the `trade()` function of PerpetualV1.\",\"taker\":\"The address of the active taker account.\",\"traderFlags\":\"Any flags that have been set by other I_P1Trader contracts during the                     same call to the `trade()` function of PerpetualV1.\"},\"return\":\"The result of the trade from the perspective of the taker.\"}},\"title\":\"I_P1Trader\"},\"userdoc\":{\"methods\":{\"trade(address,address,address,uint256,bytes,bytes32)\":{\"notice\":\"Returns the result of the trade between the maker and the taker. Expected to be called by PerpetualV1. Reverts if the trade is disallowed.\"}},\"notice\":\"Interface that PerpetualV1 Traders must implement.\"}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Trader.sol\":\"I_P1Trader\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Trader.sol\":{\"keccak256\":\"0x25bc69198c64af3e72f16b852f8931fbd7aa4517dd2b62b9d6ec93e81edfc9f3\",\"urls\":[\"bzz-raw://6714a58bc0f4b1ba0965a6f698c06a50fdb3c88c91438850a95ebf3e7307c4c1\",\"dweb:/ipfs/QmTQQdUGS6WALWJMKkgXLSFFzcsHKwsWZiYkd9YcReX4td\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol\":{\"keccak256\":\"0x4c06a8f9779e4a2975ceb5e05583c10309d1979814c7d408ee9045b5c896f8d2\",\"urls\":[\"bzz-raw://2231570e2572d884876eb5c443e4ae59cf8168d8f0e33cc38ebf88497ae65def\",\"dweb:/ipfs/QmWWpyL1P7nUVnpXEULTqCTTvsKSNwnRRvB4kFCuJeMGGo\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\nimport { P1Types } from \"../lib/P1Types.sol\";\n\n\n/**\n * @title I_P1Trader\n * @author dYdX\n *\n * @notice Interface that PerpetualV1 Traders must implement.\n */\ninterface I_P1Trader {\n\n    /**\n     * @notice Returns the result of the trade between the maker and the taker. Expected to be\n     *  called by PerpetualV1. Reverts if the trade is disallowed.\n     *\n     * @param  sender       The address that called the `trade()` function of PerpetualV1.\n     * @param  maker        The address of the passive maker account.\n     * @param  taker        The address of the active taker account.\n     * @param  price        The current oracle price of the underlying asset.\n     * @param  data         Arbitrary data passed in to the `trade()` function of PerpetualV1.\n     * @param  traderFlags  Any flags that have been set by other I_P1Trader contracts during the\n     *                      same call to the `trade()` function of PerpetualV1.\n     * @return              The result of the trade from the perspective of the taker.\n     */\n    function trade(\n        address sender,\n        address maker,\n        address taker,\n        uint256 price,\n        bytes calldata data,\n        bytes32 traderFlags\n    )\n        external\n        returns (P1Types.TradeResult memory);\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Trader.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Trader.sol",
+    "exportedSymbols": {
+      "I_P1Trader": [
+        3099
+      ]
+    },
+    "id": 3100,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3078,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:26"
+      },
+      {
+        "id": 3079,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:26"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol",
+        "file": "../lib/P1Types.sol",
+        "id": 3081,
+        "nodeType": "ImportDirective",
+        "scope": 3100,
+        "sourceUnit": 3690,
+        "src": "662:45:26",
+        "symbolAliases": [
+          {
+            "foreign": 3080,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title I_P1Trader\n@author dYdX\n * @notice Interface that PerpetualV1 Traders must implement.",
+        "fullyImplemented": false,
+        "id": 3099,
+        "linearizedBaseContracts": [
+          3099
+        ],
+        "name": "I_P1Trader",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Returns the result of the trade between the maker and the taker. Expected to be\n called by PerpetualV1. Reverts if the trade is disallowed.\n     * @param  sender       The address that called the `trade()` function of PerpetualV1.\n@param  maker        The address of the passive maker account.\n@param  taker        The address of the active taker account.\n@param  price        The current oracle price of the underlying asset.\n@param  data         Arbitrary data passed in to the `trade()` function of PerpetualV1.\n@param  traderFlags  Any flags that have been set by other I_P1Trader contracts during the\n                     same call to the `trade()` function of PerpetualV1.\n@return              The result of the trade from the perspective of the taker.",
+            "id": 3098,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "trade",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3094,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3083,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1725:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3082,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1725:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3085,
+                  "name": "maker",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1749:13:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3084,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1749:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3087,
+                  "name": "taker",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1772:13:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3086,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1772:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3089,
+                  "name": "price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1795:13:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3088,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1795:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3091,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1818:19:26",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 3090,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1818:5:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3093,
+                  "name": "traderFlags",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1847:19:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3092,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1847:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1715:157:26"
+            },
+            "returnParameters": {
+              "id": 3097,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3096,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3098,
+                  "src": "1907:26:26",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_TradeResult_$3688_memory_ptr",
+                    "typeString": "struct P1Types.TradeResult"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3095,
+                    "name": "P1Types.TradeResult",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3688,
+                    "src": "1907:19:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TradeResult_$3688_storage_ptr",
+                      "typeString": "struct P1Types.TradeResult"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1906:28:26"
+            },
+            "scope": 3099,
+            "src": "1701:234:26",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3100,
+        "src": "820:1117:26"
+      }
+    ],
+    "src": "603:1335:26"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/intf/I_P1Trader.sol",
+      "exportedSymbols": {
+        "I_P1Trader": [
+          3099
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 3078,
+        "name": "PragmaDirective",
+        "src": "603:23:26"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 3079,
+        "name": "PragmaDirective",
+        "src": "627:33:26"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3690,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol",
+          "file": "../lib/P1Types.sol",
+          "scope": 3100,
+          "symbolAliases": [
+            {
+              "foreign": 3080,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 3081,
+        "name": "ImportDirective",
+        "src": "662:45:26"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title I_P1Trader\n@author dYdX\n * @notice Interface that PerpetualV1 Traders must implement.",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            3099
+          ],
+          "name": "I_P1Trader",
+          "scope": 3100
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@notice Returns the result of the trade between the maker and the taker. Expected to be\n called by PerpetualV1. Reverts if the trade is disallowed.\n     * @param  sender       The address that called the `trade()` function of PerpetualV1.\n@param  maker        The address of the passive maker account.\n@param  taker        The address of the active taker account.\n@param  price        The current oracle price of the underlying asset.\n@param  data         Arbitrary data passed in to the `trade()` function of PerpetualV1.\n@param  traderFlags  Any flags that have been set by other I_P1Trader contracts during the\n                     same call to the `trade()` function of PerpetualV1.\n@return              The result of the trade from the perspective of the taker.",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "trade",
+              "scope": 3099,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "sender",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3082,
+                        "name": "ElementaryTypeName",
+                        "src": "1725:7:26"
+                      }
+                    ],
+                    "id": 3083,
+                    "name": "VariableDeclaration",
+                    "src": "1725:14:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "maker",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3084,
+                        "name": "ElementaryTypeName",
+                        "src": "1749:7:26"
+                      }
+                    ],
+                    "id": 3085,
+                    "name": "VariableDeclaration",
+                    "src": "1749:13:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "taker",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3086,
+                        "name": "ElementaryTypeName",
+                        "src": "1772:7:26"
+                      }
+                    ],
+                    "id": 3087,
+                    "name": "VariableDeclaration",
+                    "src": "1772:13:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "price",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3088,
+                        "name": "ElementaryTypeName",
+                        "src": "1795:7:26"
+                      }
+                    ],
+                    "id": 3089,
+                    "name": "VariableDeclaration",
+                    "src": "1795:13:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "data",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 3090,
+                        "name": "ElementaryTypeName",
+                        "src": "1818:5:26"
+                      }
+                    ],
+                    "id": 3091,
+                    "name": "VariableDeclaration",
+                    "src": "1818:19:26"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "traderFlags",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3092,
+                        "name": "ElementaryTypeName",
+                        "src": "1847:7:26"
+                      }
+                    ],
+                    "id": 3093,
+                    "name": "VariableDeclaration",
+                    "src": "1847:19:26"
+                  }
+                ],
+                "id": 3094,
+                "name": "ParameterList",
+                "src": "1715:157:26"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3098,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct P1Types.TradeResult",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "P1Types.TradeResult",
+                          "referencedDeclaration": 3688,
+                          "type": "struct P1Types.TradeResult"
+                        },
+                        "id": 3095,
+                        "name": "UserDefinedTypeName",
+                        "src": "1907:19:26"
+                      }
+                    ],
+                    "id": 3096,
+                    "name": "VariableDeclaration",
+                    "src": "1907:26:26"
+                  }
+                ],
+                "id": 3097,
+                "name": "ParameterList",
+                "src": "1906:28:26"
+              }
+            ],
+            "id": 3098,
+            "name": "FunctionDefinition",
+            "src": "1701:234:26"
+          }
+        ],
+        "id": 3099,
+        "name": "ContractDefinition",
+        "src": "820:1117:26"
+      }
+    ],
+    "id": 3100,
+    "name": "SourceUnit",
+    "src": "603:1335:26"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.395Z",
+  "devdoc": {
+    "author": "dYdX",
+    "methods": {
+      "trade(address,address,address,uint256,bytes,bytes32)": {
+        "params": {
+          "data": "Arbitrary data passed in to the `trade()` function of PerpetualV1.",
+          "maker": "The address of the passive maker account.",
+          "price": "The current oracle price of the underlying asset.",
+          "sender": "The address that called the `trade()` function of PerpetualV1.",
+          "taker": "The address of the active taker account.",
+          "traderFlags": "Any flags that have been set by other I_P1Trader contracts during the                     same call to the `trade()` function of PerpetualV1."
+        },
+        "return": "The result of the trade from the perspective of the taker."
+      }
+    },
+    "title": "I_P1Trader"
+  },
+  "userdoc": {
+    "methods": {
+      "trade(address,address,address,uint256,bytes,bytes32)": {
+        "notice": "Returns the result of the trade between the maker and the taker. Expected to be called by PerpetualV1. Reverts if the trade is disallowed."
+      }
+    },
+    "notice": "Interface that PerpetualV1 Traders must implement."
+  }
+}

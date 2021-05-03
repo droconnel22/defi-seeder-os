@@ -1,0 +1,2893 @@
+{
+  "contractName": "LiquidityPoolConverter",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint16",
+          "name": "_type",
+          "type": "uint16"
+        },
+        {
+          "indexed": true,
+          "internalType": "contract IConverterAnchor",
+          "name": "_anchor",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bool",
+          "name": "_activated",
+          "type": "bool"
+        }
+      ],
+      "name": "Activation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "_fromToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "_toToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_trader",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_return",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256",
+          "name": "_conversionFee",
+          "type": "int256"
+        }
+      ],
+      "name": "Conversion",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "_prevFee",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "_newFee",
+          "type": "uint32"
+        }
+      ],
+      "name": "ConversionFeeUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_provider",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "_reserveToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "LiquidityAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_provider",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "_reserveToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "LiquidityRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_prevOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "_token1",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "contract IERC20",
+          "name": "_token2",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_rateN",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_rateD",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokenRateUpdate",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "acceptOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "acceptTokenOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "_weight",
+          "type": "uint32"
+        }
+      ],
+      "name": "addReserve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "anchor",
+      "outputs": [
+        {
+          "internalType": "contract IConverterAnchor",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "connectorTokenCount",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_index",
+          "type": "uint256"
+        }
+      ],
+      "name": "connectorTokens",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "connectors",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "conversionFee",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "conversionWhitelist",
+      "outputs": [
+        {
+          "internalType": "contract IWhitelist",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_sourceToken",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "_targetToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_trader",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_beneficiary",
+          "type": "address"
+        }
+      ],
+      "name": "convert",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "converterType",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_connectorToken",
+          "type": "address"
+        }
+      ],
+      "name": "getConnectorBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_sourceToken",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "_targetToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "getReturn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isActive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isV28OrHigher",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxConversionFee",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "newOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "onlyOwnerCanUpdateRegistry",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "prevRegistry",
+      "outputs": [
+        {
+          "internalType": "contract IContractRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "registry",
+      "outputs": [
+        {
+          "internalType": "contract IContractRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_reserveToken",
+          "type": "address"
+        }
+      ],
+      "name": "reserveBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "reserveRatio",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "reserveTokenCount",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "reserveTokens",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_reserveToken",
+          "type": "address"
+        }
+      ],
+      "name": "reserveWeight",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "reserves",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint32",
+          "name": "weight",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bool",
+          "name": "deprecated1",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "deprecated2",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "isSet",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "restoreRegistry",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "_onlyOwnerCanUpdateRegistry",
+          "type": "bool"
+        }
+      ],
+      "name": "restrictRegistryUpdate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_conversionFee",
+          "type": "uint32"
+        }
+      ],
+      "name": "setConversionFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IWhitelist",
+          "name": "_whitelist",
+          "type": "address"
+        }
+      ],
+      "name": "setConversionWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_sourceToken",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "_targetToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "targetAmountAndFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract IConverterAnchor",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferAnchorOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferTokenOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "updateRegistry",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "upgrade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "version",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    },
+    {
+      "inputs": [],
+      "name": "acceptAnchorOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint16\",\"name\":\"_type\",\"type\":\"uint16\"},{\"indexed\":true,\"internalType\":\"contract IConverterAnchor\",\"name\":\"_anchor\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bool\",\"name\":\"_activated\",\"type\":\"bool\"}],\"name\":\"Activation\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"_fromToken\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"_toToken\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_trader\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_return\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"int256\",\"name\":\"_conversionFee\",\"type\":\"int256\"}],\"name\":\"Conversion\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"_prevFee\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"_newFee\",\"type\":\"uint32\"}],\"name\":\"ConversionFeeUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_provider\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"_reserveToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newSupply\",\"type\":\"uint256\"}],\"name\":\"LiquidityAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_provider\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"_reserveToken\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newSupply\",\"type\":\"uint256\"}],\"name\":\"LiquidityRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_prevOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"OwnerUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"_token1\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"contract IERC20\",\"name\":\"_token2\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_rateN\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_rateD\",\"type\":\"uint256\"}],\"name\":\"TokenRateUpdate\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptAnchorOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptTokenOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_weight\",\"type\":\"uint32\"}],\"name\":\"addReserve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"anchor\",\"outputs\":[{\"internalType\":\"contract IConverterAnchor\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"connectorTokenCount\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"connectorTokens\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"connectors\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"conversionFee\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"conversionWhitelist\",\"outputs\":[{\"internalType\":\"contract IWhitelist\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_sourceToken\",\"type\":\"address\"},{\"internalType\":\"contract IERC20\",\"name\":\"_targetToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_trader\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"convert\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"converterType\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_connectorToken\",\"type\":\"address\"}],\"name\":\"getConnectorBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_sourceToken\",\"type\":\"address\"},{\"internalType\":\"contract IERC20\",\"name\":\"_targetToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"getReturn\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isActive\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isV28OrHigher\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"maxConversionFee\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"newOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"onlyOwnerCanUpdateRegistry\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"prevRegistry\",\"outputs\":[{\"internalType\":\"contract IContractRegistry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"registry\",\"outputs\":[{\"internalType\":\"contract IContractRegistry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_reserveToken\",\"type\":\"address\"}],\"name\":\"reserveBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"reserveRatio\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"reserveTokenCount\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"reserveTokens\",\"outputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_reserveToken\",\"type\":\"address\"}],\"name\":\"reserveWeight\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"reserves\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"weight\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"deprecated1\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"deprecated2\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isSet\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"restoreRegistry\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_onlyOwnerCanUpdateRegistry\",\"type\":\"bool\"}],\"name\":\"restrictRegistryUpdate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_conversionFee\",\"type\":\"uint32\"}],\"name\":\"setConversionFee\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IWhitelist\",\"name\":\"_whitelist\",\"type\":\"address\"}],\"name\":\"setConversionWhitelist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_sourceToken\",\"type\":\"address\"},{\"internalType\":\"contract IERC20\",\"name\":\"_targetToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"targetAmountAndFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract IConverterAnchor\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferAnchorOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferTokenOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"updateRegistry\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"upgrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"version\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"withdrawETH\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"withdrawTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"This contract is the base contract for specific types of converters that manage liquidity pools. Liquidity pools have 2 reserves or more and they allow converting between them. Note that TokenRateUpdate events are dispatched for pool tokens as well. The pool token is the first token in the event in that case.\",\"events\":{\"LiquidityAdded(address,address,uint256,uint256,uint256)\":{\"details\":\"triggered after liquidity is added\",\"params\":{\"_amount\":\"reserve token amount\",\"_newBalance\":\"reserve token new balance\",\"_newSupply\":\"pool token new supply\",\"_provider\":\"liquidity provider\",\"_reserveToken\":\"reserve token address\"}},\"LiquidityRemoved(address,address,uint256,uint256,uint256)\":{\"details\":\"triggered after liquidity is removed\",\"params\":{\"_amount\":\"reserve token amount\",\"_newBalance\":\"reserve token new balance\",\"_newSupply\":\"pool token new supply\",\"_provider\":\"liquidity provider\",\"_reserveToken\":\"reserve token address\"}}},\"kind\":\"dev\",\"methods\":{\"acceptAnchorOwnership()\":{\"details\":\"accepts ownership of the anchor after an ownership transfer also activates the converter can only be called by the contract owner note that prior to version 28, you should use 'acceptTokenOwnership' instead\"},\"acceptOwnership()\":{\"details\":\"used by a new owner to accept an ownership transfer\"},\"acceptTokenOwnership()\":{\"details\":\"deprecated, backward compatibility\"},\"addReserve(address,uint32)\":{\"details\":\"defines a new reserve token for the converter can only be called by the owner while the converter is inactive\",\"params\":{\"_token\":\"address of the reserve token\",\"_weight\":\"reserve weight, represented in ppm, 1-1000000\"}},\"connectorTokenCount()\":{\"details\":\"deprecated, backward compatibility\"},\"connectorTokens(uint256)\":{\"details\":\"deprecated, backward compatibility\"},\"connectors(address)\":{\"details\":\"deprecated, backward compatibility\"},\"constructor\":{\"details\":\"initializes a new LiquidityPoolConverter instance\",\"params\":{\"_anchor\":\"anchor governed by the converter\",\"_maxConversionFee\":\"maximum conversion fee, represented in ppm\",\"_registry\":\"address of a contract registry contract\"}},\"convert(address,address,uint256,address,address)\":{\"details\":\"converts a specific amount of source tokens to target tokens can only be called by the bancor network contract\",\"params\":{\"_amount\":\"amount of tokens to convert (in units of the source token)\",\"_beneficiary\":\"wallet to receive the conversion result\",\"_sourceToken\":\"source ERC20 token\",\"_targetToken\":\"target ERC20 token\",\"_trader\":\"address of the caller who executed the conversion\"},\"returns\":{\"_0\":\"amount of tokens received (in units of the target token)\"}},\"getConnectorBalance(address)\":{\"details\":\"deprecated, backward compatibility\"},\"getReturn(address,address,uint256)\":{\"details\":\"deprecated, backward compatibility\"},\"isActive()\":{\"details\":\"returns true if the converter is active, false otherwise\",\"returns\":{\"_0\":\"true if the converter is active, false otherwise\"}},\"isV28OrHigher()\":{\"details\":\"checks whether or not the converter version is 28 or higher\",\"returns\":{\"_0\":\"true, since the converter version is 28 or higher\"}},\"reserveBalance(address)\":{\"details\":\"returns the reserve's balance note that prior to version 17, you should use 'getConnectorBalance' instead\",\"params\":{\"_reserveToken\":\"reserve token contract address\"},\"returns\":{\"_0\":\"reserve balance\"}},\"reserveTokenCount()\":{\"details\":\"returns the number of reserve tokens note that prior to version 17, you should use 'connectorTokenCount' instead\",\"returns\":{\"_0\":\"number of reserve tokens\"}},\"reserveWeight(address)\":{\"details\":\"returns the reserve's weight added in version 28\",\"params\":{\"_reserveToken\":\"reserve token contract address\"},\"returns\":{\"_0\":\"reserve weight\"}},\"restoreRegistry()\":{\"details\":\"restores the previous contract-registry\"},\"restrictRegistryUpdate(bool)\":{\"details\":\"restricts the permission to update the contract-registry\",\"params\":{\"_onlyOwnerCanUpdateRegistry\":\"indicates whether or not permission is restricted to owner only\"}},\"setConversionFee(uint32)\":{\"details\":\"updates the current conversion fee can only be called by the contract owner\",\"params\":{\"_conversionFee\":\"new conversion fee, represented in ppm\"}},\"setConversionWhitelist(address)\":{\"details\":\"allows the owner to update & enable the conversion whitelist contract address when set, only addresses that are whitelisted are actually allowed to use the converter note that the whitelist check is actually done by the BancorNetwork contract\",\"params\":{\"_whitelist\":\"address of a whitelist contract\"}},\"token()\":{\"details\":\"deprecated since version 28, backward compatibility - use only for earlier versions\"},\"transferAnchorOwnership(address)\":{\"details\":\"transfers the anchor ownership the new owner needs to accept the transfer can only be called by the converter upgrder while the upgrader is the owner note that prior to version 28, you should use 'transferAnchorOwnership' instead\",\"params\":{\"_newOwner\":\"new token owner\"}},\"transferOwnership(address)\":{\"details\":\"allows transferring the contract ownership the new owner still needs to accept the transfer can only be called by the contract owner\",\"params\":{\"_newOwner\":\"new contract owner\"}},\"transferTokenOwnership(address)\":{\"details\":\"deprecated, backward compatibility\"},\"updateRegistry()\":{\"details\":\"updates to the new contract-registry\"},\"upgrade()\":{\"details\":\"upgrades the converter to the latest version can only be called by the owner note that the owner needs to call acceptOwnership on the new converter after the upgrade\"},\"withdrawETH(address)\":{\"details\":\"withdraws ether can only be called by the owner if the converter is inactive or by upgrader contract can only be called after the upgrader contract has accepted the ownership of this contract can only be called if the converter has an ETH reserve\",\"params\":{\"_to\":\"address to send the ETH to\"}},\"withdrawTokens(address,address,uint256)\":{\"details\":\"withdraws tokens held by the converter and sends them to an account can only be called by the owner note that reserve tokens can only be withdrawn by the owner while the converter is inactive unless the owner is the converter upgrader contract\",\"params\":{\"_amount\":\"amount to withdraw\",\"_to\":\"account to receive the new amount\",\"_token\":\"ERC20 token contract address\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/LiquidityPoolConverter.sol\":\"LiquidityPoolConverter\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/ConverterBase.sol\":{\"keccak256\":\"0x4c5184d75ef05994d5f372a2998025ea8a1abd7d3893d18e1ffedd5b386a2fd6\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://9a674a62dcb03ede2711df3a14d7ebc99ba633340c65649b445be37296c21d31\",\"dweb:/ipfs/QmP8ZycpjJEV4mAxdHU4zMyGGWzdNWPsmqZCoosvBAq7HP\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/ConverterVersion.sol\":{\"keccak256\":\"0x410dc39a88b2c24cb58f2df78bfc5d2558dfe888fd25c4222a8cacd0bddd59bf\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://ab73899d8560123d3c23623063263f16194f4e492e95ada1d7a4c518db753f29\",\"dweb:/ipfs/Qmf25sUoVLUJcM1DszzomWhXnseZv6sySEmrU6wPaSMXaz\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/LiquidityPoolConverter.sol\":{\"keccak256\":\"0x8119d8d766d2f8b6860ee0922be6fa3cd52430f101515d932f9b272433b75a18\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://9c75ab109fb8d1476d33019bfcb0e1c7ed2070659eb913b9d71a9adda7aa2686\",\"dweb:/ipfs/QmWLpPXw6Xgay2eG7fCvCMDkPWkMNZEoxUDRCQydpdPTqQ\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/interfaces/IBancorFormula.sol\":{\"keccak256\":\"0xd6b86f629534d4a016c457c65c5ecb0036bc18b392bf0ff4101e9f4e4def0799\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://a6805a4411a50641fb1006b97e45ec2ea8f59c693da8ae567ce7c44bbc6e653c\",\"dweb:/ipfs/QmeGrVJGMjcsWJ9vQcYPr3hZEzCmstSmYc1G3TtPCfGyN4\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/interfaces/IConverter.sol\":{\"keccak256\":\"0x7c489c4983a031180f815620d8e134c466895fe8a51048414476c30c6e0f0fb5\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://3842fbde2448b1680cf42f07df92b0501e9fa5e6b37c8f7189241086269fa238\",\"dweb:/ipfs/QmP25WwpAHnKw6d1fMHT6PJiwJLA1orTLpNpY7SMqkGpPG\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/interfaces/IConverterAnchor.sol\":{\"keccak256\":\"0x061dffb3cd75b61094c31a8987276b8f6108e29d67d7a55a305eea9f86d5b196\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://478f3b0164b83199eaf6f8c595abf235b742fb2c15d4fad7a241bd4837083f73\",\"dweb:/ipfs/QmcoDjie2cm3iq3bhjrqn6rE6S8o9WXvBY3tcnC5miN2Ut\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/interfaces/IConverterUpgrader.sol\":{\"keccak256\":\"0x27d06befc80f9ed047ab15f54cf928385a01c66742760a0cf8cefa31e7de3010\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://cf7a74a7f732a6cca75017a0b2b043f84269b779131c24ea30f25a529c34fa54\",\"dweb:/ipfs/QmTUdaPS8L85weXp5DsRXX9isLuctKXHs1Zi9xgLiuojPS\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/ContractRegistryClient.sol\":{\"keccak256\":\"0x0f08dc04fe204d3a2aaccedce9129f03af33dbd22e12ac30013c1501a59eb00f\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://97104b8a6f5c1b232135bd364e25bbdd1e5810ea4feb37709fb41f5b927e00a8\",\"dweb:/ipfs/Qmdd5FpheSztHuxWm5ogfz7h3rQNqWqoumJ162PKFN82nm\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/Owned.sol\":{\"keccak256\":\"0xbb76fde028fb0088932e47e056e981b36a326f9794db3152b575694049be1508\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://938eec59bcf43cc1c0b3f7f06c87e03f8f098ae3e92b288c51c3fd57b35eb03e\",\"dweb:/ipfs/QmZcxPbkiKdGqTx2rVHHDkYoVLhqu93rtzy4WCofPQT3J5\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/ReentrancyGuard.sol\":{\"keccak256\":\"0x67b3998e55e5f5de046bf5815582859e92dbe22dc5a41123c9b917a1dd7da543\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://29d929c1e25ceae7fc1ad002ce1649aa06ae2fec1153dc909e3a797a7ca5c32a\",\"dweb:/ipfs/QmVTvn3RqRHpNJ7JmzfR3hkH4qGB83nAsProurCVedXwkt\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/TokenHolder.sol\":{\"keccak256\":\"0xca855c3be4fd03904abbd8156c40d1727a22de03499b8d0270dbb6f59a1a58fc\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://1723d577e17cfa59050651428e28fb9fe684b6c572f835ec5621df5fb890b51c\",\"dweb:/ipfs/QmeubrzaHgxB3TEWaCoecPYuD5c9yHdDDTruSz4SLBbuwq\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/Utils.sol\":{\"keccak256\":\"0xe101b411469226d071ffe578c511a936a6e58ffd39fc48c22c6fe75e1e866571\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://b657b02dc96349c7ee9d4f779d19c8dc7eb3da5cb2fe6a3820c447e0dff94b70\",\"dweb:/ipfs/QmTqniejbDnmN4RDq314PatFfnMvbrq8mzYbmSahuTktyU\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/IContractRegistry.sol\":{\"keccak256\":\"0x3551889a83738b621c29ed66f1ecb6a843cca4217e54c9357198559b9cc92259\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://231a59c8f2665adeda8c7e6930832409c9b991fd27ad84b3a24335e7bf269bbe\",\"dweb:/ipfs/QmeJJbn1EAUbZenruTEdJAnwUn3dxsVNeJvxPe81qKEGqL\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/IOwned.sol\":{\"keccak256\":\"0x4cfffe7abcbf4a0a49d154837711a38e9c34da4891b86167b9e15d80b24f9b14\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://0b398ddfbcae48adc05489f7be940135a14150c38de9b75897ca9193a1ac99d0\",\"dweb:/ipfs/QmXPh5dHCZqshzmCWPRc3TSQsjc6Sr1SG2XFZe3NdKWMRC\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/ITokenHolder.sol\":{\"keccak256\":\"0x09597c2873fbde03e888bbdcaf2539f87ef5e4381addf444228e6cdb1767ddc5\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://382d7fb824240aa4242aa37b68f92ef1a44a326144a6fe969bd2706910d6fa35\",\"dweb:/ipfs/Qmd1vdD51v7YAkDhyvAtEEZW9Yb6DP3u8N35tstLYbLsyf\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/utility/interfaces/IWhitelist.sol\":{\"keccak256\":\"0x356ad553ceeaea04d7cb8f0d6a5663c47dfccb2bd82517348128f032416ee34a\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://9ea3bbb9945144ead2c1392351f2f9f7444af78569f2b95da2e68bb6b919db52\",\"dweb:/ipfs/QmPyUAk44Kj7nJB4tzYqeSXWHyYP51mRNynEmWra9m4eKS\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0xcc78a17dd88fa5a2edc60c8489e2f405c0913b377216a5b26b35656b2d0dab52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://526dc85e1f9b9b45830e202568d267d93dde7a4fcccf4ad7798dadcd92304d3c\",\"dweb:/ipfs/QmaoXMB972J3cSDLtBq3xBo4jLwqD2uzXTwujtSPqkYVhR\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0xf12dfbe97e6276980b83d2830bb0eb75e0cf4f3e626c2471137f82158ae6a0fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3a849c2d95e85463909e5b5c920b13e7a11216ca14127085e16d22b9379d52a\",\"dweb:/ipfs/QmUg3CZDbCCcQdroEpexBy5ZFd5vD1UWijWQq9qHZjtJNQ\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x28911e614500ae7c607a432a709d35da25f3bc5ddc8bd12b278b66358070c0ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://256c8c8af5eb072bc473226ab2b2187149b8fc04f5f4a4820db22527f5ce8e3c\",\"dweb:/ipfs/QmRvi5BhnL7Rxf85KrJhwM6RRhukm4tzoctRdgQEheNyiN\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: SEE LICENSE IN LICENSE\npragma solidity 0.6.12;\nimport \"./ConverterBase.sol\";\n\n/**\n * @dev This contract is the base contract for specific types of converters that\n * manage liquidity pools.\n *\n * Liquidity pools have 2 reserves or more and they allow converting between them.\n *\n * Note that TokenRateUpdate events are dispatched for pool tokens as well.\n * The pool token is the first token in the event in that case.\n */\nabstract contract LiquidityPoolConverter is ConverterBase {\n    /**\n     * @dev triggered after liquidity is added\n     *\n     * @param  _provider       liquidity provider\n     * @param  _reserveToken   reserve token address\n     * @param  _amount         reserve token amount\n     * @param  _newBalance     reserve token new balance\n     * @param  _newSupply      pool token new supply\n     */\n    event LiquidityAdded(\n        address indexed _provider,\n        IERC20 indexed _reserveToken,\n        uint256 _amount,\n        uint256 _newBalance,\n        uint256 _newSupply\n    );\n\n    /**\n     * @dev triggered after liquidity is removed\n     *\n     * @param  _provider       liquidity provider\n     * @param  _reserveToken   reserve token address\n     * @param  _amount         reserve token amount\n     * @param  _newBalance     reserve token new balance\n     * @param  _newSupply      pool token new supply\n     */\n    event LiquidityRemoved(\n        address indexed _provider,\n        IERC20 indexed _reserveToken,\n        uint256 _amount,\n        uint256 _newBalance,\n        uint256 _newSupply\n    );\n\n    /**\n     * @dev initializes a new LiquidityPoolConverter instance\n     *\n     * @param  _anchor             anchor governed by the converter\n     * @param  _registry           address of a contract registry contract\n     * @param  _maxConversionFee   maximum conversion fee, represented in ppm\n     */\n    constructor(\n        IConverterAnchor _anchor,\n        IContractRegistry _registry,\n        uint32 _maxConversionFee\n    ) internal ConverterBase(_anchor, _registry, _maxConversionFee) {}\n\n    /**\n     * @dev accepts ownership of the anchor after an ownership transfer\n     * also activates the converter\n     * can only be called by the contract owner\n     * note that prior to version 28, you should use 'acceptTokenOwnership' instead\n     */\n    function acceptAnchorOwnership() public virtual override {\n        // verify that the converter has at least 2 reserves\n        require(reserveTokenCount() > 1, \"ERR_INVALID_RESERVE_COUNT\");\n        super.acceptAnchorOwnership();\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/LiquidityPoolConverter.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/LiquidityPoolConverter.sol",
+    "exportedSymbols": {
+      "LiquidityPoolConverter": [
+        12988
+      ]
+    },
+    "id": 12989,
+    "license": "SEE LICENSE IN LICENSE",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12922,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "51:23:14"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/ConverterBase.sol",
+        "file": "./ConverterBase.sol",
+        "id": 12923,
+        "nodeType": "ImportDirective",
+        "scope": 12989,
+        "sourceUnit": 10031,
+        "src": "75:29:14",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 12925,
+              "name": "ConverterBase",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 10030,
+              "src": "495:13:14",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ConverterBase_$10030",
+                "typeString": "contract ConverterBase"
+              }
+            },
+            "id": 12926,
+            "nodeType": "InheritanceSpecifier",
+            "src": "495:13:14"
+          }
+        ],
+        "contractDependencies": [
+          10030,
+          12920,
+          13282,
+          30092,
+          30632,
+          30676,
+          30740,
+          30859,
+          31064,
+          31080
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 12924,
+          "nodeType": "StructuredDocumentation",
+          "src": "106:344:14",
+          "text": " @dev This contract is the base contract for specific types of converters that\n manage liquidity pools.\n Liquidity pools have 2 reserves or more and they allow converting between them.\n Note that TokenRateUpdate events are dispatched for pool tokens as well.\n The pool token is the first token in the event in that case."
+        },
+        "fullyImplemented": false,
+        "id": 12988,
+        "linearizedBaseContracts": [
+          12988,
+          10030,
+          30676,
+          30092,
+          30740,
+          30859,
+          30632,
+          31080,
+          13282,
+          31064,
+          12920
+        ],
+        "name": "LiquidityPoolConverter",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 12927,
+              "nodeType": "StructuredDocumentation",
+              "src": "515:330:14",
+              "text": " @dev triggered after liquidity is added\n @param  _provider       liquidity provider\n @param  _reserveToken   reserve token address\n @param  _amount         reserve token amount\n @param  _newBalance     reserve token new balance\n @param  _newSupply      pool token new supply"
+            },
+            "id": 12939,
+            "name": "LiquidityAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 12938,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12929,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_provider",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12939,
+                  "src": "880:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12928,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "880:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12931,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_reserveToken",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12939,
+                  "src": "915:28:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$32514",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 12930,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 32514,
+                    "src": "915:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$32514",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12933,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12939,
+                  "src": "953:15:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12932,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "953:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12935,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_newBalance",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12939,
+                  "src": "978:19:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12934,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "978:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12937,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_newSupply",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12939,
+                  "src": "1007:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12936,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1007:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "870:161:14"
+            },
+            "src": "850:182:14"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 12940,
+              "nodeType": "StructuredDocumentation",
+              "src": "1038:332:14",
+              "text": " @dev triggered after liquidity is removed\n @param  _provider       liquidity provider\n @param  _reserveToken   reserve token address\n @param  _amount         reserve token amount\n @param  _newBalance     reserve token new balance\n @param  _newSupply      pool token new supply"
+            },
+            "id": 12952,
+            "name": "LiquidityRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 12951,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12942,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_provider",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12952,
+                  "src": "1407:25:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12941,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1407:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12944,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "_reserveToken",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12952,
+                  "src": "1442:28:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$32514",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 12943,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 32514,
+                    "src": "1442:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$32514",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12946,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12952,
+                  "src": "1480:15:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12945,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1480:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12948,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_newBalance",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12952,
+                  "src": "1505:19:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12947,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1505:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12950,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "_newSupply",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12952,
+                  "src": "1534:18:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12949,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1534:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1397:161:14"
+            },
+            "src": "1375:184:14"
+          },
+          {
+            "body": {
+              "id": 12967,
+              "nodeType": "Block",
+              "src": "2056:2:14",
+              "statements": []
+            },
+            "documentation": {
+              "id": 12953,
+              "nodeType": "StructuredDocumentation",
+              "src": "1565:301:14",
+              "text": " @dev initializes a new LiquidityPoolConverter instance\n @param  _anchor             anchor governed by the converter\n @param  _registry           address of a contract registry contract\n @param  _maxConversionFee   maximum conversion fee, represented in ppm"
+            },
+            "id": 12968,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 12962,
+                    "name": "_anchor",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 12955,
+                    "src": "2017:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IConverterAnchor_$13288",
+                      "typeString": "contract IConverterAnchor"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 12963,
+                    "name": "_registry",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 12957,
+                    "src": "2026:9:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IContractRegistry_$31048",
+                      "typeString": "contract IContractRegistry"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 12964,
+                    "name": "_maxConversionFee",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 12959,
+                    "src": "2037:17:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  }
+                ],
+                "id": 12965,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 12961,
+                  "name": "ConverterBase",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 10030,
+                  "src": "2003:13:14",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_ConverterBase_$10030_$",
+                    "typeString": "type(contract ConverterBase)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "2003:52:14"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 12960,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12955,
+                  "mutability": "mutable",
+                  "name": "_anchor",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12968,
+                  "src": "1892:24:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IConverterAnchor_$13288",
+                    "typeString": "contract IConverterAnchor"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 12954,
+                    "name": "IConverterAnchor",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 13288,
+                    "src": "1892:16:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IConverterAnchor_$13288",
+                      "typeString": "contract IConverterAnchor"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12957,
+                  "mutability": "mutable",
+                  "name": "_registry",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12968,
+                  "src": "1926:27:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IContractRegistry_$31048",
+                    "typeString": "contract IContractRegistry"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 12956,
+                    "name": "IContractRegistry",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 31048,
+                    "src": "1926:17:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IContractRegistry_$31048",
+                      "typeString": "contract IContractRegistry"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12959,
+                  "mutability": "mutable",
+                  "name": "_maxConversionFee",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 12968,
+                  "src": "1963:24:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 12958,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1963:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1882:111:14"
+            },
+            "returnParameters": {
+              "id": 12966,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2056:0:14"
+            },
+            "scope": 12988,
+            "src": "1871:187:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "baseFunctions": [
+              9427
+            ],
+            "body": {
+              "id": 12986,
+              "nodeType": "Block",
+              "src": "2377:178:14",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint16",
+                          "typeString": "uint16"
+                        },
+                        "id": 12977,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 12974,
+                            "name": "reserveTokenCount",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9563,
+                            "src": "2456:17:14",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_uint16_$",
+                              "typeString": "function () view returns (uint16)"
+                            }
+                          },
+                          "id": 12975,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2456:19:14",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "31",
+                          "id": 12976,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2478:1:14",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          "value": "1"
+                        },
+                        "src": "2456:23:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4552525f494e56414c49445f524553455256455f434f554e54",
+                        "id": 12978,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2481:27:14",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_ed94f14d8dcbb423a259b4072978fc0c494c6af1fea066a19023afb1a76ac87f",
+                          "typeString": "literal_string \"ERR_INVALID_RESERVE_COUNT\""
+                        },
+                        "value": "ERR_INVALID_RESERVE_COUNT"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_ed94f14d8dcbb423a259b4072978fc0c494c6af1fea066a19023afb1a76ac87f",
+                          "typeString": "literal_string \"ERR_INVALID_RESERVE_COUNT\""
+                        }
+                      ],
+                      "id": 12973,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "2448:7:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 12979,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2448:61:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 12980,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2448:61:14"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 12981,
+                        "name": "super",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -25,
+                        "src": "2519:5:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_super$_LiquidityPoolConverter_$12988",
+                          "typeString": "contract super LiquidityPoolConverter"
+                        }
+                      },
+                      "id": 12983,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "acceptAnchorOwnership",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 9427,
+                      "src": "2519:27:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 12984,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2519:29:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 12985,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2519:29:14"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 12969,
+              "nodeType": "StructuredDocumentation",
+              "src": "2064:251:14",
+              "text": " @dev accepts ownership of the anchor after an ownership transfer\n also activates the converter\n can only be called by the contract owner\n note that prior to version 28, you should use 'acceptTokenOwnership' instead"
+            },
+            "functionSelector": "cdc91c69",
+            "id": 12987,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "acceptAnchorOwnership",
+            "nodeType": "FunctionDefinition",
+            "overrides": {
+              "id": 12971,
+              "nodeType": "OverrideSpecifier",
+              "overrides": [],
+              "src": "2368:8:14"
+            },
+            "parameters": {
+              "id": 12970,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2350:2:14"
+            },
+            "returnParameters": {
+              "id": 12972,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2377:0:14"
+            },
+            "scope": 12988,
+            "src": "2320:235:14",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 12989,
+        "src": "451:2106:14"
+      }
+    ],
+    "src": "51:2507:14"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/LiquidityPoolConverter.sol",
+      "exportedSymbols": {
+        "LiquidityPoolConverter": [
+          12988
+        ]
+      },
+      "license": "SEE LICENSE IN LICENSE"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 12922,
+        "name": "PragmaDirective",
+        "src": "51:23:14"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 10031,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/bancor/contracts-solidity/solidity/contracts/converter/ConverterBase.sol",
+          "file": "./ConverterBase.sol",
+          "scope": 12989,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 12923,
+        "name": "ImportDirective",
+        "src": "75:29:14"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            10030,
+            12920,
+            13282,
+            30092,
+            30632,
+            30676,
+            30740,
+            30859,
+            31064,
+            31080
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            12988,
+            10030,
+            30676,
+            30092,
+            30740,
+            30859,
+            30632,
+            31080,
+            13282,
+            31064,
+            12920
+          ],
+          "name": "LiquidityPoolConverter",
+          "scope": 12989
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @dev This contract is the base contract for specific types of converters that\n manage liquidity pools.\n Liquidity pools have 2 reserves or more and they allow converting between them.\n Note that TokenRateUpdate events are dispatched for pool tokens as well.\n The pool token is the first token in the event in that case."
+            },
+            "id": 12924,
+            "name": "StructuredDocumentation",
+            "src": "106:344:14"
+          },
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ConverterBase",
+                  "referencedDeclaration": 10030,
+                  "type": "contract ConverterBase"
+                },
+                "id": 12925,
+                "name": "UserDefinedTypeName",
+                "src": "495:13:14"
+              }
+            ],
+            "id": 12926,
+            "name": "InheritanceSpecifier",
+            "src": "495:13:14"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "LiquidityAdded"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev triggered after liquidity is added\n @param  _provider       liquidity provider\n @param  _reserveToken   reserve token address\n @param  _amount         reserve token amount\n @param  _newBalance     reserve token new balance\n @param  _newSupply      pool token new supply"
+                },
+                "id": 12927,
+                "name": "StructuredDocumentation",
+                "src": "515:330:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "_provider",
+                      "overrides": null,
+                      "scope": 12939,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 12928,
+                        "name": "ElementaryTypeName",
+                        "src": "880:7:14"
+                      }
+                    ],
+                    "id": 12929,
+                    "name": "VariableDeclaration",
+                    "src": "880:25:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "_reserveToken",
+                      "overrides": null,
+                      "scope": 12939,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IERC20",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IERC20",
+                          "referencedDeclaration": 32514,
+                          "type": "contract IERC20"
+                        },
+                        "id": 12930,
+                        "name": "UserDefinedTypeName",
+                        "src": "915:6:14"
+                      }
+                    ],
+                    "id": 12931,
+                    "name": "VariableDeclaration",
+                    "src": "915:28:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "_amount",
+                      "overrides": null,
+                      "scope": 12939,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12932,
+                        "name": "ElementaryTypeName",
+                        "src": "953:7:14"
+                      }
+                    ],
+                    "id": 12933,
+                    "name": "VariableDeclaration",
+                    "src": "953:15:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "_newBalance",
+                      "overrides": null,
+                      "scope": 12939,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12934,
+                        "name": "ElementaryTypeName",
+                        "src": "978:7:14"
+                      }
+                    ],
+                    "id": 12935,
+                    "name": "VariableDeclaration",
+                    "src": "978:19:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "_newSupply",
+                      "overrides": null,
+                      "scope": 12939,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12936,
+                        "name": "ElementaryTypeName",
+                        "src": "1007:7:14"
+                      }
+                    ],
+                    "id": 12937,
+                    "name": "VariableDeclaration",
+                    "src": "1007:18:14"
+                  }
+                ],
+                "id": 12938,
+                "name": "ParameterList",
+                "src": "870:161:14"
+              }
+            ],
+            "id": 12939,
+            "name": "EventDefinition",
+            "src": "850:182:14"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "LiquidityRemoved"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev triggered after liquidity is removed\n @param  _provider       liquidity provider\n @param  _reserveToken   reserve token address\n @param  _amount         reserve token amount\n @param  _newBalance     reserve token new balance\n @param  _newSupply      pool token new supply"
+                },
+                "id": 12940,
+                "name": "StructuredDocumentation",
+                "src": "1038:332:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "_provider",
+                      "overrides": null,
+                      "scope": 12952,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 12941,
+                        "name": "ElementaryTypeName",
+                        "src": "1407:7:14"
+                      }
+                    ],
+                    "id": 12942,
+                    "name": "VariableDeclaration",
+                    "src": "1407:25:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "_reserveToken",
+                      "overrides": null,
+                      "scope": 12952,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IERC20",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IERC20",
+                          "referencedDeclaration": 32514,
+                          "type": "contract IERC20"
+                        },
+                        "id": 12943,
+                        "name": "UserDefinedTypeName",
+                        "src": "1442:6:14"
+                      }
+                    ],
+                    "id": 12944,
+                    "name": "VariableDeclaration",
+                    "src": "1442:28:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "_amount",
+                      "overrides": null,
+                      "scope": 12952,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12945,
+                        "name": "ElementaryTypeName",
+                        "src": "1480:7:14"
+                      }
+                    ],
+                    "id": 12946,
+                    "name": "VariableDeclaration",
+                    "src": "1480:15:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "_newBalance",
+                      "overrides": null,
+                      "scope": 12952,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12947,
+                        "name": "ElementaryTypeName",
+                        "src": "1505:7:14"
+                      }
+                    ],
+                    "id": 12948,
+                    "name": "VariableDeclaration",
+                    "src": "1505:19:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "mutability": "mutable",
+                      "name": "_newSupply",
+                      "overrides": null,
+                      "scope": 12952,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12949,
+                        "name": "ElementaryTypeName",
+                        "src": "1534:7:14"
+                      }
+                    ],
+                    "id": 12950,
+                    "name": "VariableDeclaration",
+                    "src": "1534:18:14"
+                  }
+                ],
+                "id": 12951,
+                "name": "ParameterList",
+                "src": "1397:161:14"
+              }
+            ],
+            "id": 12952,
+            "name": "EventDefinition",
+            "src": "1375:184:14"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "name": "",
+              "overrides": null,
+              "scope": 12988,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev initializes a new LiquidityPoolConverter instance\n @param  _anchor             anchor governed by the converter\n @param  _registry           address of a contract registry contract\n @param  _maxConversionFee   maximum conversion fee, represented in ppm"
+                },
+                "id": 12953,
+                "name": "StructuredDocumentation",
+                "src": "1565:301:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_anchor",
+                      "overrides": null,
+                      "scope": 12968,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IConverterAnchor",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IConverterAnchor",
+                          "referencedDeclaration": 13288,
+                          "type": "contract IConverterAnchor"
+                        },
+                        "id": 12954,
+                        "name": "UserDefinedTypeName",
+                        "src": "1892:16:14"
+                      }
+                    ],
+                    "id": 12955,
+                    "name": "VariableDeclaration",
+                    "src": "1892:24:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_registry",
+                      "overrides": null,
+                      "scope": 12968,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IContractRegistry",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IContractRegistry",
+                          "referencedDeclaration": 31048,
+                          "type": "contract IContractRegistry"
+                        },
+                        "id": 12956,
+                        "name": "UserDefinedTypeName",
+                        "src": "1926:17:14"
+                      }
+                    ],
+                    "id": 12957,
+                    "name": "VariableDeclaration",
+                    "src": "1926:27:14"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_maxConversionFee",
+                      "overrides": null,
+                      "scope": 12968,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 12958,
+                        "name": "ElementaryTypeName",
+                        "src": "1963:6:14"
+                      }
+                    ],
+                    "id": 12959,
+                    "name": "VariableDeclaration",
+                    "src": "1963:24:14"
+                  }
+                ],
+                "id": 12960,
+                "name": "ParameterList",
+                "src": "1882:111:14"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 12966,
+                "name": "ParameterList",
+                "src": "2056:0:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 10030,
+                      "type": "type(contract ConverterBase)",
+                      "value": "ConverterBase"
+                    },
+                    "id": 12961,
+                    "name": "Identifier",
+                    "src": "2003:13:14"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 12955,
+                      "type": "contract IConverterAnchor",
+                      "value": "_anchor"
+                    },
+                    "id": 12962,
+                    "name": "Identifier",
+                    "src": "2017:7:14"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 12957,
+                      "type": "contract IContractRegistry",
+                      "value": "_registry"
+                    },
+                    "id": 12963,
+                    "name": "Identifier",
+                    "src": "2026:9:14"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 12959,
+                      "type": "uint32",
+                      "value": "_maxConversionFee"
+                    },
+                    "id": 12964,
+                    "name": "Identifier",
+                    "src": "2037:17:14"
+                  }
+                ],
+                "id": 12965,
+                "name": "ModifierInvocation",
+                "src": "2003:52:14"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 12967,
+                "name": "Block",
+                "src": "2056:2:14"
+              }
+            ],
+            "id": 12968,
+            "name": "FunctionDefinition",
+            "src": "1871:187:14"
+          },
+          {
+            "attributes": {
+              "baseFunctions": [
+                9427
+              ],
+              "functionSelector": "cdc91c69",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "acceptAnchorOwnership",
+              "scope": 12988,
+              "stateMutability": "nonpayable",
+              "virtual": true,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev accepts ownership of the anchor after an ownership transfer\n also activates the converter\n can only be called by the contract owner\n note that prior to version 28, you should use 'acceptTokenOwnership' instead"
+                },
+                "id": 12969,
+                "name": "StructuredDocumentation",
+                "src": "2064:251:14"
+              },
+              {
+                "attributes": {
+                  "overrides": [
+                    null
+                  ]
+                },
+                "id": 12971,
+                "name": "OverrideSpecifier",
+                "src": "2368:8:14"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 12970,
+                "name": "ParameterList",
+                "src": "2350:2:14"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 12972,
+                "name": "ParameterList",
+                "src": "2377:0:14"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_ed94f14d8dcbb423a259b4072978fc0c494c6af1fea066a19023afb1a76ac87f",
+                                  "typeString": "literal_string \"ERR_INVALID_RESERVE_COUNT\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 12973,
+                            "name": "Identifier",
+                            "src": "2448:7:14"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint16",
+                                "typeString": "uint16"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": ">",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "uint16",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9563,
+                                      "type": "function () view returns (uint16)",
+                                      "value": "reserveTokenCount"
+                                    },
+                                    "id": 12974,
+                                    "name": "Identifier",
+                                    "src": "2456:17:14"
+                                  }
+                                ],
+                                "id": 12975,
+                                "name": "FunctionCall",
+                                "src": "2456:19:14"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "31",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 1",
+                                  "value": "1"
+                                },
+                                "id": 12976,
+                                "name": "Literal",
+                                "src": "2478:1:14"
+                              }
+                            ],
+                            "id": 12977,
+                            "name": "BinaryOperation",
+                            "src": "2456:23:14"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "4552525f494e56414c49445f524553455256455f434f554e54",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"ERR_INVALID_RESERVE_COUNT\"",
+                              "value": "ERR_INVALID_RESERVE_COUNT"
+                            },
+                            "id": 12978,
+                            "name": "Literal",
+                            "src": "2481:27:14"
+                          }
+                        ],
+                        "id": 12979,
+                        "name": "FunctionCall",
+                        "src": "2448:61:14"
+                      }
+                    ],
+                    "id": 12980,
+                    "name": "ExpressionStatement",
+                    "src": "2448:61:14"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "acceptAnchorOwnership",
+                              "referencedDeclaration": 9427,
+                              "type": "function ()"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -25,
+                                  "type": "contract super LiquidityPoolConverter",
+                                  "value": "super"
+                                },
+                                "id": 12981,
+                                "name": "Identifier",
+                                "src": "2519:5:14"
+                              }
+                            ],
+                            "id": 12983,
+                            "name": "MemberAccess",
+                            "src": "2519:27:14"
+                          }
+                        ],
+                        "id": 12984,
+                        "name": "FunctionCall",
+                        "src": "2519:29:14"
+                      }
+                    ],
+                    "id": 12985,
+                    "name": "ExpressionStatement",
+                    "src": "2519:29:14"
+                  }
+                ],
+                "id": 12986,
+                "name": "Block",
+                "src": "2377:178:14"
+              }
+            ],
+            "id": 12987,
+            "name": "FunctionDefinition",
+            "src": "2320:235:14"
+          }
+        ],
+        "id": 12988,
+        "name": "ContractDefinition",
+        "src": "451:2106:14"
+      }
+    ],
+    "id": 12989,
+    "name": "SourceUnit",
+    "src": "51:2507:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2021-04-01T18:17:51.967Z",
+  "devdoc": {
+    "details": "This contract is the base contract for specific types of converters that manage liquidity pools. Liquidity pools have 2 reserves or more and they allow converting between them. Note that TokenRateUpdate events are dispatched for pool tokens as well. The pool token is the first token in the event in that case.",
+    "events": {
+      "LiquidityAdded(address,address,uint256,uint256,uint256)": {
+        "details": "triggered after liquidity is added",
+        "params": {
+          "_amount": "reserve token amount",
+          "_newBalance": "reserve token new balance",
+          "_newSupply": "pool token new supply",
+          "_provider": "liquidity provider",
+          "_reserveToken": "reserve token address"
+        }
+      },
+      "LiquidityRemoved(address,address,uint256,uint256,uint256)": {
+        "details": "triggered after liquidity is removed",
+        "params": {
+          "_amount": "reserve token amount",
+          "_newBalance": "reserve token new balance",
+          "_newSupply": "pool token new supply",
+          "_provider": "liquidity provider",
+          "_reserveToken": "reserve token address"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "acceptAnchorOwnership()": {
+        "details": "accepts ownership of the anchor after an ownership transfer also activates the converter can only be called by the contract owner note that prior to version 28, you should use 'acceptTokenOwnership' instead"
+      },
+      "acceptOwnership()": {
+        "details": "used by a new owner to accept an ownership transfer"
+      },
+      "acceptTokenOwnership()": {
+        "details": "deprecated, backward compatibility"
+      },
+      "addReserve(address,uint32)": {
+        "details": "defines a new reserve token for the converter can only be called by the owner while the converter is inactive",
+        "params": {
+          "_token": "address of the reserve token",
+          "_weight": "reserve weight, represented in ppm, 1-1000000"
+        }
+      },
+      "connectorTokenCount()": {
+        "details": "deprecated, backward compatibility"
+      },
+      "connectorTokens(uint256)": {
+        "details": "deprecated, backward compatibility"
+      },
+      "connectors(address)": {
+        "details": "deprecated, backward compatibility"
+      },
+      "constructor": {
+        "details": "initializes a new LiquidityPoolConverter instance",
+        "params": {
+          "_anchor": "anchor governed by the converter",
+          "_maxConversionFee": "maximum conversion fee, represented in ppm",
+          "_registry": "address of a contract registry contract"
+        }
+      },
+      "convert(address,address,uint256,address,address)": {
+        "details": "converts a specific amount of source tokens to target tokens can only be called by the bancor network contract",
+        "params": {
+          "_amount": "amount of tokens to convert (in units of the source token)",
+          "_beneficiary": "wallet to receive the conversion result",
+          "_sourceToken": "source ERC20 token",
+          "_targetToken": "target ERC20 token",
+          "_trader": "address of the caller who executed the conversion"
+        },
+        "returns": {
+          "_0": "amount of tokens received (in units of the target token)"
+        }
+      },
+      "getConnectorBalance(address)": {
+        "details": "deprecated, backward compatibility"
+      },
+      "getReturn(address,address,uint256)": {
+        "details": "deprecated, backward compatibility"
+      },
+      "isActive()": {
+        "details": "returns true if the converter is active, false otherwise",
+        "returns": {
+          "_0": "true if the converter is active, false otherwise"
+        }
+      },
+      "isV28OrHigher()": {
+        "details": "checks whether or not the converter version is 28 or higher",
+        "returns": {
+          "_0": "true, since the converter version is 28 or higher"
+        }
+      },
+      "reserveBalance(address)": {
+        "details": "returns the reserve's balance note that prior to version 17, you should use 'getConnectorBalance' instead",
+        "params": {
+          "_reserveToken": "reserve token contract address"
+        },
+        "returns": {
+          "_0": "reserve balance"
+        }
+      },
+      "reserveTokenCount()": {
+        "details": "returns the number of reserve tokens note that prior to version 17, you should use 'connectorTokenCount' instead",
+        "returns": {
+          "_0": "number of reserve tokens"
+        }
+      },
+      "reserveWeight(address)": {
+        "details": "returns the reserve's weight added in version 28",
+        "params": {
+          "_reserveToken": "reserve token contract address"
+        },
+        "returns": {
+          "_0": "reserve weight"
+        }
+      },
+      "restoreRegistry()": {
+        "details": "restores the previous contract-registry"
+      },
+      "restrictRegistryUpdate(bool)": {
+        "details": "restricts the permission to update the contract-registry",
+        "params": {
+          "_onlyOwnerCanUpdateRegistry": "indicates whether or not permission is restricted to owner only"
+        }
+      },
+      "setConversionFee(uint32)": {
+        "details": "updates the current conversion fee can only be called by the contract owner",
+        "params": {
+          "_conversionFee": "new conversion fee, represented in ppm"
+        }
+      },
+      "setConversionWhitelist(address)": {
+        "details": "allows the owner to update & enable the conversion whitelist contract address when set, only addresses that are whitelisted are actually allowed to use the converter note that the whitelist check is actually done by the BancorNetwork contract",
+        "params": {
+          "_whitelist": "address of a whitelist contract"
+        }
+      },
+      "token()": {
+        "details": "deprecated since version 28, backward compatibility - use only for earlier versions"
+      },
+      "transferAnchorOwnership(address)": {
+        "details": "transfers the anchor ownership the new owner needs to accept the transfer can only be called by the converter upgrder while the upgrader is the owner note that prior to version 28, you should use 'transferAnchorOwnership' instead",
+        "params": {
+          "_newOwner": "new token owner"
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "allows transferring the contract ownership the new owner still needs to accept the transfer can only be called by the contract owner",
+        "params": {
+          "_newOwner": "new contract owner"
+        }
+      },
+      "transferTokenOwnership(address)": {
+        "details": "deprecated, backward compatibility"
+      },
+      "updateRegistry()": {
+        "details": "updates to the new contract-registry"
+      },
+      "upgrade()": {
+        "details": "upgrades the converter to the latest version can only be called by the owner note that the owner needs to call acceptOwnership on the new converter after the upgrade"
+      },
+      "withdrawETH(address)": {
+        "details": "withdraws ether can only be called by the owner if the converter is inactive or by upgrader contract can only be called after the upgrader contract has accepted the ownership of this contract can only be called if the converter has an ETH reserve",
+        "params": {
+          "_to": "address to send the ETH to"
+        }
+      },
+      "withdrawTokens(address,address,uint256)": {
+        "details": "withdraws tokens held by the converter and sends them to an account can only be called by the owner note that reserve tokens can only be withdrawn by the owner while the converter is inactive unless the owner is the converter upgrader contract",
+        "params": {
+          "_amount": "amount to withdraw",
+          "_to": "account to receive the new amount",
+          "_token": "ERC20 token contract address"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

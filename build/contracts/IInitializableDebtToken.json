@@ -1,0 +1,1233 @@
+{
+  "contractName": "IInitializableDebtToken",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "underlyingAsset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "incentivesController",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "debtTokenDecimals",
+          "type": "uint8"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "debtTokenName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "debtTokenSymbol",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "params",
+          "type": "bytes"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ILendingPool",
+          "name": "pool",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "underlyingAsset",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IAaveIncentivesController",
+          "name": "incentivesController",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "debtTokenDecimals",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "debtTokenName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "debtTokenSymbol",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes",
+          "name": "params",
+          "type": "bytes"
+        }
+      ],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"underlyingAsset\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"pool\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"incentivesController\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"debtTokenDecimals\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"debtTokenName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"debtTokenSymbol\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"params\",\"type\":\"bytes\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"contract ILendingPool\",\"name\":\"pool\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"underlyingAsset\",\"type\":\"address\"},{\"internalType\":\"contract IAaveIncentivesController\",\"name\":\"incentivesController\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"debtTokenDecimals\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"debtTokenName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"debtTokenSymbol\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"params\",\"type\":\"bytes\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"events\":{\"Initialized(address,address,address,uint8,string,string,bytes)\":{\"details\":\"Emitted when a debt token is initialized\",\"params\":{\"debtTokenDecimals\":\"the decimals of the debt token\",\"debtTokenName\":\"the name of the debt token\",\"debtTokenSymbol\":\"the symbol of the debt token\",\"incentivesController\":\"The address of the incentives controller for this aToken\",\"params\":\"A set of encoded parameters for additional initialization*\",\"pool\":\"The address of the associated lending pool\",\"underlyingAsset\":\"The address of the underlying asset\"}}},\"kind\":\"dev\",\"methods\":{\"initialize(address,address,address,uint8,string,string,bytes)\":{\"details\":\"Initializes the debt token.\",\"params\":{\"debtTokenDecimals\":\"The decimals of the debtToken, same as the underlying asset's\",\"debtTokenName\":\"The name of the token\",\"debtTokenSymbol\":\"The symbol of the token\",\"incentivesController\":\"The smart contract managing potential incentives distribution\",\"pool\":\"The address of the lending pool where this aToken will be used\",\"underlyingAsset\":\"The address of the underlying asset of this aToken (E.g. WETH for aWETH)\"}}},\"title\":\"IInitializableDebtToken\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Interface for the initialize function common between debt tokens\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IInitializableDebtToken.sol\":\"IInitializableDebtToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IAaveIncentivesController.sol\":{\"keccak256\":\"0xdf9addd270c0689cbfff7e6e630e211ee0c468e713e187395ccfef623e628fca\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://dc4e875e21eadb6c77f5b8a6f9aea4d225902e4ff0b7c61c969003e4fab6ba76\",\"dweb:/ipfs/QmVwYrSVKyL87nxXqXmqxo8baAnJAgv1Hzpmx6oTPmaGwy\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IInitializableDebtToken.sol\":{\"keccak256\":\"0xb9ddcfad42dd24dbdc784af97376ebe54690c7f5286ab124b9318ef2d2f00e1e\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://3f93e83aae2678c90b125028bb4106929a0e7c0575abe2718ef33317d7aee051\",\"dweb:/ipfs/QmcBun6wG3f5naeKMNRSo3heqJJsVKPeKcCkvA3quuyDyD\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPool.sol\":{\"keccak256\":\"0x1af0f4f35829b3931d6a93386953fe0005b4ad19b041578828d580e1a6ea51bb\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://ecc7cc7cfa2467755a4373b4cd9666e5aedf1c0d6f84e9a615c9109846b3fc2a\",\"dweb:/ipfs/QmdhrFAP5V2DKUEzp3mquTLQHyWWi1hrsYvtrhDqAjfnB2\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPoolAddressesProvider.sol\":{\"keccak256\":\"0x219d7db359e51dfd51b0a454dc284c44671b6ce6543b7f383ef0aec4534c7ea0\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://f09e938d9d6edadd398245b27e15eb0df96f20dd5104f523a10cfe4a9329ba92\",\"dweb:/ipfs/QmNhjFNzjeKkqUNe9SJnxiuH8wAQYVp9MX6mAGBzeESpyz\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/libraries/DataTypes.sol\":{\"keccak256\":\"0xc5a87bb0f917a19592ae3968c63a9d6a0b9853e3c08529dbab52cc93bed858cc\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://094dd722d300f2d64219cbef54107b7e5eff9b6095a7c79802c5bcdda1c13c39\",\"dweb:/ipfs/QmUeFdKtgdj6nuRVr5Ggg3x1L65avytecmWr6LMsNQNuZi\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: agpl-3.0\npragma solidity ^0.8.0;\n\nimport {ILendingPool} from './ILendingPool.sol';\nimport {IAaveIncentivesController} from './IAaveIncentivesController.sol';\n\n/**\n * @title IInitializableDebtToken\n * @notice Interface for the initialize function common between debt tokens\n * @author Aave\n **/\ninterface IInitializableDebtToken {\n  /**\n   * @dev Emitted when a debt token is initialized\n   * @param underlyingAsset The address of the underlying asset\n   * @param pool The address of the associated lending pool\n   * @param incentivesController The address of the incentives controller for this aToken\n   * @param debtTokenDecimals the decimals of the debt token\n   * @param debtTokenName the name of the debt token\n   * @param debtTokenSymbol the symbol of the debt token\n   * @param params A set of encoded parameters for additional initialization\n   **/\n  event Initialized(\n    address indexed underlyingAsset,\n    address indexed pool,\n    address incentivesController,\n    uint8 debtTokenDecimals,\n    string debtTokenName,\n    string debtTokenSymbol,\n    bytes params\n  );\n\n  /**\n   * @dev Initializes the debt token.\n   * @param pool The address of the lending pool where this aToken will be used\n   * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)\n   * @param incentivesController The smart contract managing potential incentives distribution\n   * @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's\n   * @param debtTokenName The name of the token\n   * @param debtTokenSymbol The symbol of the token\n   */\n  function initialize(\n    ILendingPool pool,\n    address underlyingAsset,\n    IAaveIncentivesController incentivesController,\n    uint8 debtTokenDecimals,\n    string memory debtTokenName,\n    string memory debtTokenSymbol,\n    bytes calldata params\n  ) external;\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IInitializableDebtToken.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IInitializableDebtToken.sol",
+    "exportedSymbols": {
+      "IAaveIncentivesController": [
+        857
+      ],
+      "IInitializableDebtToken": [
+        989
+      ],
+      "ILendingPool": [
+        1368
+      ]
+    },
+    "id": 990,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 946,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:13"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPool.sol",
+        "file": "./ILendingPool.sol",
+        "id": 948,
+        "nodeType": "ImportDirective",
+        "scope": 990,
+        "sourceUnit": 1369,
+        "src": "62:48:13",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 947,
+              "name": "ILendingPool",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "70:12:13",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IAaveIncentivesController.sol",
+        "file": "./IAaveIncentivesController.sol",
+        "id": 950,
+        "nodeType": "ImportDirective",
+        "scope": 990,
+        "sourceUnit": 858,
+        "src": "111:74:13",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 949,
+              "name": "IAaveIncentivesController",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "119:25:13",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 951,
+          "nodeType": "StructuredDocumentation",
+          "src": "187:134:13",
+          "text": " @title IInitializableDebtToken\n @notice Interface for the initialize function common between debt tokens\n @author Aave*"
+        },
+        "fullyImplemented": false,
+        "id": 989,
+        "linearizedBaseContracts": [
+          989
+        ],
+        "name": "IInitializableDebtToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 952,
+              "nodeType": "StructuredDocumentation",
+              "src": "360:523:13",
+              "text": " @dev Emitted when a debt token is initialized\n @param underlyingAsset The address of the underlying asset\n @param pool The address of the associated lending pool\n @param incentivesController The address of the incentives controller for this aToken\n @param debtTokenDecimals the decimals of the debt token\n @param debtTokenName the name of the debt token\n @param debtTokenSymbol the symbol of the debt token\n @param params A set of encoded parameters for additional initialization*"
+            },
+            "id": 968,
+            "name": "Initialized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 967,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 954,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "underlyingAsset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "909:31:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 953,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "909:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 956,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "946:20:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 955,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "946:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 958,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "incentivesController",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "972:28:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 957,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "972:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 960,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "debtTokenDecimals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1006:23:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 959,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1006:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 962,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "debtTokenName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1035:20:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 961,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1035:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 964,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "debtTokenSymbol",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1061:22:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 963,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1061:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 966,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "params",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1089:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 965,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1089:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "903:202:13"
+            },
+            "src": "886:220:13"
+          },
+          {
+            "documentation": {
+              "id": 969,
+              "nodeType": "StructuredDocumentation",
+              "src": "1110:515:13",
+              "text": " @dev Initializes the debt token.\n @param pool The address of the lending pool where this aToken will be used\n @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)\n @param incentivesController The smart contract managing potential incentives distribution\n @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's\n @param debtTokenName The name of the token\n @param debtTokenSymbol The symbol of the token"
+            },
+            "functionSelector": "c222ec8a",
+            "id": 988,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "initialize",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 986,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 972,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1653:17:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ILendingPool_$1368",
+                    "typeString": "contract ILendingPool"
+                  },
+                  "typeName": {
+                    "id": 971,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 970,
+                      "name": "ILendingPool",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1368,
+                      "src": "1653:12:13"
+                    },
+                    "referencedDeclaration": 1368,
+                    "src": "1653:12:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ILendingPool_$1368",
+                      "typeString": "contract ILendingPool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 974,
+                  "mutability": "mutable",
+                  "name": "underlyingAsset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1676:23:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 973,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1676:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 977,
+                  "mutability": "mutable",
+                  "name": "incentivesController",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1705:46:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IAaveIncentivesController_$857",
+                    "typeString": "contract IAaveIncentivesController"
+                  },
+                  "typeName": {
+                    "id": 976,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 975,
+                      "name": "IAaveIncentivesController",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 857,
+                      "src": "1705:25:13"
+                    },
+                    "referencedDeclaration": 857,
+                    "src": "1705:25:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IAaveIncentivesController_$857",
+                      "typeString": "contract IAaveIncentivesController"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 979,
+                  "mutability": "mutable",
+                  "name": "debtTokenDecimals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1757:23:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 978,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1757:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 981,
+                  "mutability": "mutable",
+                  "name": "debtTokenName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1786:27:13",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 980,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1786:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 983,
+                  "mutability": "mutable",
+                  "name": "debtTokenSymbol",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1819:29:13",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 982,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1819:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 985,
+                  "mutability": "mutable",
+                  "name": "params",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1854:21:13",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 984,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1854:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1647:232:13"
+            },
+            "returnParameters": {
+              "id": 987,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1888:0:13"
+            },
+            "scope": 989,
+            "src": "1628:261:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 990,
+        "src": "322:1569:13"
+      }
+    ],
+    "src": "37:1855:13"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IInitializableDebtToken.sol",
+    "exportedSymbols": {
+      "IAaveIncentivesController": [
+        857
+      ],
+      "IInitializableDebtToken": [
+        989
+      ],
+      "ILendingPool": [
+        1368
+      ]
+    },
+    "id": 990,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 946,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:13"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/ILendingPool.sol",
+        "file": "./ILendingPool.sol",
+        "id": 948,
+        "nodeType": "ImportDirective",
+        "scope": 990,
+        "sourceUnit": 1369,
+        "src": "62:48:13",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 947,
+              "name": "ILendingPool",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "70:12:13",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/contracts/aave/v2/interfaces/IAaveIncentivesController.sol",
+        "file": "./IAaveIncentivesController.sol",
+        "id": 950,
+        "nodeType": "ImportDirective",
+        "scope": 990,
+        "sourceUnit": 858,
+        "src": "111:74:13",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 949,
+              "name": "IAaveIncentivesController",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "119:25:13",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 951,
+          "nodeType": "StructuredDocumentation",
+          "src": "187:134:13",
+          "text": " @title IInitializableDebtToken\n @notice Interface for the initialize function common between debt tokens\n @author Aave*"
+        },
+        "fullyImplemented": false,
+        "id": 989,
+        "linearizedBaseContracts": [
+          989
+        ],
+        "name": "IInitializableDebtToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 952,
+              "nodeType": "StructuredDocumentation",
+              "src": "360:523:13",
+              "text": " @dev Emitted when a debt token is initialized\n @param underlyingAsset The address of the underlying asset\n @param pool The address of the associated lending pool\n @param incentivesController The address of the incentives controller for this aToken\n @param debtTokenDecimals the decimals of the debt token\n @param debtTokenName the name of the debt token\n @param debtTokenSymbol the symbol of the debt token\n @param params A set of encoded parameters for additional initialization*"
+            },
+            "id": 968,
+            "name": "Initialized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 967,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 954,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "underlyingAsset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "909:31:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 953,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "909:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 956,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "946:20:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 955,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "946:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 958,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "incentivesController",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "972:28:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 957,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "972:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 960,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "debtTokenDecimals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1006:23:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 959,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1006:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 962,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "debtTokenName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1035:20:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 961,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1035:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 964,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "debtTokenSymbol",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1061:22:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 963,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1061:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 966,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "params",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 968,
+                  "src": "1089:12:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 965,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1089:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "903:202:13"
+            },
+            "src": "886:220:13"
+          },
+          {
+            "documentation": {
+              "id": 969,
+              "nodeType": "StructuredDocumentation",
+              "src": "1110:515:13",
+              "text": " @dev Initializes the debt token.\n @param pool The address of the lending pool where this aToken will be used\n @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)\n @param incentivesController The smart contract managing potential incentives distribution\n @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's\n @param debtTokenName The name of the token\n @param debtTokenSymbol The symbol of the token"
+            },
+            "functionSelector": "c222ec8a",
+            "id": 988,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "initialize",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 986,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 972,
+                  "mutability": "mutable",
+                  "name": "pool",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1653:17:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ILendingPool_$1368",
+                    "typeString": "contract ILendingPool"
+                  },
+                  "typeName": {
+                    "id": 971,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 970,
+                      "name": "ILendingPool",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1368,
+                      "src": "1653:12:13"
+                    },
+                    "referencedDeclaration": 1368,
+                    "src": "1653:12:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ILendingPool_$1368",
+                      "typeString": "contract ILendingPool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 974,
+                  "mutability": "mutable",
+                  "name": "underlyingAsset",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1676:23:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 973,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1676:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 977,
+                  "mutability": "mutable",
+                  "name": "incentivesController",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1705:46:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IAaveIncentivesController_$857",
+                    "typeString": "contract IAaveIncentivesController"
+                  },
+                  "typeName": {
+                    "id": 976,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 975,
+                      "name": "IAaveIncentivesController",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 857,
+                      "src": "1705:25:13"
+                    },
+                    "referencedDeclaration": 857,
+                    "src": "1705:25:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IAaveIncentivesController_$857",
+                      "typeString": "contract IAaveIncentivesController"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 979,
+                  "mutability": "mutable",
+                  "name": "debtTokenDecimals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1757:23:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 978,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1757:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 981,
+                  "mutability": "mutable",
+                  "name": "debtTokenName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1786:27:13",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 980,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1786:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 983,
+                  "mutability": "mutable",
+                  "name": "debtTokenSymbol",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1819:29:13",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 982,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1819:6:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 985,
+                  "mutability": "mutable",
+                  "name": "params",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 988,
+                  "src": "1854:21:13",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 984,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1854:5:13",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1647:232:13"
+            },
+            "returnParameters": {
+              "id": 987,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1888:0:13"
+            },
+            "scope": 989,
+            "src": "1628:261:13",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 990,
+        "src": "322:1569:13"
+      }
+    ],
+    "src": "37:1855:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-03-31T20:20:03.590Z",
+  "devdoc": {
+    "author": "Aave*",
+    "events": {
+      "Initialized(address,address,address,uint8,string,string,bytes)": {
+        "details": "Emitted when a debt token is initialized",
+        "params": {
+          "debtTokenDecimals": "the decimals of the debt token",
+          "debtTokenName": "the name of the debt token",
+          "debtTokenSymbol": "the symbol of the debt token",
+          "incentivesController": "The address of the incentives controller for this aToken",
+          "params": "A set of encoded parameters for additional initialization*",
+          "pool": "The address of the associated lending pool",
+          "underlyingAsset": "The address of the underlying asset"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "initialize(address,address,address,uint8,string,string,bytes)": {
+        "details": "Initializes the debt token.",
+        "params": {
+          "debtTokenDecimals": "The decimals of the debtToken, same as the underlying asset's",
+          "debtTokenName": "The name of the token",
+          "debtTokenSymbol": "The symbol of the token",
+          "incentivesController": "The smart contract managing potential incentives distribution",
+          "pool": "The address of the lending pool where this aToken will be used",
+          "underlyingAsset": "The address of the underlying asset of this aToken (E.g. WETH for aWETH)"
+        }
+      }
+    },
+    "title": "IInitializableDebtToken",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Interface for the initialize function common between debt tokens",
+    "version": 1
+  }
+}

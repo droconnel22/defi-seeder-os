@@ -1,0 +1,1141 @@
+{
+  "contractName": "P1Operator",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "LogSetLocalOperator",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setLocalOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"LogSetLocalOperator\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setLocalOperator\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"dYdX\",\"methods\":{\"getAdmin()\":{\"return\":\"The EIP-1967 proxy admin\"},\"setLocalOperator(address,bool)\":{\"details\":\"Emits the LogSetLocalOperator event.\",\"params\":{\"approved\":\"True for approval, false for disapproval.\",\"operator\":\"The account that is approved or disapproved.\"}}},\"title\":\"P1Operator\"},\"userdoc\":{\"methods\":{\"setLocalOperator(address,bool)\":{\"notice\":\"Grants or revokes permission for another account to perform certain actions on behalf of the sender.\"}},\"notice\":\"Contract for setting local operators for an account.\"}},\"settings\":{\"compilationTarget\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Operator.sol\":\"P1Operator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Adminable.sol\":{\"keccak256\":\"0xd01402a59229d55ed0d9dc5e8f6cc95c5aec4487b45a367dd807c251c76ff88c\",\"urls\":[\"bzz-raw://b4e82b61ad679811ace788ae22a1bf0ef31796d4ac9da8b0112002b9d00ecdfd\",\"dweb:/ipfs/QmRyPd93agcFZNQwENCeTqQuhbbRdnZVrTs351iYDJ8Fkv\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/ReentrancyGuard.sol\":{\"keccak256\":\"0x42f6d0888b09ea305dc37e30c8c86e68ef57d2fc948a5d7bb95f2f9c829aa73c\",\"urls\":[\"bzz-raw://12c1df80cb49afd129925e944fee7d729ec0dba97de0102d29180c38081ee923\",\"dweb:/ipfs/QmT3pCqPNExPrS6dDs2TSXQBSDNGm4HhCfNtpwWm5yKhRg\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/lib/Storage.sol\":{\"keccak256\":\"0xc590571da7105cdc49ce6ee12928ecc0ca4f2a9ee4496fddbd525e3eaca92ea1\",\"urls\":[\"bzz-raw://21f2dee7536262eb7562a14b945f40aa2da36e5b9012ee6027c1aa5c0a5f7a77\",\"dweb:/ipfs/QmWBynJXHDZTgLyWyTjpxm9u4nmNAnvHY2vg2DigzfWSX4\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Operator.sol\":{\"keccak256\":\"0x72a531bef384277bebb1597910ed2a7edb4da81fd603d1b05b288822faf27fb8\",\"urls\":[\"bzz-raw://3da2fffe316bd949273f6374543faae7b7753bbb70a081df3c1827eebbe39cc5\",\"dweb:/ipfs/Qmc7FvtjVeH2Hj8UBzQpp6mr3bCjB536quEcCiZXe4H4QN\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Storage.sol\":{\"keccak256\":\"0xf9e8e9334b5554db4c1700b98e589d960e319f7727e44e479fd95f552e627e83\",\"urls\":[\"bzz-raw://99b047f661cdf71524b453af97a28260a11ec2cf519f7efd4082da0821977c48\",\"dweb:/ipfs/QmVcZaKknZpky314FpmVrk8xXDDnGoQKDUp1uGM7e1pKsr\"]},\"/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/lib/P1Types.sol\":{\"keccak256\":\"0x4c06a8f9779e4a2975ceb5e05583c10309d1979814c7d408ee9045b5c896f8d2\",\"urls\":[\"bzz-raw://2231570e2572d884876eb5c443e4ae59cf8168d8f0e33cc38ebf88497ae65def\",\"dweb:/ipfs/QmWWpyL1P7nUVnpXEULTqCTTvsKSNwnRRvB4kFCuJeMGGo\"]}},\"version\":1}",
+  "bytecode": "0x60806040526001600055610264806100186000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80636e9960c31461003b578063b4959e7214610059575b600080fd5b61004361006e565b60405161005091906101a8565b60405180910390f35b61006c610067366004610156565b61009e565b005b60006100997fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103610136565b905090565b33600081815260046020908152604080832073ffffffffffffffffffffffffffffffffffffffff871684529091529081902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016841515179055517ffe9fa8ad7dbd5e50cbcd1a903ea64717cb80b02e6b737e74f7e2f070b3e4d15f9061012a90859085906101b6565b60405180910390a25050565b5490565b803561014581610201565b92915050565b803561014581610218565b6000806040838503121561016957600080fd5b6000610175858561013a565b92505060206101868582860161014b565b9150509250929050565b610199816101d8565b82525050565b610199816101e3565b602081016101458284610190565b604081016101c48285610190565b6101d1602083018461019f565b9392505050565b6000610145826101e8565b151590565b73ffffffffffffffffffffffffffffffffffffffff1690565b61020a816101d8565b811461021557600080fd5b50565b61020a816101e356fea365627a7a7231582056f7886b92ad30c197dfb36acecfa004a834cc91043c9b41050a36837e3f24d26c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80636e9960c31461003b578063b4959e7214610059575b600080fd5b61004361006e565b60405161005091906101a8565b60405180910390f35b61006c610067366004610156565b61009e565b005b60006100997fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103610136565b905090565b33600081815260046020908152604080832073ffffffffffffffffffffffffffffffffffffffff871684529091529081902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0016841515179055517ffe9fa8ad7dbd5e50cbcd1a903ea64717cb80b02e6b737e74f7e2f070b3e4d15f9061012a90859085906101b6565b60405180910390a25050565b5490565b803561014581610201565b92915050565b803561014581610218565b6000806040838503121561016957600080fd5b6000610175858561013a565b92505060206101868582860161014b565b9150509250929050565b610199816101d8565b82525050565b610199816101e3565b602081016101458284610190565b604081016101c48285610190565b6101d1602083018461019f565b9392505050565b6000610145826101e8565b151590565b73ffffffffffffffffffffffffffffffffffffffff1690565b61020a816101d8565b811461021557600080fd5b50565b61020a816101e356fea365627a7a7231582056f7886b92ad30c197dfb36acecfa004a834cc91043c9b41050a36837e3f24d26c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "821:817:20:-;;;868:1:9;1001:8;:22;821:817:20;;;;;;",
+  "deployedSourceMap": "821:817:20:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;821:817:20;;;;;;;;;;;;;;;;;;;;;;;;1448:153:6;;;:::i;:::-;;;;;;;;;;;;;;;;1401:235:20;;;;;;;;;:::i;:::-;;1448:153:6;1513:7;1567:24;1010:66;1567:12;:24::i;:::-;1559:33;-1:-1:-1;1448:153:6;:::o;1401:235:20:-;1531:10;1513:29;;;;:17;:29;;;;;;;;;:39;;;;;;;;;;;:50;;;;;;;;;;1578:51;;;;;1513:39;;:50;;1578:51;;;;;;;;;;1401:235;;:::o;879:286:13:-;1115:11;;879:286::o;5:130:-1:-;72:20;;97:33;72:20;97:33;;;57:78;;;;;142:124;206:20;;231:30;206:20;231:30;;273:360;;;391:2;379:9;370:7;366:23;362:32;359:2;;;407:1;404;397:12;359:2;442:1;459:53;504:7;484:9;459:53;;;449:63;;421:97;549:2;567:50;609:7;600:6;589:9;585:22;567:50;;;557:60;;528:95;353:280;;;;;;640:113;723:24;741:5;723:24;;;718:3;711:37;705:48;;;760:104;837:21;852:5;837:21;;871:213;989:2;974:18;;1003:71;978:9;1047:6;1003:71;;1091:312;1231:2;1216:18;;1245:71;1220:9;1289:6;1245:71;;;1327:66;1389:2;1378:9;1374:18;1365:6;1327:66;;;1202:201;;;;;;1410:91;;1472:24;1490:5;1472:24;;1508:85;1574:13;1567:21;;1550:43;1600:121;1673:42;1662:54;;1645:76;1728:117;1797:24;1815:5;1797:24;;;1790:5;1787:35;1777:2;;1836:1;1833;1826:12;1777:2;1771:74;;1852:111;1918:21;1933:5;1918:21;",
+  "source": "/*\n\n    Copyright 2020 dYdX Trading Inc.\n\n    Licensed under the Apache License, Version 2.0 (the \"License\");\n    you may not use this file except in compliance with the License.\n    You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n\n*/\n\npragma solidity 0.5.16;\npragma experimental ABIEncoderV2;\n\nimport { P1Storage } from \"./P1Storage.sol\";\n\n\n/**\n * @title P1Operator\n * @author dYdX\n *\n * @notice Contract for setting local operators for an account.\n */\ncontract P1Operator is\n    P1Storage\n{\n    // ============ Events ============\n\n    event LogSetLocalOperator(\n        address indexed sender,\n        address operator,\n        bool approved\n    );\n\n    // ============ Functions ============\n\n    /**\n     * @notice Grants or revokes permission for another account to perform certain actions on behalf\n     *  of the sender.\n     * @dev Emits the LogSetLocalOperator event.\n     *\n     * @param  operator  The account that is approved or disapproved.\n     * @param  approved  True for approval, false for disapproval.\n     */\n    function setLocalOperator(\n        address operator,\n        bool approved\n    )\n        external\n    {\n        _LOCAL_OPERATORS_[msg.sender][operator] = approved;\n        emit LogSetLocalOperator(msg.sender, operator, approved);\n    }\n}\n",
+  "sourcePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Operator.sol",
+  "ast": {
+    "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Operator.sol",
+    "exportedSymbols": {
+      "P1Operator": [
+        2067
+      ]
+    },
+    "id": 2068,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2029,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "603:23:20"
+      },
+      {
+        "id": 2030,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "627:33:20"
+      },
+      {
+        "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Storage.sol",
+        "file": "./P1Storage.sol",
+        "id": 2032,
+        "nodeType": "ImportDirective",
+        "scope": 2068,
+        "sourceUnit": 2524,
+        "src": "662:44:20",
+        "symbolAliases": [
+          {
+            "foreign": 2031,
+            "local": null
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 2033,
+              "name": "P1Storage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2523,
+              "src": "848:9:20",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_P1Storage_$2523",
+                "typeString": "contract P1Storage"
+              }
+            },
+            "id": 2034,
+            "nodeType": "InheritanceSpecifier",
+            "src": "848:9:20"
+          }
+        ],
+        "contractDependencies": [
+          337,
+          609,
+          2523
+        ],
+        "contractKind": "contract",
+        "documentation": "@title P1Operator\n@author dYdX\n * @notice Contract for setting local operators for an account.",
+        "fullyImplemented": true,
+        "id": 2067,
+        "linearizedBaseContracts": [
+          2067,
+          2523,
+          609,
+          337
+        ],
+        "name": "P1Operator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2042,
+            "name": "LogSetLocalOperator",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2041,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2036,
+                  "indexed": true,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2042,
+                  "src": "940:22:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2035,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "940:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2038,
+                  "indexed": false,
+                  "name": "operator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2042,
+                  "src": "972:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2037,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "972:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2040,
+                  "indexed": false,
+                  "name": "approved",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2042,
+                  "src": "998:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2039,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "998:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "930:87:20"
+            },
+            "src": "905:113:20"
+          },
+          {
+            "body": {
+              "id": 2065,
+              "nodeType": "Block",
+              "src": "1503:133:20",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2056,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 2049,
+                          "name": "_LOCAL_OPERATORS_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2508,
+                          "src": "1513:17:20",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
+                            "typeString": "mapping(address => mapping(address => bool))"
+                          }
+                        },
+                        "id": 2053,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2050,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 12978,
+                            "src": "1531:3:20",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2051,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1531:10:20",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1513:29:20",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 2054,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 2052,
+                        "name": "operator",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2044,
+                        "src": "1543:8:20",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1513:39:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 2055,
+                      "name": "approved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2046,
+                      "src": "1555:8:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1513:50:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2057,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1513:50:20"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 2059,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12978,
+                          "src": "1598:3:20",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2060,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1598:10:20",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 2061,
+                        "name": "operator",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2044,
+                        "src": "1610:8:20",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 2062,
+                        "name": "approved",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2046,
+                        "src": "1620:8:20",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 2058,
+                      "name": "LogSetLocalOperator",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2042,
+                      "src": "1578:19:20",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_bool_$returns$__$",
+                        "typeString": "function (address,address,bool)"
+                      }
+                    },
+                    "id": 2063,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1578:51:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2064,
+                  "nodeType": "EmitStatement",
+                  "src": "1573:56:20"
+                }
+              ]
+            },
+            "documentation": "@notice Grants or revokes permission for another account to perform certain actions on behalf\n of the sender.\n@dev Emits the LogSetLocalOperator event.\n     * @param  operator  The account that is approved or disapproved.\n@param  approved  True for approval, false for disapproval.",
+            "id": 2066,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setLocalOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2047,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2044,
+                  "name": "operator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2066,
+                  "src": "1436:16:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2043,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1436:7:20",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2046,
+                  "name": "approved",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2066,
+                  "src": "1462:13:20",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2045,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1462:4:20",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1426:55:20"
+            },
+            "returnParameters": {
+              "id": 2048,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1503:0:20"
+            },
+            "scope": 2067,
+            "src": "1401:235:20",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2068,
+        "src": "821:817:20"
+      }
+    ],
+    "src": "603:1036:20"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Operator.sol",
+      "exportedSymbols": {
+        "P1Operator": [
+          2067
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.5",
+            ".16"
+          ]
+        },
+        "id": 2029,
+        "name": "PragmaDirective",
+        "src": "603:23:20"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 2030,
+        "name": "PragmaDirective",
+        "src": "627:33:20"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2524,
+          "absolutePath": "/Users/dennismacpro/Projects/Defi/Ethereum-Solidity-Collection/icarus-protocol/defi-seeder/.tmp/dydx-protocol/perpetual/contracts/protocol/v1/impl/P1Storage.sol",
+          "file": "./P1Storage.sol",
+          "scope": 2068,
+          "symbolAliases": [
+            {
+              "foreign": 2031,
+              "local": null
+            }
+          ],
+          "unitAlias": ""
+        },
+        "id": 2032,
+        "name": "ImportDirective",
+        "src": "662:44:20"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            337,
+            609,
+            2523
+          ],
+          "contractKind": "contract",
+          "documentation": "@title P1Operator\n@author dYdX\n * @notice Contract for setting local operators for an account.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            2067,
+            2523,
+            609,
+            337
+          ],
+          "name": "P1Operator",
+          "scope": 2068
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "P1Storage",
+                  "referencedDeclaration": 2523,
+                  "type": "contract P1Storage"
+                },
+                "id": 2033,
+                "name": "UserDefinedTypeName",
+                "src": "848:9:20"
+              }
+            ],
+            "id": 2034,
+            "name": "InheritanceSpecifier",
+            "src": "848:9:20"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "LogSetLocalOperator"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "sender",
+                      "scope": 2042,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 2035,
+                        "name": "ElementaryTypeName",
+                        "src": "940:7:20"
+                      }
+                    ],
+                    "id": 2036,
+                    "name": "VariableDeclaration",
+                    "src": "940:22:20"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "operator",
+                      "scope": 2042,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 2037,
+                        "name": "ElementaryTypeName",
+                        "src": "972:7:20"
+                      }
+                    ],
+                    "id": 2038,
+                    "name": "VariableDeclaration",
+                    "src": "972:16:20"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "approved",
+                      "scope": 2042,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 2039,
+                        "name": "ElementaryTypeName",
+                        "src": "998:4:20"
+                      }
+                    ],
+                    "id": 2040,
+                    "name": "VariableDeclaration",
+                    "src": "998:13:20"
+                  }
+                ],
+                "id": 2041,
+                "name": "ParameterList",
+                "src": "930:87:20"
+              }
+            ],
+            "id": 2042,
+            "name": "EventDefinition",
+            "src": "905:113:20"
+          },
+          {
+            "attributes": {
+              "documentation": "@notice Grants or revokes permission for another account to perform certain actions on behalf\n of the sender.\n@dev Emits the LogSetLocalOperator event.\n     * @param  operator  The account that is approved or disapproved.\n@param  approved  True for approval, false for disapproval.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setLocalOperator",
+              "scope": 2067,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "operator",
+                      "scope": 2066,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 2043,
+                        "name": "ElementaryTypeName",
+                        "src": "1436:7:20"
+                      }
+                    ],
+                    "id": 2044,
+                    "name": "VariableDeclaration",
+                    "src": "1436:16:20"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "approved",
+                      "scope": 2066,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 2045,
+                        "name": "ElementaryTypeName",
+                        "src": "1462:4:20"
+                      }
+                    ],
+                    "id": 2046,
+                    "name": "VariableDeclaration",
+                    "src": "1462:13:20"
+                  }
+                ],
+                "id": 2047,
+                "name": "ParameterList",
+                "src": "1426:55:20"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2048,
+                "name": "ParameterList",
+                "src": "1503:0:20"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "mapping(address => bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2508,
+                                      "type": "mapping(address => mapping(address => bool))",
+                                      "value": "_LOCAL_OPERATORS_"
+                                    },
+                                    "id": 2049,
+                                    "name": "Identifier",
+                                    "src": "1513:17:20"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "sender",
+                                      "referencedDeclaration": null,
+                                      "type": "address payable"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 12978,
+                                          "type": "msg",
+                                          "value": "msg"
+                                        },
+                                        "id": 2050,
+                                        "name": "Identifier",
+                                        "src": "1531:3:20"
+                                      }
+                                    ],
+                                    "id": 2051,
+                                    "name": "MemberAccess",
+                                    "src": "1531:10:20"
+                                  }
+                                ],
+                                "id": 2053,
+                                "name": "IndexAccess",
+                                "src": "1513:29:20"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2044,
+                                  "type": "address",
+                                  "value": "operator"
+                                },
+                                "id": 2052,
+                                "name": "Identifier",
+                                "src": "1543:8:20"
+                              }
+                            ],
+                            "id": 2054,
+                            "name": "IndexAccess",
+                            "src": "1513:39:20"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2046,
+                              "type": "bool",
+                              "value": "approved"
+                            },
+                            "id": 2055,
+                            "name": "Identifier",
+                            "src": "1555:8:20"
+                          }
+                        ],
+                        "id": 2056,
+                        "name": "Assignment",
+                        "src": "1513:50:20"
+                      }
+                    ],
+                    "id": 2057,
+                    "name": "ExpressionStatement",
+                    "src": "1513:50:20"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2042,
+                              "type": "function (address,address,bool)",
+                              "value": "LogSetLocalOperator"
+                            },
+                            "id": 2058,
+                            "name": "Identifier",
+                            "src": "1578:19:20"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 12978,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 2059,
+                                "name": "Identifier",
+                                "src": "1598:3:20"
+                              }
+                            ],
+                            "id": 2060,
+                            "name": "MemberAccess",
+                            "src": "1598:10:20"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2044,
+                              "type": "address",
+                              "value": "operator"
+                            },
+                            "id": 2061,
+                            "name": "Identifier",
+                            "src": "1610:8:20"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2046,
+                              "type": "bool",
+                              "value": "approved"
+                            },
+                            "id": 2062,
+                            "name": "Identifier",
+                            "src": "1620:8:20"
+                          }
+                        ],
+                        "id": 2063,
+                        "name": "FunctionCall",
+                        "src": "1578:51:20"
+                      }
+                    ],
+                    "id": 2064,
+                    "name": "EmitStatement",
+                    "src": "1573:56:20"
+                  }
+                ],
+                "id": 2065,
+                "name": "Block",
+                "src": "1503:133:20"
+              }
+            ],
+            "id": 2066,
+            "name": "FunctionDefinition",
+            "src": "1401:235:20"
+          }
+        ],
+        "id": 2067,
+        "name": "ContractDefinition",
+        "src": "821:817:20"
+      }
+    ],
+    "id": 2068,
+    "name": "SourceUnit",
+    "src": "603:1036:20"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Linux.g++"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-01T16:42:57.384Z",
+  "devdoc": {
+    "author": "dYdX",
+    "methods": {
+      "getAdmin()": {
+        "return": "The EIP-1967 proxy admin"
+      },
+      "setLocalOperator(address,bool)": {
+        "details": "Emits the LogSetLocalOperator event.",
+        "params": {
+          "approved": "True for approval, false for disapproval.",
+          "operator": "The account that is approved or disapproved."
+        }
+      }
+    },
+    "title": "P1Operator"
+  },
+  "userdoc": {
+    "methods": {
+      "setLocalOperator(address,bool)": {
+        "notice": "Grants or revokes permission for another account to perform certain actions on behalf of the sender."
+      }
+    },
+    "notice": "Contract for setting local operators for an account."
+  }
+}
